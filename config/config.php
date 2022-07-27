@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 define("HOST", "localhost");
 define("USER", "root");
-define("DATABASE", "registration");
+define("DATABASE", "ecommerce");
 define("PASSWORD", "");
 
 // Base URL
