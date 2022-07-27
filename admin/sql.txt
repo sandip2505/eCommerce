@@ -1,0 +1,13 @@
+CREATE TABLE `addproduct` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `price` int(255) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `sku` varchar(255) NOT NULL,
+  `rrp` int(255) NOT NULL,
+  `image` text NOT NULL,
+  `varient` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4
+ALTER TABLE `addproduct` CHANGE `description` `description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
