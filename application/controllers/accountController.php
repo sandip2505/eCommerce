@@ -129,7 +129,7 @@ if(empty($userData['emailError']) && empty($userData['passwordError'])){
         $this->setSession("role", $result['role_id']);
 
         if($this->getSession('role') == 1){
-            $this->redirect("admin");
+            $this->redirect("../eCommerceAdmin");
                     // echo "admin";
         }else{
             $this->redirect("../eCommerceShop");
