@@ -86,6 +86,16 @@ class accountModel extends database {
 
     }
 
+     public function getdata(){
+    if($this->Query("SELECT * FROM category where status=1 " )){
+        $data = $this->fetchAll();
+        return $data;
+        
+
+    }
+}
+
+
 }
 
 

@@ -15,8 +15,11 @@ class accountController extends framework {
     }
 
     public function index(){
+         $data = $this->accountModel->getdata();
+       
+         $this->view("index", $data);
 
-        $this->view("index");
+        // $this->view("index");
     }
 
     public function createAccount(){
