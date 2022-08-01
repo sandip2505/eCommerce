@@ -163,7 +163,7 @@
                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                     <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
                     <div class="d-flex justify-content-center">
-                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$1234.00</del></h6>
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-light border">
