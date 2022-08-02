@@ -94,6 +94,14 @@ class accountModel extends database {
 
     }
 }
+public function getProductData(){
+
+    if($this->Query("SELECT * FROM product where status=1 " )){
+        $Productdata = $this->fetchAll();
+        return $Productdata;
+
+    }
+}
 
 
 }

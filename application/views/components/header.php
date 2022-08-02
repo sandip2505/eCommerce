@@ -208,7 +208,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="kjnimyModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -231,7 +231,7 @@
           <div class="md-form mb-4">
               <i class="fas fa-lock prefix grey-text"></i>
               <input type="password" name="password" class="form-control validate" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
-              <div class="error">
+              <div class="error" >
                   <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
               </div>
           </div>

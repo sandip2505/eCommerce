@@ -16,11 +16,15 @@ class accountController extends framework {
 
     public function index(){
          $data = $this->accountModel->getdata();
-       
-         $this->view("index", $data);
-
+         $Productdata = $this->accountModel->getProductData();
+         $this->view("index",$data);
         // $this->view("index");
     }
+   /* public function header(){
+        $data = $this->accountModel->getdata();
+         $Productdata = $this->accountModel->getProductData();
+         $this->view("header",$data);
+   }*/
 
     public function createAccount(){
 
