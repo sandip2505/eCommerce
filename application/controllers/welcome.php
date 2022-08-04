@@ -25,9 +25,11 @@ class welcome extends framework{
    public function detail(){
       $this->view("detail");
    }
-    public function try(){
-      $this->view("try");
+   
+    public function header(){
+      $this->view("header");
    }
+
 
 }
 

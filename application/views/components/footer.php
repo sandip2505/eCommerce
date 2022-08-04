@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control border-0 py-4" name="email" placeholder="Your Email"
-                                    required="required" />
+                                required="required" />
                             </div>
                             <div>
                                 <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>

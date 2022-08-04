@@ -79,11 +79,11 @@
                             <a href="" class="dropdown-item">Baby's Dresses</a>
                         </div>
                     </div> -->
-                     <?php
-                        foreach ($data as $item) {
-                          ?>
-                    <a href="" class="nav-item nav-link"> <?php echo $item ->category_name;?></a>
-                         
+                    <?php
+                    foreach ($data['Categorydata'] as $item) {
+                      ?>
+                      <a href="" class="nav-item nav-link"> <?php echo $item ->category_name;?></a>
+
                     <!-- <a href="" class="nav-item nav-link">Shirts</a>
                     <a href="" class="nav-item nav-link">Jeans</a>
                     <a href="" class="nav-item nav-link">Swimwear</a>
@@ -93,35 +93,35 @@
                     <a href="" class="nav-item nav-link">Blazers</a>
                     <a href="" class="nav-item nav-link">Jackets</a>
                     <a href="" class="nav-item nav-link">Shoes</a> -->
-                          <?php 
-                      }   
-                      ?>
-                </div>
-            </nav>
-        </div>
-        <div class="col-lg-9">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                <a href="" class="text-decoration-none d-block d-lg-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
-                        <a href="<?php route('welcome/shop'); ?>" class="nav-item nav-link">Shop</a>
-                        <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="<?php route('welcome/cart'); ?>" class="dropdown-item">Shopping Cart</a>
-                                <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
-                            </div>
+                    <?php 
+                }   
+                ?>
+            </div>
+        </nav>
+    </div>
+    <div class="col-lg-9">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+            <a href="" class="text-decoration-none d-block d-lg-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
+                    <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
+                    <a href="<?php route('accountController/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="<?php route('accountController/cart'); ?>" class="dropdown-item">Shopping Cart</a>
+                            <a href="<?php route('accountController/checkout'); ?>" class="dropdown-item">Checkout</a>
                         </div>
-                        <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
                     </div>
-                    <div class="navbar-nav ml-auto py-0">
+                    <a href="<?php route('accountController/contact'); ?>" class="nav-item nav-link">Contact</a>
+                </div>
+                <div class="navbar-nav ml-auto py-0">
 
                        <!-- if($this->getSession('userId')){
                         
@@ -134,6 +134,8 @@
                   <li class="nav-item">
                     <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
                 </li>
+
+
                 <li class="nav-item">
                     <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
                 </li>
@@ -142,28 +144,21 @@
             <?php endif; ?>
         </ul>
         <?php if($this->getSession('userId')): ?>
-          <!--  <ul class="my-2 my-lg-0"><a href="<?php echo BASEURL; ?>/accountController/logout" class="btn btn-success">Logout</a></ul> -->
-
-           <?php
-           include 'profile.php';
-           ?>
-
-       <?php endif; ?>
-   </div>
 
 
+         <?php
+         include 'profile.php';
+         ?>
+
+     <?php endif; ?>
+ </div>
 
 
-   <!-- </ul> -->
 
-            <!-- <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
-                <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a> -->
-                <!-- <a class="btn big-register" data-toggle="modal" data-target="#modalProfile" href="javascript:void(0);">Profile</a> -->
+</div>
+</div>
 
-            </div>
-        </div>
-
-    </nav>
+</nav>
 
                 <?php # add condition if home page is active then and only ot will show 
                 if($_SERVER['REQUEST_URI'] == '/eCommerceShop/welcome/index' || $_SERVER['REQUEST_URI'] == '/eCommerceShop/'){ ?>
@@ -395,14 +390,3 @@ aria-hidden="true" data-backdrop="true">
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-

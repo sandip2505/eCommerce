@@ -30,7 +30,7 @@
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form action="<?php route('accountController/contact') ?>" method="POST" name="sentMessage"  novalidate="novalidate">
+                    <form action="<?php route('accountController/contactform') ?>" method="POST" name="sentMessage"  novalidate="novalidate">
                         <div class="control-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
                             required="required" data-validation-required-message="Please enter your name" />

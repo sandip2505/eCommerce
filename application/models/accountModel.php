@@ -2,7 +2,6 @@
 
 class accountModel extends database {
 
-
     public function checkEmail($email){
 
         if($this->Query("SELECT email FROM users WHERE email = ?", [$email])){
@@ -19,10 +18,10 @@ class accountModel extends database {
 
     public function createAccount($data){
 
-        if($this->Query("INSERT INTO users (username,firstname,lastname,email,password,gender) VALUES (?,?,?,?,?,?)", $data)){
+        if($this->Query("INSERT INTO users (username,firstname,lastname,email,password) VALUES (?,?,?,?,?)", $data)){
             echo "done";
 
-             return true;
+            return true;
         }
 
     }
@@ -30,17 +29,17 @@ class accountModel extends database {
     public function userLogin($email, $password){
 
         if($this->Query("SELECT * FROM users WHERE email = ? ", [$email])){
-            
+
             if($this->rowCount() > 0 ){
 
                 $row = $this->fetch();
                 $dbPassword = $row->password;
                 $userId = $row->id;
+                $userName = $row->username;
                 $role=$row->role;
                 if(password_verify($password, $dbPassword)){
 
-                    //return ['status' => 'ok', 'data' => $userId];
-                    $data = ['status' => 'ok', 'role_id' => $role,'user_id'=>$userId];
+                    $data = ['status' => 'ok', 'role_id' => $role,'user_id'=>$userId,'user_name' => $userName,];
 
 
                 } else {
@@ -55,12 +54,12 @@ class accountModel extends database {
         return $data;
 
     }
-      public function contact($data){
+    public function contactform($data){
 
         if($this->Query("INSERT INTO contact (name,email,subject,msg) VALUES (?,?,?,?)", $data)){
             echo "done";
 
-             return true;
+            return true;
         }
 
     }
@@ -70,41 +69,36 @@ class accountModel extends database {
         if($this->Query("INSERT INTO newsletter (name,email) VALUES (?,?)", $data)){
             echo "done";
 
-             return true;
+            return true;
         }
 
     }
 
-    public function subscribe($data){
+    public function getprofiledata(){
+        if($this->Query("SELECT * FROM users where status=0 " )){
+            $Profiledata = $this->fetchAll();
+            return $Profiledata;
 
-        if($this->Query("INSERT INTO subscribe (email) VALUES (?)", $data)){
-            echo "done";
-            
 
-             return true;
         }
-
     }
+    public function getdata(){
+        if($this->Query("SELECT * FROM category where status=1 " )){
+            $Categorydata = $this->fetchAll();
+            return $Categorydata;
 
-     public function getdata(){
-    if($this->Query("SELECT * FROM category where status=1 " )){
-        $data = $this->fetchAll();
-        return $data;
-        
 
+        }
     }
-}
-public function getProductData(){
+    public function getProductData(){
 
-    if($this->Query("SELECT * FROM product where status=1 " )){
-        $Productdata = $this->fetchAll();
-        return $Productdata;
+        if($this->Query("SELECT * FROM product where status=1 " )){
+            $Productdata = $this->fetchAll();
+            return $Productdata;
 
+        }
     }
-}
 
 
 }
-
-
 ?>

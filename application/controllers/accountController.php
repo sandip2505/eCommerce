@@ -15,64 +15,97 @@ class accountController extends framework {
     }
 
     public function index(){
-         $data = $this->accountModel->getdata();
-         $Productdata = $this->accountModel->getProductData();
-         $this->view("index",$data);
-        // $this->view("index");
-    }
-   /* public function header(){
-        $data = $this->accountModel->getdata();
-         $Productdata = $this->accountModel->getProductData();
-         $this->view("header",$data);
-   }*/
+     $Categorydata = $this->accountModel->getdata();
+     $Productdata  = $this->accountModel->getProductData();
+     $data['Categorydata'] = $Categorydata;
+     $data['Productdata'] = $Productdata;
+     $this->view("index",$data);
+ }
+ public function shop(){
+     $Categorydata = $this->accountModel->getdata();
+     $Productdata  = $this->accountModel->getProductData();
+     $data['Categorydata'] = $Categorydata;
+     $data['Productdata'] = $Productdata;
+     $this->view("shop",$data);
+ }
 
-    public function createAccount(){
 
-        $userData = [
+ public function checkout(){
+   $Categorydata = $this->accountModel->getdata();
+   $data['Categorydata'] = $Categorydata;
+   $this->view("checkout",$data);
+}
+public function cart(){
+   $Categorydata = $this->accountModel->getdata();
+   $data['Categorydata'] = $Categorydata;
+   $this->view("cart",$data);
+}
+public function detail(){
+    $Categorydata = $this->accountModel->getdata();
+    $data['Categorydata'] = $Categorydata;
+    $this->view("detail",$data);
+}
 
-           'uname'            => $this->input('uname'),
-           'fname'            => $this->input('fname'),
-           'lname'            => $this->input('lname'),
-           'email'            => $this->input('email'),
-           'password'         => $this->input('password'),
-           'gender'           => $this->input('gender'),
-           'unameError'       => '',
-           'fnameError'       => '',
-           'lnameError'       => '' ,
-           'emailError'       => '', 
-           'genderError'      => '', 
-           'passwordError'    => '' 
+public function header(){
+    $Categorydata = $this->accountModel->getdata();
+    $data['Categorydata'] = $Categorydata;
+    $this->view("header",$data);
+}
+public function contact(){
+   $Categorydata = $this->accountModel->getdata();
+   $data['Categorydata'] = $Categorydata;
+   $this->view("contact",$data);
+}
+   
 
-       ];
 
-       if(empty($userData['uname'])){
 
-        $userData['unameError'] = 'User Name is required';
 
-    }
-    if(empty($userData['fname'])){
+public function createAccount(){
 
-        $userData['fnameError'] = 'first Name is required';
+    $userData = [
 
-    }
-    if(empty($userData['lname'])){
+       'uname'            => $this->input('uname'),
+       'fname'            => $this->input('fname'),
+       'lname'            => $this->input('lname'),
+       'email'            => $this->input('email'),
+       'password'         => $this->input('password'),
+       'unameError'       => '',
+       'fnameError'       => '',
+       'lnameError'       => '' ,
+       'emailError'       => '', 
+       'passwordError'    => '' 
 
-        $userData['lnameError'] = 'Last Name is required';
+   ];
 
-    }
-    
+   if(empty($userData['uname'])){
 
-    if(empty($userData['email'])){
-        $userData['emailError'] = 'Email is required';
-    } else {
-        if(!$this->accountModel->checkEmail($userData['email'])){
+    $userData['unameError'] = 'User Name is required';
 
-           $userData['emailError'] = "Sorry this email is already exist";
+}
+if(empty($userData['fname'])){
 
-       }
+    $userData['fnameError'] = 'first Name is required';
+
+}
+if(empty($userData['lname'])){
+
+    $userData['lnameError'] = 'Last Name is required';
+
+}
+
+
+if(empty($userData['email'])){
+    $userData['emailError'] = 'Email is required';
+} else {
+    if(!$this->accountModel->checkEmail($userData['email'])){
+
+       $userData['emailError'] = "Sorry this email is already exist";
+
    }
+}
 
-   if(empty($userData['password'])){
+if(empty($userData['password'])){
     $userData['passwordError'] = "Password is required";
 } else if(strlen($userData['password']) < 5 ){
     $userData['passwordError'] = "Passowrd must be 5 characters long";
@@ -81,7 +114,7 @@ class accountController extends framework {
 if(empty($userData['unameError']) && empty($userData['fnameError']) && empty($userData['lnameError']) && empty($userData['emailError']) && empty($userData['passwordError'])){
 
     $password = password_hash($userData['password'], PASSWORD_DEFAULT);
-    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'],$password, $userData['gender']];
+    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'],$password];
     if($this->accountModel->createAccount($data)){
 
         $this->setFlash("accountCreated", "Your account has been created successfully");
@@ -101,7 +134,7 @@ public function loginForm(){
 
 public function userLogin(){
 
-    
+
     $userData = [
 
        'email'         => $this->input('email'),
@@ -110,60 +143,54 @@ public function userLogin(){
        'passwordError' => ''
 
    ];
-
+   $error=false;
    if(empty($userData['email'])){
     $userData['emailError'] = "Email is required";
+    $error=true;
 }
-
 if(empty($userData['password'])){
     $userData['passwordError'] = "Password is required";
+    $error=true;
+}
+if($error==true){
+   $this->view("components/header", $userData);
+   return false;
 }
 
-if(empty($userData['emailError']) && empty($userData['passwordError'])){
 
-    $result = $this->accountModel->userLogin($userData['email'], $userData['password']);
+$result = $this->accountModel->userLogin($userData['email'], $userData['password']);
             //echo "<pre>";print_r($result);exit;
-    if($result['status'] === 'emailNotFound'){
-        $userData['emailError'] = "Sorry invalid email";
-        $this->view("index", $userData);
-    }
-    else if($result['status'] === 'passwordNotMacthed'){
-        $userData['passwordError'] = "Sorry invalid password";
-        $this->view("index", $userData);
-    } 
-    else if($result['status'] === "ok"){
-        $this->setSession("userId", $result['user_id']);
-        $this->setSession("role", $result['role_id']);
+if($result['status'] === 'emailNotFound'){
+    $userData['emailError'] = "Sorry invalid email";
+    $this->view("index", $userData);
+}
+else if($result['status'] === 'passwordNotMacthed'){
+    $userData['passwordError'] = "Sorry invalid password";
+    $this->view("index", $userData);
+} 
+else if($result['status'] === "ok"){
+    $this->setSession("userId", $result['user_id']);
+    $this->setSession("role", $result['role_id']);
+    $this->setSession("userName", $result['user_name']);
 
-        if($this->getSession('role') == 1){
-            $this->redirect("../eCommerceAdmin");
+    if($this->getSession('role') == 1){
+        $this->redirect("../eCommerceAdmin");
                     // echo "admin";
-        }else{
-            $this->redirect("../eCommerceShop");
-        }
-                  //$this->redirect("eCommerceShop");
-
-        
-            // if($this->getSession('role=0')){
-            //     $this->redirect("eCommerceShop");
-            // }
-            // else {
-            //     echo "you are admin";
-            // }
+    }else{
+        $this->redirect("../eCommerceShop");
     }
 
-} else {
-    $this->view("       ", $userData);
-}
-
 }
 
 
 
+}
 
-public function contact(){
+public function contactform(){
+   $Categorydata = $this->accountModel->getdata();
+   $data['Categorydata'] = $Categorydata;
 
-    $userData = [
+   $userData = [
 
        'name'            => $this->input('name'),
        'email'           => $this->input('email'),
@@ -196,9 +223,9 @@ if(empty($userData['msg'])){
 if(empty($userData['nameError']) && empty($userData['emailError']) && empty($userData['subjectError']) && empty($userData['msgError'])){
 
     $data = [$userData['name'], $userData['email'], $userData['subject'], $userData['msg']];
-    if($this->accountModel->contact($data)){
+    if($this->accountModel->contactform($data)){
 
-        $this->setFlash("contact", "Your account has been created successfully");
+        $this->setFlash("contactform", "Your account has been created successfully");
         $this->redirect("");
 
     }
@@ -234,38 +261,12 @@ public function newsletter(){
 
 }
 
- public function subscribe(){
 
+public function logout(){
 
-        $userData = [
-
-         'email'      => $this->input('email'),
-     ];
-   
-
-if(empty($userData['emailError'])){
-    
-    $data =$userData['email'];
-    // echo $data;exit;
-    if($this->accountModel->subscribe($data)){
-        echo "done";
-        // $this->setFlash("subscribe", "Your account has been created successfully");
-        // $this->redirect("../eCommerceShop");
-
-    }
-
-} else {
-    $this->view('subscribe', $userData);
-}
+    $this->destroy();
+    $this->redirect("../eCommerceShop");
 
 }
-
- public function logout(){
-
-        $this->destroy();
-        $this->redirect("../eCommerceShop");
-
-    }
-
 }
 ?>

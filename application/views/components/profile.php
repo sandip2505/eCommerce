@@ -21,12 +21,24 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div><br>
-			<?php if($this->getSession('userId')):?>
-				<ul class="my-2 my-lg-0"><a href="<?php echo BASEURL; ?>/accountController/logout" class="btn btn-success">Logout</a></ul><br>
+				<?php if($this->getSession('userName')):?>
+				   <p class="text-center">	<strong> WELCOME : <?php echo $this->getSession('userName') ?></strong></p><br>
+					<ul class="my-2 my-lg-0"><a href="<?php echo BASEURL; ?>/accountController/logout" class="btn btn-success">logout </a></ul><br>
+				
 			<?php endif; ?>
 
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$.ajax({   
+   type: 'POST',   
+   url: url,   
+   data: $('#login-form').serialize(),
+   success: success,
+   dataType: dataType 
+});
+</script>
 </body>
 </html>

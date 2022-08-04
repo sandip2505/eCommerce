@@ -13,6 +13,7 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Libraries Stylesheet -->
     <?php linkCSS("assets/lib/owlcarousel/assets/owl.carousel.min.css"); ?>
