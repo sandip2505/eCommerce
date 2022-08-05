@@ -20,3 +20,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <?php linkCSS("assets/css/style.css"); ?>
+    <style type="text/css">
+        
+        .error{
+            color: red;
+        }
+    </style>
