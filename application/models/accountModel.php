@@ -18,6 +18,7 @@ class accountModel extends database {
 
     public function createAccount($data){
 
+
         if($this->Query("INSERT INTO users (username,firstname,lastname,email,password, is_deleted) VALUES (?,?,?,?,?,?)", $data)){
             echo "done";
 
@@ -75,7 +76,7 @@ class accountModel extends database {
     }
 
     public function getprofiledata(){
-        if($this->Query("SELECT * FROM users where status=0 " )){
+        if($this->Query("SELECT * FROM users where is_deleted=0 " )){
             $Profiledata = $this->fetchAll();
             return $Profiledata;
 
@@ -83,7 +84,7 @@ class accountModel extends database {
         }
     }
     public function getdata(){
-        if($this->Query("SELECT * FROM category where status=1 " )){
+        if($this->Query("SELECT * FROM category where is_deleted=1 " )){
             $Categorydata = $this->fetchAll();
             return $Categorydata;
 
@@ -92,7 +93,7 @@ class accountModel extends database {
     }
     public function getProductData(){
 
-        if($this->Query("SELECT * FROM product where status=1 " )){
+        if($this->Query("SELECT * FROM product where is_deleted=1 " )){
             $Productdata = $this->fetchAll();
             return $Productdata;
 

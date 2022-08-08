@@ -130,7 +130,7 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-              <?php if(!$this->getSession('userId')): ?>
+               <?php   if (!isset($_SESSION['userId'])):?> 
                   <li class="nav-item">
                     <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
                 </li>
@@ -141,9 +141,10 @@
                 </li>
             <?php else: ?>
 
+
             <?php endif; ?>
         </ul>
-        <?php if($this->getSession('userId')): ?>
+          <?php if(isset($_SESSION['userId'])):?> 
 
 
            <?php

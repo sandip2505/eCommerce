@@ -5,10 +5,10 @@ class accountController extends framework {
 
 
     public function __construct(){
+       
+        if (isset($_SESSION['userId'])): 
+      endif;
 
-        if($this->getSession('userId')){
-            // $this->redirect("admin");
-        }
         $this->helper("link");
         $this->accountModel = $this->model('accountModel');
         
@@ -70,7 +70,7 @@ public function createAccount(){
      'lname'            => $this->input('lname'),
      'email'            => $this->input('email'),
      'password'         => $this->input('password'),
-     'is_deleted'       =>$this->input('is_deleted'),
+     'status'       =>$this->input('status'),
      'unameError'       => '',
      'fnameError'       => '',
      'lnameError'       => '' ,
@@ -115,7 +115,7 @@ if(empty($userData['password'])){
 if(empty($userData['unameError']) && empty($userData['fnameError']) && empty($userData['lnameError']) && empty($userData['emailError']) && empty($userData['passwordError'])){
 
     $password = password_hash($userData['password'], PASSWORD_DEFAULT);
-    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'], $password, $userData['is_deleted']];
+    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'], $password, $userData['status']];
     if($this->accountModel->createAccount($data)){
 
         $this->setFlash("accountCreated", "Your account has been created successfully");
