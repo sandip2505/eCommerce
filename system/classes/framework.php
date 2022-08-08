@@ -1,33 +1,29 @@
 
 <?php
-<<<<<<< HEAD
-
-=======
->>>>>>> b8d7d541dfe007a0d8cbc89128ac083bef5f70df
 class framework {
 
    public function view($viewName, $data = []){
 
-    if(file_exists("../application/views/" . $viewName . ".php")){
+     if(file_exists("../application/views/" . $viewName . ".php")){
 
-       require_once "../application/views/$viewName.php";
+        require_once "../application/views/$viewName.php";
 
-    } else {
-       echo "<div style='margin:0;padding: 10px;background-color:silver;'>Sorry $viewName.php file not found </div>";
-    }
+     } else {
+        echo "<div style='margin:0;padding: 10px;background-color:silver;'>Sorry $viewName.php file not found </div>";
+     }
 
- }
+  }
 
- public function model($modelName){
+  public function model($modelName){
 
    if(file_exists("../application/models/" . $modelName . ".php")){
 
-    require_once "../application/models/$modelName.php";
-    return new $modelName;
+     require_once "../application/models/$modelName.php";
+     return new $modelName;
 
- } else {
-    echo "<div style='margin:0;padding: 10px;background-color:silver;'>Sorry $modelName.php file not found </div>";
- }
+  } else {
+     echo "<div style='margin:0;padding: 10px;background-color:silver;'>Sorry $modelName.php file not found </div>";
+  }
 
 }
 
@@ -67,37 +63,23 @@ public function helper($helperName){
    } else {
       echo "<div style='margin:0;padding: 10px;background-color:silver;'>Sorry helper $helperName file not found </div>";
    }
-    public function inputCk($inputName){
-
-      if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] == 'post'){
-
-         return trim($_POST[$inputName]);
-
-      } else if($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'get'){
-
-         return trim($_GET[$inputName]);
-
-      }
-
-   }
-
 }
 
    // Set session
 public function setSession($sessionName, $sessionValue){
 
 
-  if(!empty($sessionName) && !empty($sessionValue)){
-     $_SESSION[$sessionName] = $sessionValue;
-  }
+ if(!empty($sessionName) && !empty($sessionValue)){
+    $_SESSION[$sessionName] = $sessionValue;
+ }
 
 }
 
    // Get session
 public function getSession($sessionName){
-if(!empty($sessionName)){
-return $_SESSION[$sessionName];
- }
+   if(!empty($sessionName)){
+      return $_SESSION[$sessionName];
+   }
 
 }
 
