@@ -15,32 +15,32 @@ class accountController extends framework {
     }
 
     public function index(){
-     $Categorydata = $this->accountModel->getdata();
-     $Productdata  = $this->accountModel->getProductData();
-     $data['Categorydata'] = $Categorydata;
-     $data['Productdata'] = $Productdata;
-     $this->view("index",$data);
- }
- public function shop(){
-     $Categorydata = $this->accountModel->getdata();
-     $Productdata  = $this->accountModel->getProductData();
-     $data['Categorydata'] = $Categorydata;
-     $data['Productdata'] = $Productdata;
-     $this->view("shop",$data);
- }
+       $Categorydata = $this->accountModel->getdata();
+       $Productdata  = $this->accountModel->getProductData();
+       $data['Categorydata'] = $Categorydata;
+       $data['Productdata'] = $Productdata;
+       $this->view("index",$data);
+   }
+   public function shop(){
+       $Categorydata = $this->accountModel->getdata();
+       $Productdata  = $this->accountModel->getProductData();
+       $data['Categorydata'] = $Categorydata;
+       $data['Productdata'] = $Productdata;
+       $this->view("shop",$data);
+   }
 
 
- public function checkout(){
-   $Categorydata = $this->accountModel->getdata();
-   $data['Categorydata'] = $Categorydata;
-   $this->view("checkout",$data);
-}
-public function cart(){
-   $Categorydata = $this->accountModel->getdata();
-   $data['Categorydata'] = $Categorydata;
-   $this->view("cart",$data);
-}
-public function detail(){
+   public function checkout(){
+     $Categorydata = $this->accountModel->getdata();
+     $data['Categorydata'] = $Categorydata;
+     $this->view("checkout",$data);
+ }
+ public function cart(){
+     $Categorydata = $this->accountModel->getdata();
+     $data['Categorydata'] = $Categorydata;
+     $this->view("cart",$data);
+ }
+ public function detail(){
     $Categorydata = $this->accountModel->getdata();
     $data['Categorydata'] = $Categorydata;
     $this->view("detail",$data);
@@ -52,11 +52,11 @@ public function header(){
     $this->view("header",$data);
 }
 public function contact(){
-   $Categorydata = $this->accountModel->getdata();
-   $data['Categorydata'] = $Categorydata;
-   $this->view("contact",$data);
+ $Categorydata = $this->accountModel->getdata();
+ $data['Categorydata'] = $Categorydata;
+ $this->view("contact",$data);
 }
-   
+
 
 
 
@@ -65,20 +65,21 @@ public function createAccount(){
 
     $userData = [
 
-       'uname'            => $this->input('uname'),
-       'fname'            => $this->input('fname'),
-       'lname'            => $this->input('lname'),
-       'email'            => $this->input('email'),
-       'password'         => $this->input('password'),
-       'unameError'       => '',
-       'fnameError'       => '',
-       'lnameError'       => '' ,
-       'emailError'       => '', 
-       'passwordError'    => '' 
+     'uname'            => $this->input('uname'),
+     'fname'            => $this->input('fname'),
+     'lname'            => $this->input('lname'),
+     'email'            => $this->input('email'),
+     'password'         => $this->input('password'),
+     'is_deleted'       =>$this->input('is_deleted'),
+     'unameError'       => '',
+     'fnameError'       => '',
+     'lnameError'       => '' ,
+     'emailError'       => '', 
+     'passwordError'    => '' 
 
-   ];
+ ];
 
-   if(empty($userData['uname'])){
+ if(empty($userData['uname'])){
 
     $userData['unameError'] = 'User Name is required';
 
@@ -100,9 +101,9 @@ if(empty($userData['email'])){
 } else {
     if(!$this->accountModel->checkEmail($userData['email'])){
 
-       $userData['emailError'] = "Sorry this email is already exist";
+     $userData['emailError'] = "Sorry this email is already exist";
 
-   }
+ }
 }
 
 if(empty($userData['password'])){
@@ -114,7 +115,7 @@ if(empty($userData['password'])){
 if(empty($userData['unameError']) && empty($userData['fnameError']) && empty($userData['lnameError']) && empty($userData['emailError']) && empty($userData['passwordError'])){
 
     $password = password_hash($userData['password'], PASSWORD_DEFAULT);
-    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'],$password];
+    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'], $password, $userData['is_deleted']];
     if($this->accountModel->createAccount($data)){
 
         $this->setFlash("accountCreated", "Your account has been created successfully");
@@ -137,14 +138,14 @@ public function userLogin(){
 
     $userData = [
 
-       'email'         => $this->input('email'),
-       'password'      => $this->input('password'),
-       'emailError'    => '',
-       'passwordError' => ''
+     'email'         => $this->input('email'),
+     'password'      => $this->input('password'),
+     'emailError'    => '',
+     'passwordError' => ''
 
-   ];
-   $error=false;
-   if(empty($userData['email'])){
+ ];
+ $error=false;
+ if(empty($userData['email'])){
     $userData['emailError'] = "Email is required";
     $error=true;
 }
@@ -153,8 +154,8 @@ if(empty($userData['password'])){
     $error=true;
 }
 if($error==true){
-   $this->view("components/header", $userData);
-   return false;
+ $this->view("components/header", $userData);
+ return false;
 }
 
 
@@ -187,23 +188,23 @@ else if($result['status'] === "ok"){
 }
 
 public function contactform(){
-   $Categorydata = $this->accountModel->getdata();
-   $data['Categorydata'] = $Categorydata;
+ $Categorydata = $this->accountModel->getdata();
+ $data['Categorydata'] = $Categorydata;
 
-   $userData = [
+ $userData = [
 
-       'name'            => $this->input('name'),
-       'email'           => $this->input('email'),
-       'subject'         => $this->input('subject'),
-       'msg'             => $this->input('msg'),
-       'nameError'       => '',
-       'emailError'      => '', 
-       'subjectError'    => '', 
-       'msgError'        => '', 
+     'name'            => $this->input('name'),
+     'email'           => $this->input('email'),
+     'subject'         => $this->input('subject'),
+     'msg'             => $this->input('msg'),
+     'nameError'       => '',
+     'emailError'      => '', 
+     'subjectError'    => '', 
+     'msgError'        => '', 
 
-   ];
+ ];
 
-   if(empty($userData['name'])){
+ if(empty($userData['name'])){
 
     $userData['nameError'] = '';
 
@@ -239,13 +240,13 @@ public function newsletter(){
 
     $userData = [
 
-       'name'            => $this->input('name'),
-       'email'           => $this->input('email'),
+     'name'            => $this->input('name'),
+     'email'           => $this->input('email'),
 
-   ];
+ ];
 
 
-   if(empty($userData['nameError']) && empty($userData['emailError'])){
+ if(empty($userData['nameError']) && empty($userData['emailError'])){
 
     $data = [$userData['name'], $userData['email']];
     if($this->accountModel->newsletter($data)){

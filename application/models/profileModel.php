@@ -2,10 +2,6 @@
 
 class profileModel extends database {
 
-  
-
-
-  
 }
 
 
