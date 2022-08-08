@@ -18,7 +18,11 @@ class accountModel extends database {
 
     public function createAccount($data){
 
+<<<<<<< HEAD
         if($this->Query("INSERT INTO users (username,firstname,lastname,email,password,status) VALUES (?,?,?,?,?,?)", $data)){
+=======
+        if($this->Query("INSERT INTO users (username,firstname,lastname,email,password, is_deleted) VALUES (?,?,?,?,?,?)", $data)){
+>>>>>>> b8d7d541dfe007a0d8cbc89128ac083bef5f70df
             echo "done";
 
             return true;

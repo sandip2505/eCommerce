@@ -1,6 +1,9 @@
 
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> b8d7d541dfe007a0d8cbc89128ac083bef5f70df
 class framework {
 
    public function view($viewName, $data = []){
@@ -63,6 +66,19 @@ public function helper($helperName){
 
    } else {
       echo "<div style='margin:0;padding: 10px;background-color:silver;'>Sorry helper $helperName file not found </div>";
+   }
+    public function inputCk($inputName){
+
+      if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] == 'post'){
+
+         return trim($_POST[$inputName]);
+
+      } else if($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'get'){
+
+         return trim($_GET[$inputName]);
+
+      }
+
    }
 
 }
