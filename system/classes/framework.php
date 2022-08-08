@@ -1,5 +1,4 @@
 <?php
-// error_reporting(0);
 class framework {
 
    public function view($viewName, $data = []){
@@ -36,6 +35,19 @@ class framework {
       } else if($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'get'){
 
          return trim(strip_tags($_GET[$inputName]));
+
+      }
+
+   }
+    public function inputCk($inputName){
+
+      if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] == 'post'){
+
+         return trim($_POST[$inputName]);
+
+      } else if($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'get'){
+
+         return trim($_GET[$inputName]);
 
       }
 

@@ -146,12 +146,12 @@
         <?php if($this->getSession('userId')): ?>
 
 
-         <?php
-         include 'profile.php';
-         ?>
+           <?php
+           include 'profile.php';
+           ?>
 
-     <?php endif; ?>
- </div>
+       <?php endif; ?>
+   </div>
 
 
 
@@ -304,7 +304,7 @@ aria-hidden="true">
 </div>
 <div class="modal-footer d-flex justify-content-center">
     <button class="btn btn-deep-orange">Sign up</button>
-     <input type="hidden" value="1" name="deleted_status">
+    <input type="hidden" value="1" name="is_deleted">
 </form>
 </div>
 </div>
