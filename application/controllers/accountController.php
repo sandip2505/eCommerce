@@ -6,9 +6,8 @@ class accountController extends framework {
 
     public function __construct(){
 
-        if($this->getSession('userId')){
-            // $this->redirect("admin");
-        }
+        if (isset($_SESSION['userId'])): 
+      endif;
         $this->helper("link");
         $this->accountModel = $this->model('accountModel');
         
