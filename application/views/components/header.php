@@ -77,7 +77,7 @@
                     foreach ($data['Categorydata'] as $item) {
                       ?>
                       <div class="nav-item dropdown">
-                        <a href="#" class="nav-link" data-toggle="dropdown"><?php echo $item ->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                        <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item ->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
                         <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                             <?php
                             foreach ($data['CategorychilDdata'] as $item) {
@@ -90,15 +90,7 @@
                   </div>
                   <!-- <a href="" class="nav-item nav-link">category_name </a> -->
 
-                    <!-- <a href="" class="nav-item nav-link">Shirts</a>
-                    <a href="" class="nav-item nav-link">Jeans</a>
-                    <a href="" class="nav-item nav-link">Swimwear</a>
-                    <a href="" class="nav-item nav-link">Sleepwear</a>
-                    <a href="" class="nav-item nav-link">Sportswear</a>
-                    <a href="" class="nav-item nav-link">Jumpsuits</a>
-                    <a href="" class="nav-item nav-link">Blazers</a>
-                    <a href="" class="nav-item nav-link">Jackets</a>
-                    <a href="" class="nav-item nav-link">Shoes</a> -->
+                
                     <?php 
                 } 
 

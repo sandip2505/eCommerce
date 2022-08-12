@@ -84,7 +84,7 @@ class accountModel extends database {
         }
     }
     public function getdata(){
-        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id=0" )){
+        if($this->Query("SELECT * FROM category where is_deleted = 0 AND parent_id=0" )){
             $Categorydata = $this->fetchAll();
             return $Categorydata;
 
@@ -92,7 +92,7 @@ class accountModel extends database {
         }
     }
     public function getchildData(){
-        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id = 0 " )){
+        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id = 1 " )){
             $CategorychildData = $this->fetchAll();
             return $CategorychildData;
 

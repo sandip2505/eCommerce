@@ -352,7 +352,6 @@
         </div>
     </div>
     <!-- Vendor End -->
-    <?php include "/contact.php"; ?>
     <?php include "components/footer.php"; ?>
 
 </body>
