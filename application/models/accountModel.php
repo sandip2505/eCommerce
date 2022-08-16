@@ -84,15 +84,14 @@ class accountModel extends database {
         }
     }
     public function getdata(){
-        if($this->Query("SELECT * FROM category where is_deleted = 0 AND parent_id=0" )){
-            $Categorydata = $this->fetchAll();
-            return $Categorydata;
+        $this->Query("SELECT * FROM category where is_deleted = 0 AND parent_id = 0"  );
+        $Categorydata = $this->fetchAll();
+        return $Categorydata;
 
-
-        }
+        
     }
-    public function getchildData(){
-        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id = 1 " )){
+    public function getchildData($id){
+        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id = $id " )){
             $CategorychildData = $this->fetchAll();
             return $CategorychildData;
 

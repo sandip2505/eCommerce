@@ -1,6 +1,6 @@
 <?php
 
-class welcome extends framework{
+class welcome extends Controller{
 
    public function __construct(){
       $this->helper("link");

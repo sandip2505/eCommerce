@@ -74,53 +74,62 @@
             <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                     <?php
-                    foreach ($data['Categorydata'] as $item) {
+                    $mainObj = new Controller();
+                    $catData = $mainObj->getCategoryList();
+                    foreach ($catData as $item) {
+                        if(isset($item['mainCat'])){ ?>
+                            <div class="nav-item dropdown">
+                                <?php if(isset($item['childCat'])){ ?>
+                                <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                    <?php
+                                    foreach ($item['childCat'] as $childItem) {
+                                      ?>
+                                      <a href="" class="dropdown-item"><?php echo $childItem->category_name;?></a>
+                                      <?php 
+                                  } 
+                                  ?>
+                              </div>
+                                <?php }else{ ?>
+                                        <a href="#" class="dropdown-item"  ><?php echo $item['mainCat'][0]->category_name;?></a>
+                                <?php } ?>
+                          </div>
+                        <?php }
                       ?>
-                      <div class="nav-item dropdown">
-                        <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item ->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
-                        <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                            <?php
-                            foreach ($data['CategorychilDdata'] as $item) {
-                              ?>
-                              <a href="" class="dropdown-item"><?php echo $item ->category_name;?></a>
-                              <?php 
-                          } 
-                          ?>
-                      </div>
-                  </div>
+                      
                   <!-- <a href="" class="nav-item nav-link">category_name </a> -->
 
-                
-                    <?php 
-                } 
 
-                ?>
-            </div>
-        </nav>
-    </div>
-    <div class="col-lg-9">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-            <a href="" class="text-decoration-none d-block d-lg-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
-                    <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
-                    <a href="<?php route('accountController/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="<?php route('accountController/cart'); ?>" class="dropdown-item">Shopping Cart</a>
-                            <a href="<?php route('accountController/checkout'); ?>" class="dropdown-item">Checkout</a>
-                        </div>
+                  <?php 
+              } 
+
+              ?>
+          </div>
+      </nav>
+  </div>
+  <div class="col-lg-9">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+        <a href="" class="text-decoration-none d-block d-lg-none">
+            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+                <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
+                <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
+                <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="<?php route('welcome/cart'); ?>" class="dropdown-item">Shopping Cart</a>
+                        <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
                     </div>
-                    <a href="<?php route('accountController/contact'); ?>" class="nav-item nav-link">Contact</a>
                 </div>
-                <div class="navbar-nav ml-auto py-0">
+                <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="navbar-nav ml-auto py-0">
 
                        <!-- if($this->getSession('userId')){
                         
@@ -217,7 +226,9 @@
           <div class="modal-body mx-3">
             <div class="md-form mb-5">
               <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" name="email" class="form-control validate" placeholder="Email..." value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" required>
+              <input type="email" id="email" name="email" class="form-control validate" onblur="check()" placeholder="Email..." value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" >
+                <span class="text-danger" id="error7"></span>
+
               <div class="error">
                   <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
               </div>
@@ -226,7 +237,9 @@
           <div class="md-form mb-4">
               <i class="fas fa-lock prefix grey-text"></i>
               <p>
-                  <input type="password" name="password" id="password" class="form-control validate" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
+                  <input type="password" name="password" id="password" class="form-control validate" onblur="check()" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" >
+                    <span class="text-danger" id="error7"></span>
+
                   <i class="bi bi-eye-slash" id="togglePassword"></i>
               </p>
               <div class="error" >
@@ -248,7 +261,7 @@
 aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form method="POST" class="signup-form" name="form" action="<?php route('accountController/createAccount') ?>">
+        <form method="POST" class="signup-form" name="form" action="<?php echo BASEURL; ?>/accountController/createAccount">
 
 
           <div class="modal-header text-center">
@@ -261,7 +274,8 @@ aria-hidden="true">
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
           <!-- <input type="text" id="orangeForm-name" class="form-control validate"> -->
-          <input type="text" id="orangeForm-name" class="form-control validate" name="uname" placeholder="User name" value="<?php if(!empty($data['uname'])): echo $data['uname']; endif; ?>"  required> 
+          <input type="text" id="uname" class="form-control validate" name="uname" onblur="check()" placeholder="User name" value="<?php if(!empty($data['uname'])): echo $data['uname']; endif; ?>">
+          <span class="text-danger" id="error1"></span>
           <div class="error">
             <?php if(!empty($data['unameError'])): echo $data['unameError']; endif; ?>
         </div>
@@ -270,7 +284,9 @@ aria-hidden="true">
     <div class="md-form mb-5">
       <i class="fas fa-user prefix grey-text"></i>
       <!-- <input type="text" id="orangeForm-name" class="form-control validate"> -->
-      <input type="text" id="orangeForm-name" class="form-control validate" name="fname" placeholder="First name" value="<?php if(!empty($data['fname'])): echo $data['fname']; endif; ?>" required>
+      <input type="text" id="fname" class="form-control validate" name="fname" onblur="check()"  placeholder="First name" value="<?php if(!empty($data['fname'])): echo $data['fname']; endif; ?>" >
+      <span class="text-danger" id="error2"></span>
+
       <div class="error">
         <?php if(!empty($data['fnameError'])): echo $data['fnameError']; endif; ?>
     </div> 
@@ -279,7 +295,9 @@ aria-hidden="true">
 <div class="md-form mb-5">
   <i class="fas fa-user prefix grey-text"></i>
   <!-- <input type="text" id="orangeForm-name" class="form-control validate"> -->
-  <input type="text" id="orangeForm-name" class="form-control validate" name="lname" placeholder="Last name" value="<?php if(!empty($data['lname'])): echo $data['lname']; endif; ?>" required>
+  <input type="text" id="lname" class="form-control validate" name="lname" onblur="check()"  placeholder="Last name" value="<?php if(!empty($data['lname'])): echo $data['lname']; endif; ?>" >
+  <span class="text-danger" id="error3"></span>
+
   <div class="error">
     <?php if(!empty($data['lnameError'])): echo $data['lnameError']; endif; ?>
 </div> 
@@ -288,7 +306,8 @@ aria-hidden="true">
 <div class="md-form mb-5">
   <i class="fas fa-envelope prefix grey-text"></i>
   <!-- <input type="email" id="orangeForm-email" class="form-control validate"> -->
-  <input type="text" id="orangeForm-email" class="form-control validate" name="email" placeholder="Your email" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" required>
+  <input type="email" id="Remail" class="form-control validate" name="email" onblur="check()" placeholder="Your email" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
+  <span class="text-danger" id="error4"></span>
   <div class="error">
     <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
 </div>
@@ -298,7 +317,9 @@ aria-hidden="true">
 <div class="md-form mb-4">
   <i class="fas fa-lock prefix grey-text"></i>
   <!-- <input type="password" id="orangeForm-pass" class="form-control validate"> -->
-  <input id="orangeForm-pass" type="password" class="form-control validate" name="password" placeholder="Your password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
+  <input id="Rpassword" type="password" class="form-control validate" name="password" onblur="check()"  placeholder="Your password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" >
+  <span class="text-danger" id="error5"></span>
+
   <div class="error">
     <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
 </div>
@@ -307,8 +328,8 @@ aria-hidden="true">
 
 </div>
 <div class="modal-footer d-flex justify-content-center">
-    <button class="btn btn-deep-orange">Sign up</button>
-    <input type="hidden" value="1" name="is_deleted">
+    <button class="btn btn-deep-orange" id="submit"  >Sign up</button>
+    <input type="hidden" value="1" name="is_deleted" >
 </form>
 </div>
 </div>
@@ -415,3 +436,4 @@ aria-hidden="true" data-backdrop="true">
             e.preventDefault();
         });
     </script>
+<?php linkJS('assets/js/style.js'); ?>

@@ -1,68 +1,28 @@
 
 <?php
-
-class accountController extends framework {
+class accountController extends Controller {
 
 
     public function __construct(){
 
         if (isset($_SESSION['userId'])): 
-      endif;
+        endif;
         $this->helper("link");
         $this->accountModel = $this->model('accountModel');
         
     }
 
     public function index(){
-       $Categorydata = $this->accountModel->getdata();
-       $Productdata  = $this->accountModel->getProductData();
-       $CategorychilDdata  = $this->accountModel->getchildData();
-       // var_dump($Categorydata);exit;
-       $data['Categorydata'] = $Categorydata;
-       $data['Productdata'] = $Productdata;
-       $data['CategorychilDdata'] = $CategorychilDdata;
-       $this->view("index",$data);
-   }
-   public function shop(){
-       $Categorydata = $this->accountModel->getdata();
-       $Productdata  = $this->accountModel->getProductData();
-       $data['Categorydata'] = $Categorydata;
-       $data['Productdata'] = $Productdata;
-       $this->view("shop",$data);
-   }
-
-
-   public function checkout(){
-     $Categorydata = $this->accountModel->getdata();
-     $data['Categorydata'] = $Categorydata;
-     $this->view("checkout",$data);
- }
- public function cart(){
-     $Categorydata = $this->accountModel->getdata();
-     $data['Categorydata'] = $Categorydata;
-     $this->view("cart",$data);
- }
- public function detail(){
-    $Categorydata = $this->accountModel->getdata();
-    $data['Categorydata'] = $Categorydata;
-    $this->view("detail",$data);
-}
-
-public function header(){
-    $Categorydata = $this->accountModel->getdata();
-    $data['Categorydata'] = $Categorydata;
-    $this->view("header",$data);
-}
-public function contact(){
- $Categorydata = $this->accountModel->getdata();
- $data['Categorydata'] = $Categorydata;
- $this->view("contact",$data);
-}
-
-
-
-
-
+        $Productdata  = $this->accountModel->getProductData();
+        $data['Productdata'] = $Productdata;
+        $this->view("index",$data);
+    }
+    public function shop(){
+        $Productdata  = $this->accountModel->getProductData();
+        $data['Productdata'] = $Productdata;
+        $this->view("shop",$data);
+    }
+    
 public function createAccount(){
 
     $userData = [
@@ -82,9 +42,7 @@ public function createAccount(){
  ];
 
  if(empty($userData['uname'])){
-
     $userData['unameError'] = 'User Name is required';
-
 }
 if(empty($userData['fname'])){
 
