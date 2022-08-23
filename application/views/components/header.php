@@ -35,7 +35,7 @@
     <div class="row align-items-center py-3 px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
             <a href="" class="text-decoration-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-danger font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
             </a>
         </div>
         <div class="col-lg-6 col-6 text-left">
@@ -55,7 +55,16 @@
                 <i class="fas fa-heart text-primary"></i>
                 <span class="badge">0</span>
             </a>
-            <a href="" class="btn border">
+            <?php
+            if(!empty($_SESSION["productdata"])) {
+                $cart_count = count(array_keys($_SESSION["productdata"]));
+                ?>
+                
+                 <a href="<?php route('CartController/cart'); ?>" class="btn border"><i class="fas fa-shopping-cart text-primary"></i><span class="badge"><?php echo $cart_count; ?></span></a>
+              <?php
+             }
+            ?>
+            <a href="<?php route('CartController/cart'); ?>" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
                 <span class="badge">0</span>
             </a>
@@ -80,56 +89,56 @@
                         if(isset($item['mainCat'])){ ?>
                             <div class="nav-item dropdown">
                                 <?php if(isset($item['childCat'])){ ?>
-                                <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
-                                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                    <?php
-                                    foreach ($item['childCat'] as $childItem) {
+                                    <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                                    <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                        <?php
+                                        foreach ($item['childCat'] as $childItem) {
+                                          ?>
+                                          <a href="" class="dropdown-item"><?php echo $childItem->category_name;?></a>
+                                          <?php 
+                                      } 
                                       ?>
-                                      <a href="" class="dropdown-item"><?php echo $childItem->category_name;?></a>
-                                      <?php 
-                                  } 
-                                  ?>
-                              </div>
-                                <?php }else{ ?>
-                                        <a href="#" class="dropdown-item"  ><?php echo $item['mainCat'][0]->category_name;?></a>
-                                <?php } ?>
-                          </div>
-                        <?php }
-                      ?>
-                      
-                  <!-- <a href="" class="nav-item nav-link">category_name </a> -->
+                                  </div>
+                              <?php }else{ ?>
+                                <a href="#" class="dropdown-item"  ><?php echo $item['mainCat'][0]->category_name;?></a>
+                            <?php } ?>
+                        </div>
+                    <?php }
+                    ?>
+                    
+                    <!-- <a href="" class="nav-item nav-link">category_name </a> -->
 
 
-                  <?php 
-              } 
+                    <?php 
+                } 
 
-              ?>
-          </div>
-      </nav>
-  </div>
-  <div class="col-lg-9">
-    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-        <a href="" class="text-decoration-none d-block d-lg-none">
-            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav mr-auto py-0">
-                <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
-                <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
-                <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="<?php route('welcome/cart'); ?>" class="dropdown-item">Shopping Cart</a>
-                        <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
-                    </div>
-                </div>
-                <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
+                ?>
             </div>
-            <div class="navbar-nav ml-auto py-0">
+        </nav>
+    </div>
+    <div class="col-lg-9">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+            <a href="" class="text-decoration-none d-block d-lg-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
+                    <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
+                    <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="<?php route('CartController/cart'); ?>" class="dropdown-item">Shopping Cart</a>
+                            <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
+                        </div>
+                    </div>
+                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
+                </div>
+                <div class="navbar-nav ml-auto py-0">
 
                        <!-- if($this->getSession('userId')){
                         
@@ -138,29 +147,29 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-             <?php   if (!isset($_SESSION['userId'])):?> 
-              <li class="nav-item">
-                <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
-            </li>
+               <?php   if (!isset($_SESSION['userId'])):?> 
+                  <li class="nav-item">
+                    <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
+                </li>
 
 
-            <li class="nav-item">
-                <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
-            </li>
-        <?php else: ?>
+                <li class="nav-item">
+                    <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
+                </li>
+            <?php else: ?>
 
 
-        <?php endif; ?>
-    </ul>
-    <?php if(isset($_SESSION['userId'])):?> 
+            <?php endif; ?>
+        </ul>
+        <?php if(isset($_SESSION['userId'])):?> 
 
 
-     <?php
-     include 'profile.php';
-     ?>
+           <?php
+           include 'profile.php';
+           ?>
 
- <?php endif; ?>
-</div>
+       <?php endif; ?>
+   </div>
 
 
 
@@ -227,7 +236,7 @@
             <div class="md-form mb-5">
               <i class="fas fa-envelope prefix grey-text"></i>
               <input type="email" id="email" name="email" class="form-control validate" onblur="check()" placeholder="Email..." value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" >
-                <span class="text-danger" id="error7"></span>
+              <span class="text-danger" id="error7"></span>
 
               <div class="error">
                   <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
@@ -238,7 +247,7 @@
               <i class="fas fa-lock prefix grey-text"></i>
               <p>
                   <input type="password" name="password" id="password" class="form-control validate" onblur="check()" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" >
-                    <span class="text-danger" id="error7"></span>
+                  <span class="text-danger" id="error7"></span>
 
                   <i class="bi bi-eye-slash" id="togglePassword"></i>
               </p>
@@ -436,4 +445,4 @@ aria-hidden="true" data-backdrop="true">
             e.preventDefault();
         });
     </script>
-<?php linkJS('assets/js/style.js'); ?>
+    <?php linkJS('assets/js/style.js'); ?>
