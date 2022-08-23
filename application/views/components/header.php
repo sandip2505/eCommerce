@@ -124,17 +124,12 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 m-0">
                         <a href="<?php route('welcome/cart'); ?>" class="dropdown-item">Shopping Cart</a>
-                        <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
+                        <a href="<?php route('orderController/checkout'); ?>" class="dropdown-item">Checkout</a>
                     </div>
                 </div>
                 <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
             </div>
             <div class="navbar-nav ml-auto py-0">
-
-                       <!-- if($this->getSession('userId')){
-                        
-            $this->redirect("profile");
-        } -->
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">

@@ -29,7 +29,7 @@ class welcome extends Controller{
     public function header(){
       $this->view("header");
    }
-
+   
 
 }
 

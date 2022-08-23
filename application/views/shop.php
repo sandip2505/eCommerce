@@ -48,7 +48,7 @@
                                     <img class="img-fluid w-100" src="../public/assets/img/download.jpg" alt="">
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <h4 class="text-truncate mb-3"><?php echo $item ->name;?></h4>
+                                    <h4 class="text-truncate mb-3"><?php echo $item  ->name;?></h4>
                                     <h6 class="text-truncate mb-3"><?php echo $item  ->description; ?></h6>
                                     <div class="d-flex justify-content-center">
                                         <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
