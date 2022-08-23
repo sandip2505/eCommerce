@@ -76,7 +76,7 @@ class accountModel extends database {
     }
 
     public function getprofiledata(){
-        if($this->Query("SELECT * FROM users where is_deleted=0 " )){
+        if($this->Query("SELECT * FROM users where is_deleted=1 " )){
             $Profiledata = $this->fetchAll();
             return $Profiledata;
 
@@ -84,17 +84,26 @@ class accountModel extends database {
         }
     }
     public function getdata(){
-        if($this->Query("SELECT * FROM category where is_deleted=1 " )){
+        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id=0" )){
             $Categorydata = $this->fetchAll();
             return $Categorydata;
 
 
         }
     }
+    public function getchildData(){
+        if($this->Query("SELECT * FROM category where is_deleted=0 AND parent_id = 0 " )){
+            $CategorychildData = $this->fetchAll();
+            return $CategorychildData;
+
+
+        }
+    }
     public function getProductData(){
 
-        if($this->Query("SELECT * FROM product where is_deleted=1 " )){
+        if($this->Query("SELECT * FROM product where is_deleted=0" )){
             $Productdata = $this->fetchAll();
+
             return $Productdata;
 
         }

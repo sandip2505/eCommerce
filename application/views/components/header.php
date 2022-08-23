@@ -1,4 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <div class="container-fluid">
     <div class="row bg-secondary py-2 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
@@ -71,18 +71,22 @@
             </a>
             <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                   <!--  <div class="nav-item dropdown">
-                        <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i class="fa fa-angle-down float-right mt-1"></i></a>
-                        <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                            <a href="" class="dropdown-item">Men's Dresses</a>
-                            <a href="" class="dropdown-item">Women's Dresses</a>
-                            <a href="" class="dropdown-item">Baby's Dresses</a>
-                        </div>
-                    </div> -->
                     <?php
                     foreach ($data['Categorydata'] as $item) {
                       ?>
-                      <a href="" class="nav-item nav-link"> <?php echo $item ->category_name;?></a>
+                      <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-toggle="dropdown"><?php echo $item ->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                            <?php
+                            foreach ($data['CategorychilDdata'] as $item) {
+                              ?>
+                              <a href="" class="dropdown-item"><?php echo $item ->category_name;?></a>
+                              <?php 
+                          } 
+                          ?>
+                      </div>
+                  </div>
+                  <!-- <a href="" class="nav-item nav-link">category_name </a> -->
 
                     <!-- <a href="" class="nav-item nav-link">Shirts</a>
                     <a href="" class="nav-item nav-link">Jeans</a>
@@ -94,7 +98,8 @@
                     <a href="" class="nav-item nav-link">Jackets</a>
                     <a href="" class="nav-item nav-link">Shoes</a> -->
                     <?php 
-                }   
+                } 
+
                 ?>
             </div>
         </nav>
@@ -130,29 +135,29 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-               <?php   if (!isset($_SESSION['userId'])):?> 
-                  <li class="nav-item">
-                    <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
-                </li>
+             <?php   if (!isset($_SESSION['userId'])):?> 
+              <li class="nav-item">
+                <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
+            </li>
 
 
-                <li class="nav-item">
-                    <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
-                </li>
-            <?php else: ?>
+            <li class="nav-item">
+                <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
+            </li>
+        <?php else: ?>
 
 
-            <?php endif; ?>
-        </ul>
-          <?php if(isset($_SESSION['userId'])):?> 
+        <?php endif; ?>
+    </ul>
+    <?php if(isset($_SESSION['userId'])):?> 
 
 
-           <?php
-           include 'profile.php';
-           ?>
+     <?php
+     include 'profile.php';
+     ?>
 
-       <?php endif; ?>
-   </div>
+ <?php endif; ?>
+</div>
 
 
 
@@ -226,7 +231,10 @@
 
           <div class="md-form mb-4">
               <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" name="password" class="form-control validate" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
+              <p>
+                  <input type="password" name="password" id="password" class="form-control validate" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
+                  <i class="bi bi-eye-slash" id="togglePassword"></i>
+              </p>
               <div class="error" >
                   <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
               </div>
@@ -241,6 +249,7 @@
 </div>
 </div>
 </div>
+
 
 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 aria-hidden="true">
@@ -393,3 +402,23 @@ aria-hidden="true" data-backdrop="true">
 </div>
 </div>
 </div>
+
+<script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
+
+    togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    </script>

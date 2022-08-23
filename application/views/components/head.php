@@ -17,9 +17,11 @@
 
     <!-- Libraries Stylesheet -->
     <?php linkCSS("assets/lib/owlcarousel/assets/owl.carousel.min.css"); ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <?php linkCSS("assets/css/style.css"); ?>
+    <?php linkCSS("assets/css/style12.css"); ?>
     <style type="text/css">
         
         .error{

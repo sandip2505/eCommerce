@@ -5,10 +5,9 @@ class accountController extends framework {
 
 
     public function __construct(){
-       
+
         if (isset($_SESSION['userId'])): 
       endif;
-
         $this->helper("link");
         $this->accountModel = $this->model('accountModel');
         
@@ -17,8 +16,11 @@ class accountController extends framework {
     public function index(){
        $Categorydata = $this->accountModel->getdata();
        $Productdata  = $this->accountModel->getProductData();
+       $CategorychilDdata  = $this->accountModel->getchildData();
+       // var_dump($Categorydata);exit;
        $data['Categorydata'] = $Categorydata;
        $data['Productdata'] = $Productdata;
+       $data['CategorychilDdata'] = $CategorychilDdata;
        $this->view("index",$data);
    }
    public function shop(){
@@ -70,7 +72,7 @@ public function createAccount(){
      'lname'            => $this->input('lname'),
      'email'            => $this->input('email'),
      'password'         => $this->input('password'),
-     'status'       =>$this->input('status'),
+     'is_deleted'       =>$this->input('is_deleted'),
      'unameError'       => '',
      'fnameError'       => '',
      'lnameError'       => '' ,
@@ -115,7 +117,7 @@ if(empty($userData['password'])){
 if(empty($userData['unameError']) && empty($userData['fnameError']) && empty($userData['lnameError']) && empty($userData['emailError']) && empty($userData['passwordError'])){
 
     $password = password_hash($userData['password'], PASSWORD_DEFAULT);
-    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'], $password, $userData['status']];
+    $data = [$userData['uname'], $userData['fname'], $userData['lname'], $userData['email'], $password, $userData['is_deleted']];
     if($this->accountModel->createAccount($data)){
 
         $this->setFlash("accountCreated", "Your account has been created successfully");
@@ -172,7 +174,7 @@ else if($result['status'] === 'passwordNotMacthed'){
 else if($result['status'] === "ok"){
     $this->setSession("userId", $result['user_id']);
     $this->setSession("role", $result['role_id']);
-    $this->setSession("userName", $result['user_name']);
+    $this->setSession("userName", $result['user_name']);            
 
     if($this->getSession('role') == 1){
         $this->redirect("../eCommerceAdmin");
