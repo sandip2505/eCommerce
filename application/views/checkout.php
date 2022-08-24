@@ -245,7 +245,9 @@
                             <input class="form-control" type="hidden" name="user_id" value="<?php echo $_SESSION['userId']; ?>">
                         </div>
                         <div class="card-footer border-secondary bg-transparent">
-                            <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="submit">Place Order</button>
+                            <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="submit">
+                                Place Order
+                            </button>
                         </div>
     </form>
     </div>
@@ -258,4 +260,4 @@
     <?php include "components/footer.php"; ?>
 </body>
 
-</html>
+</html>                            
