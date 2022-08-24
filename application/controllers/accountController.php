@@ -13,10 +13,8 @@ class accountController extends Controller {
     }
 
     public function index(){
-        $Productdata  = $this->accountModel->getImgData();
-        $Imgdata  = $this->accountModel->getProductData();
+        $Productdata  = $this->accountModel->getProductData();
         $data['Productdata'] = $Productdata;
-        $data['Imgdata'] = $Imgdata;
         $this->view("index",$data);
     }
     public function shop(){
