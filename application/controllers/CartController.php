@@ -33,9 +33,9 @@ class CartController extends Controller {
         $quantity = $_POST['pro2'];
         $btn = $_POST['event'];
 
-        $Productdata = array($name,$price,$quantity);
+        $product = array($name,$price,$quantity);
         if($btn == "Update"){
-            $_SESSION[$name] = $Productdata;
+            $_SESSION[$name] = $product;
              $this->redirect("../eCommerceShop/CartController/cart");
             // header('location:viewCart.php?value=updated');
         }else if($btn == "Delete"){

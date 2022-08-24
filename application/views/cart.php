@@ -244,16 +244,12 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium"><?php $b =10;?></h6>
                             <h6 class="font-weight-medium">$10</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <?php
-
-                            ?>
                             <h5 class="font-weight-bold"><?php  echo "$t"?></h5>
                         </div>
                         <button class="btn btn-block btn-primary my-3 py-3"><a href="<?php route('welcome/checkout')?>"></a>Proceed To Checkout</button>

@@ -112,10 +112,12 @@
                     <?php 
                 } 
 
-                ?>
-            </div>
-        </nav>
-    </div>
+
+              ?>
+          </div>
+      </nav>
+  </div>
+  
     <div class="col-lg-9">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
             <a href="" class="text-decoration-none d-block d-lg-none">
@@ -139,11 +141,6 @@
                     <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="navbar-nav ml-auto py-0">
-
-                       <!-- if($this->getSession('userId')){
-                        
-            $this->redirect("profile");
-        } -->
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">

@@ -22,7 +22,7 @@ class cartModal extends database {
 
         }
     }
-
+   
 
 }
 ?>
