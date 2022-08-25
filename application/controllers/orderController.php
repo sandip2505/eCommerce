@@ -18,7 +18,7 @@ public function create(){
    $this->view("checkout", $orderdata);      
 }
 public function createOrder(){
-
+   
    $orderdata = [
       'firtsname' =>$this->input('firtsname'),
       'lastname' => $this->input('lastname'),
@@ -42,7 +42,9 @@ public function createOrder(){
    if($this->accountModel->createOrder($orderdata)){
       $this->redirect("orderController/checkout");
      // echo "samdip";
-     $this->getSession("userId", $orderdata['id']);
+   //   TempData["Success"] = "Added Successfully!";
+   //   return RedirectToAction("actionname", "orderController");
    }
-}  
+}
+
 }
