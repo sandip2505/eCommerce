@@ -55,8 +55,8 @@
                 <i class="fas fa-heart text-primary"></i>
                 <span class="badge">0</span>
             </a>
-         
-            <a href="<?php route('CartController/cart'); ?>" class="btn border">
+
+            <a href="<?php route('CartController/cartview'); ?>" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
                 <span class="badge">0</span>
             </a>
@@ -121,14 +121,13 @@
                     <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
                     <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
                     <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
-                    <div class="nav-item dropdown">
+                    <a href="<?php route('orderController/checkout'); ?>" class="nav-item nav-link">Checkout</a>
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="<?php route('CartController/cart'); ?>" class="dropdown-item">Shopping Cart</a>
-                            <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
                         </div>
                     </div>
-                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
+ -->                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
                 </div>
                 <div class="navbar-nav ml-auto py-0">
 

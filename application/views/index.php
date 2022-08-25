@@ -161,8 +161,8 @@
                                <h4 class="text-truncate mb-3"><?php echo $item ->name;?></h4>
                                <!-- <input type='hidden'  name='quantity' value=""/> -->
                                <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
-                               <input type='hidden'  name='description' value="<?php echo $item ->description;?>" />
-                               <h6 class="text-truncate mb-3"><?php echo $item  ->description; ?></h6>
+                               <!-- <input type='hidden'  name='description' value="<?php echo $item ->description;?>" /> -->
+                               <!-- <h6 class="text-truncate mb-3"><?php echo $item  ->description; ?></h6> -->
                                <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
                                <div class="d-flex justify-content-center">
                                    <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
