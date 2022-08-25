@@ -118,6 +118,15 @@ class accountModel extends database
             return $orderdata;
         }
     }
+    public function getImgData(){
+
+        if($this->Query("SELECT image FROM images " )){
+            $Imgdata = $this->fetchAll();
+
+            return $Imgdata;
+
+        }
+    }
 }
     // public function storeImage($id){
      

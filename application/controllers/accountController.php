@@ -15,6 +15,8 @@ class accountController extends Controller {
     public function index(){
         $Productdata  = $this->accountModel->getProductData();
         $data['Productdata'] = $Productdata;
+        $Imgdata  = $this->accountModel->getImgdata();
+        $data['Imgdata'] = $Imgdata;
         $this->view("index",$data);
     }
     public function shop(){
