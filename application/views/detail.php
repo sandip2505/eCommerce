@@ -25,6 +25,11 @@
 
 
     <!-- Shop Detail Start -->
+    <?php
+    foreach ($_SESSION  as $item) {
+      // var_dump($item); exit;
+    }
+    ?>
     <div class="container-fluid py-4">
         <div class="row px-xl-5">
             <div class="col-lg-5 pb-4">
@@ -65,7 +70,7 @@
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-                <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
+                
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     <form>
@@ -130,7 +135,8 @@
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                    <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                      <!-- <button type="submit" name="add" class="btn btn-primary px-3"><a class="fa fa-shopping-cart mr-1"></a>Add to cart</button> -->
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

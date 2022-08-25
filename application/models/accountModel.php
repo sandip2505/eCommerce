@@ -120,7 +120,7 @@ class accountModel extends database
     }
     public function getImgData(){
 
-        if($this->Query("SELECT * FROM images " )){
+        if($this->Query("SELECT image FROM images " )){
             $Imgdata = $this->fetchAll();
 
             return $Imgdata;

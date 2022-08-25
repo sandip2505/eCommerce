@@ -17,12 +17,13 @@ class cartModal extends database {
 
         if($this->Query("SELECT * FROM product where is_deleted=0" )){
             $Productdata = $this->fetchAll();
+              // var_dump($Cartdata);exit;
 
             return $Productdata;
 
         }
     }
-   
+    
 
 }
 ?>
