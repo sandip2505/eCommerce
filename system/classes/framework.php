@@ -1,14 +1,10 @@
 
 <?php
-<<<<<<< HEAD
-   // error_reporting(0);
-=======
-<<<<<<< HEAD
-    error_reporting(0);
-=======
+
+  
+
    error_reporting(0);
->>>>>>> 9dce7c42a32f526ab15209231db16e0794436d9a
->>>>>>> 997efafc5f62f3a783cd390bad1962669c1d3743
+
 class framework {
 
    public function view($viewName, $data = []){
