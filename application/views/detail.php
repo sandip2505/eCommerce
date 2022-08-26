@@ -6,12 +6,12 @@
 </head>
 
 <body>
- <?php include "components/header.php"; ?>
- <!-- <img class="img-fluid" src="../public\assets/img/carousel-1.jpg" alt="Image"> -->
+   <?php include "components/header.php"; ?>
+   <!-- <img class="img-fluid" src="../public\assets/img/carousel-1.jpg" alt="Image"> -->
 
 
- <!-- Page Header Start -->
- <div class="container-fluid bg-secondary mb-5">
+   <!-- Page Header Start -->
+   <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
         <div class="d-inline-flex">
@@ -25,74 +25,15 @@
 
 
 <!-- Shop Detail Start -->
-
-<table class="table table-bordered text-center mb-0">
-    <thead class="bg-secondary text-dark">
-        <tr>
-         <!-- <td>Sno</td> -->
-         <td>Name</td>
-         <td>Price</td>
-         <td>Quantity</td>
-         <td>Total</td>
-         <td>Update</td>
-         <td>Delete</td>
-     </tr>
- </thead>
- <tbody class="align-middle">
-
-     <?php
-     // $sno = 1;
-     // $t = 0;
-     // $s = 10;
-     // $gt = [];
-     // $g = [];
-     if(count($_SESSION['cart_item'])){
-
-         foreach ($_SESSION['cart_item']  as $item) {
-            ?>
-             <td><?php echo $item ->price;?></td>   
-            <h6><?php ($item); ?></h6>
-            <?php
-       
-        //   echo "<td>".$item."</td>";   
-        //   $p = 0;
-        //   $q = 0;
-        //   echo "<form action='cartUpdate' method='POST'>";
-        //   echo "<tr>";
-        //               // echo "<td>".$sno++."</td>";
-        //   foreach($item as $key => $value){
-        //     if($key == 0){
-        //         echo "<td>".$value."</td>";
-        //         echo "<input type='hidden' name='pro$key' value='".$value."'>";
-        //     }else if($key == 1){
-        //         echo "<td>".$value."</td>";
-        //         echo "<input type='hidden' name='pro$key' value='".$value."'>";
-        //         $p = $value;
-        //     }else if($key == 2){
-        //         echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
-        //         $q = $value;
-        //     }
-        // }
-        // $t = $p * $q ;
-        // $gt[] = $t;
-        // $g[] = $s+$t;
-        // echo "<td>".$t."</td>";
-        // echo "<td><input type='submit' name='event' value='Update' class='btn btn-warning'></td>";
-
-        //         // echo "<td><input type='submit' name='event' value='Delete' class='btn btn-danger'></td>";
-        // echo "<td class='align-middle'>
-        // <button type='submit' name='event' value='Delete'><i class='fa fa-times'></i></button>
-        // </td>";
-        //         // <?php  echo "$value"; 
-
-        // echo "</form>";
+<!-- <img class="w-100 h-100" src="../public\assets/img/product-1.jpg" alt="Image"> -->
+<?php
 
 
-        ?>
-        <?php
-    }
-}
-?>
+foreach ($data['detaildata'] as $item) {
+    // var_dump($item);exit;
+ ?>
+  <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
+ <!-- <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3> -->
 </tbody>
 </table>
 <div class="container-fluid py-4">
@@ -101,16 +42,16 @@
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
                     <div class="carousel-item active">
-                        <img class="w-100 h-100" src="../public\assets/img/product-1.jpg" alt="Image">
+                        <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
                     <div class="carousel-item">
-                        <img class="w-100 h-100" src="../public\assets/img/product-2.jpg" alt="Image">
+                        <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
                     <div class="carousel-item">
-                        <img class="w-100 h-100" src="../public\assets/img/product-3.jpg" alt="Image">
+                        <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
                     <div class="carousel-item">
-                        <img class="w-100 h-100" src="../public\assets/img/product-4.jpg" alt="Image">
+                        <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -121,24 +62,28 @@
                 </a>
             </div>
         </div>
-       
-    <div class="col-lg-7 pb-4">
-        <h3 class="font-weight-semi-bold"><?php  echo "$value"; ?></h3>
-        <div class="d-flex mb-3">
-            <div class="text-primary mr-2">
-                <small class="fas fa-star"></small>
-                <small class="fas fa-star"></small>
-                <small class="fas fa-star"></small>
-                <small class="fas fa-star-half-alt"></small>
-                <small class="far fa-star"></small>
+        <form method="POST" action="<?php route('cartController/cartAdd')?>">
+            <div class="col-lg-7 pb-4">
+               <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+               <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
+               <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
+               <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
+               <div class="d-flex mb-3">
+                <div class="text-primary mr-2">
+                    <small class="fas fa-star"></small>
+                    <small class="fas fa-star"></small>
+                    <small class="fas fa-star"></small>
+                    <small class="fas fa-star-half-alt"></small>
+                    <small class="far fa-star"></small>
+                </div>
+                <small class="pt-1">(50 Reviews)</small>
             </div>
-            <small class="pt-1">(50 Reviews)</small>
-        </div>
-        <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
+            <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+            <h3 class="font-weight-semi-bold mb-4"><?php echo $item ->price;?></h3>
 
-        <div class="d-flex mb-3">
-            <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-            <form>
+            <div class="d-flex mb-3">
+                <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="size-1" name="size">
                     <label class="custom-control-label" for="size-1">XS</label>
@@ -159,11 +104,12 @@
                     <input type="radio" class="custom-control-input" id="size-5" name="size">
                     <label class="custom-control-label" for="size-5">XL</label>
                 </div>
-            </form>
-        </div>
-        <div class="d-flex mb-4">
-            <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
-            <form>
+
+            </div>
+
+            <div class="d-flex mb-4">
+                <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
+
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-1" name="color">
                     <label class="custom-control-label" for="color-1">Black</label>
@@ -184,25 +130,27 @@
                     <input type="radio" class="custom-control-input" id="color-5" name="color">
                     <label class="custom-control-label" for="color-5">Green</label>
                 </div>
-            </form>
-        </div>
-        <div class="d-flex align-items-center mb-4 pt-2">
-            <div class="input-group quantity mr-3" style="width: 130px;">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-minus" >
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-                <input type="text" class="form-control bg-secondary text-center" value="1">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary btn-plus">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
+
             </div>
-            <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
-            <!-- <button type="submit" name="add" class="btn btn-primary px-3"><a class="fa fa-shopping-cart mr-1"></a>Add to cart</button> -->
-        </div>
+            <div class="d-flex align-items-center mb-4 pt-2">
+                <div class="input-group quantity mr-3" style="width: 130px;">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-minus" >
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control bg-secondary text-center" value="1">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-plus">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
+                <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
+                <!-- <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
+            </div>
+        </form>
         <div class="d-flex pt-2">
             <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
             <div class="d-inline-flex">
@@ -232,9 +180,13 @@
         <div class="tab-content">
             <div class="tab-pane fade show active" id="tab-pane-1">
                 <h4 class="mb-3">Product Description</h4>
-                <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
-            </div>
+                <?php echo $item ->description;?>
+                <!-- <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
+                    <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p> -->
+                </div>
+                <?php
+            }
+            ?>
             <div class="tab-pane fade" id="tab-pane-2">
                 <h4 class="mb-3">Additional Information</h4>
                 <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
@@ -340,81 +292,35 @@
     <div class="row px-xl-5">
         <div class="col">
             <div class="owl-carousel related-carousel">
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="../public\assets/img/product-1.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                <?php
+                foreach ($data['Productdata'] as $item) {
+                    // var_dump($data);exit;
+                    ?>
+                    <form method="POST" action="<?php route('cartController/cartAdd')?>">
+                    <div class="card product-item border-0">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img  class="img-fluid w-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                            <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
+                            <div class="d-flex justify-content-center">
+                                 <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                                <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            <button type="submit" name="add">
+                            <a  class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            </button>
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="../public\assets/img/product-2.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="../public\assets/img/product-3.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="../public\assets/img/product-4.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="../public\assets/img/product-5.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
+                    </form>
+
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>

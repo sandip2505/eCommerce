@@ -38,12 +38,14 @@
                 <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-danger font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
             </a>
         </div>
+
         <div class="col-lg-6 col-6 text-left">
-            <form action="">
+            <form action="<?php echo BASEURL; ?>/controller/accountController/serachProduct" method="POST">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="text" name="view_users" class="form-control"  placeholder="Search for products">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary">
+                        <span class="input-group-text bg-transparent text-primary" >
+
                             <i class="fa fa-search"></i>
                         </span>
                     </div>
@@ -120,16 +122,16 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
                     <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
-                    <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
+                    <!-- <a href="<?php route('accountController/detail'); ?>" class="nav-item nav-link">Shop Detail</a> -->
                     <a href="<?php route('orderController/checkout'); ?>" class="nav-item nav-link">Checkout</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
                         </div>
                     </div>
- -->                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
-                </div>
-                <div class="navbar-nav ml-auto py-0">
+                -->                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="navbar-nav ml-auto py-0">
 
                        <!-- if($this->getSession('userId')){
                         
@@ -138,29 +140,29 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-               <?php   if (!isset($_SESSION['userId'])):?> 
-                  <li class="nav-item">
-                    <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
-                </li>
+             <?php   if (!isset($_SESSION['userId'])):?> 
+              <li class="nav-item">
+                <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
+            </li>
 
 
-                <li class="nav-item">
-                    <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
-                </li>
-            <?php else: ?>
+            <li class="nav-item">
+                <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
+            </li>
+        <?php else: ?>
 
 
-            <?php endif; ?>
-        </ul>
-        <?php if(isset($_SESSION['userId'])):?> 
+        <?php endif; ?>
+    </ul>
+    <?php if(isset($_SESSION['userId'])):?> 
 
 
-           <?php
-           include 'profile.php';
-           ?>
+     <?php
+     include 'profile.php';
+     ?>
 
-       <?php endif; ?>
-   </div>
+ <?php endif; ?>
+</div>
 
 
 
@@ -170,7 +172,7 @@
 </nav>
 
                 <?php # add condition if home page is active then and only ot will show 
-                if($_SERVER['REQUEST_URI'] == '/eCommerceShop/welcome/index' || $_SERVER['REQUEST_URI'] == '/eCommerceShop/'){ ?>
+                if($_SERVER['REQUEST_URI'] == '/eCommerceShop/accountController/index' || $_SERVER['REQUEST_URI'] == '/eCommerceShop/'){ ?>
                     <div id="header-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" style="height: 410px;">
@@ -179,7 +181,7 @@
                                     <div class="p-3" style="max-width: 700px;">
                                         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                                         <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                        <a href="<?php route('welcome/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
+                                        <a href="<?php route('accountController/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +191,7 @@
                                     <div class="p-3" style="max-width: 700px;">
                                         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                                         <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                        <a href="<?php route('welcome/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
+                                        <a href="<?php route('accountController/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
