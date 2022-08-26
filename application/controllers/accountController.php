@@ -15,8 +15,10 @@ class accountController extends Controller {
     public function index(){
         $Productdata  = $this->accountModel->getProductData();
         $data['Productdata'] = $Productdata;
-        $Imgdata  = $this->accountModel->getImgdata();
-        $data['Imgdata'] = $Imgdata;
+        // echo "<pre>";
+        // var_dump($Productdata); exit;
+        // $Imgdata  = $this->accountModel->getImgdata();
+        // $data['Imgdata'] = $Imgdata;
         $this->view("index",$data);
     }
     public function shop(){
@@ -24,51 +26,66 @@ class accountController extends Controller {
         $data['Productdata'] = $Productdata;
         $this->view("shop",$data);
     }
+    public function detail($id){
+        $detaildata  = $this->accountModel->getdetaildata($id);
+        $data['detaildata'] = $detaildata;
+        $Productdata  = $this->accountModel->getProductData();
+        $data['Productdata'] = $Productdata;
+         // var_dump($detaildata);exit;
+        $this->view("detail",$data);
+    }
+    public function serachProduct(){
+        $Serachdata  = $this->accountModel->getSerachdata();
+        $data['Serachdata'] = $Serachdata;
+         var_dump($Serachdata);exit;
+        $this->view("index",$data);
+    }
     
-public function createAccount(){
+    
+    public function createAccount(){
 
-    $userData = [
+        $userData = [
 
-     'uname'            => $this->input('uname'),
-     'fname'            => $this->input('fname'),
-     'lname'            => $this->input('lname'),
-     'email'            => $this->input('email'),
-     'password'         => $this->input('password'),
-     'is_deleted'       =>$this->input('is_deleted'),
-     'unameError'       => '',
-     'fnameError'       => '',
-     'lnameError'       => '' ,
-     'emailError'       => '', 
-     'passwordError'    => '' 
+         'uname'            => $this->input('uname'),
+         'fname'            => $this->input('fname'),
+         'lname'            => $this->input('lname'),
+         'email'            => $this->input('email'),
+         'password'         => $this->input('password'),
+         'is_deleted'       =>$this->input('is_deleted'),
+         'unameError'       => '',
+         'fnameError'       => '',
+         'lnameError'       => '' ,
+         'emailError'       => '', 
+         'passwordError'    => '' 
 
- ];
+     ];
 
- if(empty($userData['uname'])){
-    $userData['unameError'] = 'User Name is required';
-}
-if(empty($userData['fname'])){
+     if(empty($userData['uname'])){
+        $userData['unameError'] = 'User Name is required';
+    }
+    if(empty($userData['fname'])){
 
-    $userData['fnameError'] = 'first Name is required';
+        $userData['fnameError'] = 'first Name is required';
 
-}
-if(empty($userData['lname'])){
+    }
+    if(empty($userData['lname'])){
 
-    $userData['lnameError'] = 'Last Name is required';
+        $userData['lnameError'] = 'Last Name is required';
 
-}
+    }
 
 
-if(empty($userData['email'])){
-    $userData['emailError'] = 'Email is required';
-} else {
-    if(!$this->accountModel->checkEmail($userData['email'])){
+    if(empty($userData['email'])){
+        $userData['emailError'] = 'Email is required';
+    } else {
+        if(!$this->accountModel->checkEmail($userData['email'])){
 
-     $userData['emailError'] = "Sorry this email is already exist";
+         $userData['emailError'] = "Sorry this email is already exist";
 
+     }
  }
-}
 
-if(empty($userData['password'])){
+ if(empty($userData['password'])){
     $userData['passwordError'] = "Password is required";
 } else if(strlen($userData['password']) < 5 ){
     $userData['passwordError'] = "Passowrd must be 5 characters long";
