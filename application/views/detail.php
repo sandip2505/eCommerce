@@ -29,30 +29,30 @@
 <?php
 
 
-foreach ($data['detaildata'] as $item) {
+foreach ($data['Productdata'] as $item) {
     // var_dump($item);exit;
  ?>
   <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
  <!-- <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3> -->
-</tbody>
-</table>
+
 <div class="container-fluid py-4">
     <div class="row px-xl-5">
         <div class="col-lg-5 pb-4">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
+
                     <div class="carousel-item active">
                         <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
                     <div class="carousel-item">
                         <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                         <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
                     </div>
                     <div class="carousel-item">
                         <img class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>" alt="Image">
-                    </div>
+                    </div> -->
                 </div>
                 <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                     <i class="fa fa-2x fa-angle-left text-dark"></i>
@@ -133,7 +133,7 @@ foreach ($data['detaildata'] as $item) {
 
             </div>
             <div class="d-flex align-items-center mb-4 pt-2">
-                <div class="input-group quantity mr-3" style="width: 130px;">
+                <!-- <div class="input-group quantity mr-3" style="width: 130px;">
                     <div class="input-group-btn">
                         <button class="btn btn-primary btn-minus" >
                             <i class="fa fa-minus"></i>
@@ -145,7 +145,7 @@ foreach ($data['detaildata'] as $item) {
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
                 <!-- <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
                 <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
                 <!-- <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
@@ -230,7 +230,7 @@ foreach ($data['detaildata'] as $item) {
                     <div class="col-md-6">
                         <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
                         <div class="media mb-4">
-                            <img src="../public\assets/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                            <img src="../../public\assets/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                             <div class="media-body">
                                 <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
                                 <div class="text-primary mb-2">
@@ -293,7 +293,7 @@ foreach ($data['detaildata'] as $item) {
         <div class="col">
             <div class="owl-carousel related-carousel">
                 <?php
-                foreach ($data['Productdata'] as $item) {
+                foreach ($data['detaildata'] as $item) {
                     // var_dump($data);exit;
                     ?>
                     <form method="POST" action="<?php route('cartController/cartAdd')?>">

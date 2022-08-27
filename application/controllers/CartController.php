@@ -45,4 +45,12 @@ class CartController extends Controller {
 		}
 
 	}
+	public function couponApply(){
+		$coupondataValue = $this->input('valueToCoupon');
+		$CouponData  = $this->cartModal->AddCoupon($coupondataValue);
+		$data['CouponData'] = $CouponData;
+		var_dump($data);exit;
+		$this->view("shop",$data);
+
+	}
 }

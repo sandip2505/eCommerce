@@ -49,13 +49,13 @@
     $mainObj = new Controller();
     $catData = $mainObj->getCategoryList();
     foreach ($catData as $item) {
-        if(isset($item['mainCat'])){ ?>
+        if(isset($item['mainCat'])){  ?>
 
 
 
                         <div class="col-lg-4 col-md-6 pb-1">
                             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                                <p class="text-right">15 Products</p>
+                                <p class="text-right">1 Products</p>
                                 <a href="" class="cat-img position-relative overflow-hidden mb-3">
                                     <img class="img-fluid" src="../eCommerceAdmin/public/assets/upload/<?php echo $item['mainCat'][0]->cat_img;?>" alt="">
                                 </a>
@@ -157,7 +157,7 @@
                             href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">View Detail</a></button>
 
 
-                            <button type="submit" name="add" class="btn btn-sm text-dark p-0"><a class="fas fa-shopping-cart text-primary mr-1"></a>Add to cart</button>
+                            <!-- <button type="submit" name="add" class="btn btn-sm text-dark p-0"><a class="fas fa-shopping-cart text-primary mr-1"></a>Add to cart</button> -->
                         </div>
                     </form>
                 </div>
