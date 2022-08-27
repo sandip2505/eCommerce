@@ -37,8 +37,22 @@
             </a>
         </div>
 
+         <div class="col-lg-6 col-6 text-left">
+               <form >
+                <div class="input-group">
+                    <input type="text" class="form-control" name=""  placeholder="Search for products">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary" >
+
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                 
+                </div>
+            </form>
+        </div>
         <div class="col-lg-6 col-6 text-left">
-            <form action="<?php echo BASEURL; ?>/controller/accountController/serachProduct" method="POST">
+            <form action="<?php echo BASEURL; ?>/accountController/serachProduct" method="GET">
                 <div class="input-group">
                     <input type="text" name="view_users" class="form-control"  placeholder="Search for products">
                     <div class="input-group-append">
@@ -50,23 +64,30 @@
                 </div>
             </form>
         </div>
+          
+
         <div class="col-lg-3 col-6 text-right">
             <a href="" class="btn border">
                 <i class="fas fa-heart text-primary"></i>
                 <span class="badge">0</span>
             </a>
             <?php
-            $sno = 0;
-            
-            foreach ($_SESSION['cart_item']  as $item) {
+            $sno = 0;  
+
+             foreach ($_SESSION['cart_item']  as $item) {
+
                $sno++;
-
-           }
-
+}
            ?>
-       </tbody>
+  <!--      </tbody>
    </table>
    <a href="<?php route('CartController/cartview'); ?>" class="btn border">
+
+     -
+
+   </tbody>
+</table> -->
+<a href="<?php route('CartController/cartview'); ?>" class="btn border">
     <i class="fas fa-shopping-cart text-primary"></i>
     <span class="badge"><?php echo $sno ?></span>
 </a>
