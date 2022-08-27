@@ -72,11 +72,13 @@
                 <span class="badge">0</span>
             </a>
             <?php
-            $sno = 0;  
+            $sno = 0; 
+              if(isset($_SESSION['cart_item'])){
 
              foreach ($_SESSION['cart_item']  as $item) {
 
                $sno++;
+}
 }
            ?>
   <!--      </tbody>
