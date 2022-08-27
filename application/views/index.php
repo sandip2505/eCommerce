@@ -119,9 +119,9 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-
+                         <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
                          <img  class="img-fluid w-100" src="../../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-
+                        </a>
                      </div>
                      <form method="POST" action="<?php route('cartController/cartAdd')?>">
                         <!-- <a href="cartController/detail"> <img class="img-fluid w-100" src="public/assets/img/1748062776.jpg" alt=""> </a> -->
