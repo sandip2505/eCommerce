@@ -72,19 +72,23 @@
                 <span class="badge">0</span>
             </a>
             <?php
-            $sno = 0;
-            if(count($_SESSION['cart_item'])){
+            $sno = 0; 
+              if(isset($_SESSION['cart_item'])){
 
              foreach ($_SESSION['cart_item']  as $item) {
-              
+
                $sno++;
-               
-           }
-       }
-       ?>
+}
+}
+           ?>
+  <!--      </tbody>
+   </table>
+   <a href="<?php route('CartController/cartview'); ?>" class="btn border">
+
+     -
 
    </tbody>
-</table>
+</table> -->
 <a href="<?php route('CartController/cartview'); ?>" class="btn border">
     <i class="fas fa-shopping-cart text-primary"></i>
     <span class="badge"><?php echo $sno ?></span>
