@@ -57,20 +57,16 @@
             </a>
             <?php
             $sno = 0;
-            if(count($_SESSION['cart_item'])){
-
-             foreach ($_SESSION['cart_item']  as $item) {
-              
-                          // echo "<td>".$sno++."</td>";
-               
+            
+            foreach ($_SESSION['cart_item']  as $item) {
                $sno++;
-               
+
            }
-       }
-       ?>
-   </tbody>
-</table>
-<a href="<?php route('CartController/cartview'); ?>" class="btn border">
+
+           ?>
+       </tbody>
+   </table>
+   <a href="<?php route('CartController/cartview'); ?>" class="btn border">
     <i class="fas fa-shopping-cart text-primary"></i>
     <span class="badge"><?php echo $sno ?></span>
 </a>
