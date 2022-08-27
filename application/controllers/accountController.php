@@ -27,11 +27,11 @@ class accountController extends Controller {
     $this->view("shop",$data);
 }
 public function detail($id){
-    $detaildata  = $this->accountModel->getdetaildata($id);
+    $detaildata  = $this->accountModel->getdetaildata();
     $data['detaildata'] = $detaildata;
-    $Productdata  = $this->accountModel->getProductData();
+    $Productdata  = $this->accountModel->getProductImages($id);
     $data['Productdata'] = $Productdata;
-         // var_dump($detaildata);exit;
+          // var_dump($Productdata);exit;
     $this->view("detail",$data);
 }
 // public function search(){  

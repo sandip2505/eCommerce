@@ -94,7 +94,15 @@ class accountModel extends database
     public function getProductData()
     {
 
-        if ($this->Query("SELECT * FROM images RIGHT JOIN product ON product.id = images.product_id ")) {
+        if ($this->Query("SELECT * FROM images RIGHT JOIN product ON product.id = images.product_id GROUP BY product.id")) {
+            $Productdata = $this->fetchAll();
+
+            return $Productdata;
+        }
+    }
+
+    public function getProductImages($id){
+        if ($this->Query("SELECT * FROM product RIGHT JOIN images ON   images.product_id =   product.id where product_id=$id GROUP BY images.product_id ")) {
             $Productdata = $this->fetchAll();
 
             return $Productdata;
@@ -126,10 +134,10 @@ public function getOrder()
     }
 }
  
-public function getdetaildata($id){
+public function getdetaildata(){
 
        
-   if ($this->Query("SELECT * FROM  product  LEFT JOIN images ON images.product_id = product.id where PRODUCT_id = ? ",[$id])) {
+   if ($this->Query("SELECT * FROM  product  LEFT JOIN images ON images.product_id = product.id  GROUP BY product.id")) {
     $detaildata = $this->fetchAll();
 
     return $detaildata;

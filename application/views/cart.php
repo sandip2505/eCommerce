@@ -111,14 +111,16 @@
         </table>
     </div>
     <div class="col-lg-4">
-        <form class="mb-5" action="<?php route('welcome/checkout')?>">
+        <form class="mb-5" action="<?php route('cartController/couponApply')?>">
             <div class="input-group">
-                <input type="text" class="form-control p-4" placeholder="Coupon Code">
+                <input type="text" name="valueToCoupon" class="form-control p-4" placeholder="Coupon Code">
                 <div class="input-group-append">
                     <button class="btn btn-primary">Apply Coupon</button>
                 </div>
             </div>
+                    <span>hello</span>
         </form>
+                <form method="POST" action="<?php route('orderController/checkout')?>">
         <div class="card border-secondary mb-5">
             <div class="card-header bg-secondary border-0">
                 <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
@@ -139,7 +141,8 @@
                     <h5 class="font-weight-bold">Total</h5>
                     <h5 class="font-weight-bold"><?php  echo array_sum($g)?></h5>
                 </div>
-                <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href="<?php route('orderController/checkout')?>">Proceed To Checkout</a></button>
+                <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
+                </form>
             </div>
         </div>
     </div>
