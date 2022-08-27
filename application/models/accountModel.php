@@ -100,15 +100,13 @@ class accountModel extends database
             return $Productdata;
         }
     }
-    /*SELECT table1.column1, table2.column2...
-FROM table1
-LEFT JOIN table2
-ON table1.common_field = table2.common_field;*/
-
-    /*SELECT column_name(s)
-FROM table1
-LEFT JOIN table2
-ON table1.column_name = table2.column_name;*/
+   
+public function searchProduct($searchdata){
+   if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
+       $searchdata = $this->fetchAll();
+       return $searchdata;
+   }
+}
 
 public function createOrder($orderdata)
 {
@@ -127,21 +125,10 @@ public function getOrder()
         return $orderdata;
     }
 }
-    // public function getImgData(){
-
-    //     if($this->Query("SELECT image FROM images " )){
-    //         $Imgdata = $this->fetchAll();
-
-    //         return $Imgdata;
-
-    //     }
-    // }
-/*SELECT * FROM images RIGHT JOIN product ON product.id = images.product_id */
+ 
 public function getdetaildata($id){
 
-        // if($this->Query("SELECT * FROM images  where product_id = ? ",[$id] )){
-        //     $detaildata = $this->fetchAll();
-            // var_dump($detaildata);exit;
+       
    if ($this->Query("SELECT * FROM  product  LEFT JOIN images ON images.product_id = product.id where PRODUCT_id = ? ",[$id])) {
     $detaildata = $this->fetchAll();
 
@@ -149,18 +136,10 @@ public function getdetaildata($id){
 
 }
 }
-/*"SELECT * FROM users WHERE is_deleted=0 and (firstname LIKE '%$valueToSearch%' OR lastname LIKE '%$valueToSearch%' OR email LIKE '%$valueToSearch%' OR mobile LIKE '%$valueToSearch%'*/
-public function getSerachdata(){
 
 
-        if($this->Query("SELECT * FROM product WHERE is_deleted = 1 and (name LIKE '%$valueToSearch%' OR  price LIKE '%$valueToSearch%'")){
-            $Serachdata = $this->fetchAll();
-            // var_dump($Serachdata);exit;
 
-  return $Serachdata;
 
-}
-}
 }
 
 
