@@ -157,7 +157,7 @@
                             href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">View Detail</a></button>
 
 
-                            <button type="submit" name="add" class="btn btn-sm text-dark p-0"><a class="fas fa-shopping-cart text-primary mr-1"></a>Add to cart</button>
+                            <!-- <button type="submit" name="add" class="btn btn-sm text-dark p-0"><a class="fas fa-shopping-cart text-primary mr-1"></a>Add to cart</button> -->
                         </div>
                     </form>
                 </div>

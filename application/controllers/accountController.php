@@ -34,12 +34,12 @@ class accountController extends Controller {
          // var_dump($detaildata);exit;
         $this->view("detail",$data);
     }
-    public function serachProduct(){
-        $Serachdata  = $this->accountModel->getSerachdata();
-        $data['Serachdata'] = $Serachdata;
-         var_dump($Serachdata);exit;
-        $this->view("index",$data);
-    }
+    public function search(){  
+   $searchdataValue = $this->input('valueToSearch');
+   $searchdata = $this->accountModel->searchProduct($searchdataValue);
+   // var_dump($searchdata);exit;
+   $this->view("index", $searchdata);
+}
     
     
     public function createAccount(){

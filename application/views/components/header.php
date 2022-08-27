@@ -52,9 +52,9 @@
             </form>
         </div>
         <div class="col-lg-6 col-6 text-left">
-            <form action="<?php echo BASEURL; ?>/accountController/serachProduct" method="GET">
+            <form action="<?php echo BASEURL; ?>/accountController/search" method="POST">
                 <div class="input-group">
-                    <input type="text" name="view_users" class="form-control"  placeholder="Search for products">
+                    <input type="text" name="valueToSearch" class="form-control"  placeholder="Search for products">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-primary" >
 

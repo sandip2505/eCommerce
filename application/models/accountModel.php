@@ -150,17 +150,24 @@ public function getdetaildata($id){
 }
 }
 /*"SELECT * FROM users WHERE is_deleted=0 and (firstname LIKE '%$valueToSearch%' OR lastname LIKE '%$valueToSearch%' OR email LIKE '%$valueToSearch%' OR mobile LIKE '%$valueToSearch%'*/
-public function getSerachdata(){
+// public function getSerachdata(){
 
+//         $valueToSearch = $_POST['view_users'];
+//         if($this->Query("SELECT * FROM product WHERE is_deleted = 1 and (name LIKE '%$valueToSearch%' OR  price LIKE '%$valueToSearch%'")){
+//             $Serachdata = $this->fetchAll();
+//             // var_dump($Serachdata);exit;
 
-        if($this->Query("SELECT * FROM product WHERE is_deleted = 1 and (name LIKE '%$valueToSearch%' OR  price LIKE '%$valueToSearch%'")){
-            $Serachdata = $this->fetchAll();
-            // var_dump($Serachdata);exit;
+//   return $Serachdata;
 
-  return $Serachdata;
-
+public function searchProduct($searchdata){
+   if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
+       $searchdata = $this->fetchAll();
+       return $searchdata;
+   }
 }
-}
+
+
+
 }
 
 
