@@ -30,7 +30,7 @@
                             <a class="text-dark mb-2" href="<?php route('welcome/shop'); ?>"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
                             <a class="text-dark mb-2" href="<?php route('welcome/detail'); ?>"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
                             <a class="text-dark mb-2" href="<?php route('welcome/cart'); ?>"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/checkout'); ?>"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark mb-2" href="<?php route('orderController/checkout'); ?>"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
                             <a class="text-dark" href="<?php route('welcome/contact'); ?>"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control border-0 py-4" name="email" placeholder="Your Email"
-                                    required="required" />
+                                required="required" />
                             </div>
                             <div>
                                 <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>

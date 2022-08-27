@@ -33,32 +33,65 @@
     <div class="row align-items-center py-3 px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
             <a href="" class="text-decoration-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-danger font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
             </a>
         </div>
-        <div class="col-lg-6 col-6 text-left">
-            <form action="">
+
+         <div class="col-lg-6 col-6 text-left">
+               <form >
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="text" class="form-control" name=""  placeholder="Search for products">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary">
+                        <span class="input-group-text bg-transparent text-primary" >
+
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                 
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-6 col-6 text-left">
+            <form action="<?php echo BASEURL; ?>/accountController/serachProduct" method="GET">
+                <div class="input-group">
+                    <input type="text" name="view_users" class="form-control"  placeholder="Search for products">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary" >
+
                             <i class="fa fa-search"></i>
                         </span>
                     </div>
                 </div>
             </form>
         </div>
+          
+
         <div class="col-lg-3 col-6 text-right">
             <a href="" class="btn border">
                 <i class="fas fa-heart text-primary"></i>
                 <span class="badge">0</span>
             </a>
-            <a href="" class="btn border">
-                <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
-        </div>
-    </div>
+            <?php
+            $sno = 0;
+            if(count($_SESSION['cart_item'])){
+
+             foreach ($_SESSION['cart_item']  as $item) {
+              
+               $sno++;
+               
+           }
+       }
+       ?>
+
+   </tbody>
+</table>
+<a href="<?php route('CartController/cartview'); ?>" class="btn border">
+    <i class="fas fa-shopping-cart text-primary"></i>
+    <span class="badge"><?php echo $sno ?></span>
+</a>
+
+</div>
+</div>
 </div>
 <!-- Topbar End -->
 <!-- Navbar Start -->
@@ -71,57 +104,63 @@
             </a>
             <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                   <!--  <div class="nav-item dropdown">
-                        <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i class="fa fa-angle-down float-right mt-1"></i></a>
-                        <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                            <a href="" class="dropdown-item">Men's Dresses</a>
-                            <a href="" class="dropdown-item">Women's Dresses</a>
-                            <a href="" class="dropdown-item">Baby's Dresses</a>
+                    <?php
+                    $mainObj = new Controller();
+                    $catData = $mainObj->getCategoryList();
+                    foreach ($catData as $item) {
+                        if(isset($item['mainCat'])){ ?>
+                            <div class="nav-item dropdown">
+                                <?php if(isset($item['childCat'])){ ?>
+                                    <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                                    <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                        <?php
+                                        foreach ($item['childCat'] as $childItem) {
+                                          ?>
+                                          <a href="" class="dropdown-item"><?php echo $childItem->category_name;?></a>
+                                          <?php 
+                                      } 
+                                      ?>
+                                  </div>
+                              <?php }else{ ?>
+                                <a href="#" class="dropdown-item"  ><?php echo $item['mainCat'][0]->category_name;?></a>
+                            <?php } ?>
                         </div>
-                    </div> -->
-                     <?php
-                        foreach ($data as $item) {
-                          ?>
-                    <a href="" class="nav-item nav-link"> <?php echo $item ->category_name;?></a>
-                         
-                    <!-- <a href="" class="nav-item nav-link">Shirts</a>
-                    <a href="" class="nav-item nav-link">Jeans</a>
-                    <a href="" class="nav-item nav-link">Swimwear</a>
-                    <a href="" class="nav-item nav-link">Sleepwear</a>
-                    <a href="" class="nav-item nav-link">Sportswear</a>
-                    <a href="" class="nav-item nav-link">Jumpsuits</a>
-                    <a href="" class="nav-item nav-link">Blazers</a>
-                    <a href="" class="nav-item nav-link">Jackets</a>
-                    <a href="" class="nav-item nav-link">Shoes</a> -->
-                          <?php 
-                      }   
-                      ?>
-                </div>
-            </nav>
-        </div>
-        <div class="col-lg-9">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                <a href="" class="text-decoration-none d-block d-lg-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
-                        <a href="<?php route('welcome/shop'); ?>" class="nav-item nav-link">Shop</a>
-                        <a href="<?php route('welcome/detail'); ?>" class="nav-item nav-link">Shop Detail</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="<?php route('welcome/cart'); ?>" class="dropdown-item">Shopping Cart</a>
-                                <a href="<?php route('welcome/checkout'); ?>" class="dropdown-item">Checkout</a>
-                            </div>
+                    <?php }
+                    ?>
+                    
+                    <!-- <a href="" class="nav-item nav-link">category_name </a> -->
+
+
+                    <?php 
+                } 
+
+                ?>
+
+            </div>
+        </nav>
+    </div>
+    <div class="col-lg-9">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+            <a href="" class="text-decoration-none d-block d-lg-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="<?php route(''); ?>" class="nav-item nav-link active">Home</a>
+                    <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link">Shop</a>
+                    <!-- <a href="<?php route('accountController/detail'); ?>" class="nav-item nav-link">Shop Detail</a> -->
+                    <a href="<?php route('orderController/checkout'); ?>" class="nav-item nav-link">Checkout</a>
+                    <!-- <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 m-0">
                         </div>
-                        <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
                     </div>
-                    <div class="navbar-nav ml-auto py-0">
+                -->                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="navbar-nav ml-auto py-0">
 
                        <!-- if($this->getSession('userId')){
                         
@@ -130,43 +169,39 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-              <?php if(!$this->getSession('userId')): ?>
-                  <li class="nav-item">
-                    <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
-                </li>
-            <?php else: ?>
-
-            <?php endif; ?>
-        </ul>
-        <?php if($this->getSession('userId')): ?>
-          <!--  <ul class="my-2 my-lg-0"><a href="<?php echo BASEURL; ?>/accountController/logout" class="btn btn-success">Logout</a></ul> -->
-
-           <?php
-           include 'profile.php';
-           ?>
-
-       <?php endif; ?>
-   </div>
+             <?php   if (!isset($_SESSION['userId'])):?> 
+              <li class="nav-item">
+                <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
+            </li>
 
 
+            <li class="nav-item">
+                <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
+            </li>
+        <?php else: ?>
 
 
-   <!-- </ul> -->
+        <?php endif; ?>
+    </ul>
+    <?php if(isset($_SESSION['userId'])):?> 
 
-            <!-- <a class="btn big-login" data-toggle="modal" data-target="#modalLoginForm" href="javascript:void(0);">Log in</a>
-                <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a> -->
-                <!-- <a class="btn big-register" data-toggle="modal" data-target="#modalProfile" href="javascript:void(0);">Profile</a> -->
 
-            </div>
-        </div>
+     <?php
+     include 'profile.php';
+     ?>
 
-    </nav>
+ <?php endif; ?>
+</div>
+
+
+
+</div>
+</div>
+
+</nav>
 
                 <?php # add condition if home page is active then and only ot will show 
-                if($_SERVER['REQUEST_URI'] == '/eCommerceShop/welcome/index' || $_SERVER['REQUEST_URI'] == '/eCommerceShop/'){ ?>
+                if($_SERVER['REQUEST_URI'] == '/eCommerceShop/accountController/index' || $_SERVER['REQUEST_URI'] == '/eCommerceShop/'){ ?>
                     <div id="header-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" style="height: 410px;">
@@ -175,7 +210,7 @@
                                     <div class="p-3" style="max-width: 700px;">
                                         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                                         <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                        <a href="<?php route('welcome/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
+                                        <a href="<?php route('accountController/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +220,7 @@
                                     <div class="p-3" style="max-width: 700px;">
                                         <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                                         <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                        <a href="<?php route('welcome/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
+                                        <a href="<?php route('accountController/shop'); ?>" class="btn btn-light py-2 px-3">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +257,9 @@
           <div class="modal-body mx-3">
             <div class="md-form mb-5">
               <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" name="email" class="form-control validate" placeholder="Email..." value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" required>
+              <input type="email" id="email" name="email" class="form-control validate" onblur="check()" placeholder="Email..." value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" >
+              <span class="text-danger" id="error7"></span>
+
               <div class="error">
                   <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
               </div>
@@ -230,7 +267,12 @@
 
           <div class="md-form mb-4">
               <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" name="password" class="form-control validate" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
+              <p>
+                  <input type="password" name="password" id="password" class="form-control validate" onblur="check()" placeholder="Password..." value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" >
+                  <span class="text-danger" id="error7"></span>
+
+                  <i class="bi bi-eye-slash" id="togglePassword"></i>
+              </p>
               <div class="error" >
                   <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
               </div>
@@ -238,18 +280,20 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-default">Login</button>
+        <button class="btn btn-default" id="login">Login</button>
     </div>
+
 </form>
 </div>
 </div>
 </div>
 
+
 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form method="POST" class="signup-form" name="form" action="<?php route('accountController/createAccount') ?>">
+        <form method="POST" class="signup-form" name="form" action="<?php echo BASEURL; ?>/accountController/createAccount">
 
 
           <div class="modal-header text-center">
@@ -262,7 +306,8 @@ aria-hidden="true">
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
           <!-- <input type="text" id="orangeForm-name" class="form-control validate"> -->
-          <input type="text" id="orangeForm-name" class="form-control validate" name="uname" placeholder="User name" value="<?php if(!empty($data['uname'])): echo $data['uname']; endif; ?>"  required> 
+          <input type="text" id="uname" class="form-control validate" name="uname" onblur="check()" placeholder="User name" value="<?php if(!empty($data['uname'])): echo $data['uname']; endif; ?>">
+          <span class="text-danger" id="error1"></span>
           <div class="error">
             <?php if(!empty($data['unameError'])): echo $data['unameError']; endif; ?>
         </div>
@@ -271,7 +316,9 @@ aria-hidden="true">
     <div class="md-form mb-5">
       <i class="fas fa-user prefix grey-text"></i>
       <!-- <input type="text" id="orangeForm-name" class="form-control validate"> -->
-      <input type="text" id="orangeForm-name" class="form-control validate" name="fname" placeholder="First name" value="<?php if(!empty($data['fname'])): echo $data['fname']; endif; ?>" required>
+      <input type="text" id="fname" class="form-control validate" name="fname" onblur="check()"  placeholder="First name" value="<?php if(!empty($data['fname'])): echo $data['fname']; endif; ?>" >
+      <span class="text-danger" id="error2"></span>
+
       <div class="error">
         <?php if(!empty($data['fnameError'])): echo $data['fnameError']; endif; ?>
     </div> 
@@ -280,7 +327,9 @@ aria-hidden="true">
 <div class="md-form mb-5">
   <i class="fas fa-user prefix grey-text"></i>
   <!-- <input type="text" id="orangeForm-name" class="form-control validate"> -->
-  <input type="text" id="orangeForm-name" class="form-control validate" name="lname" placeholder="Last name" value="<?php if(!empty($data['lname'])): echo $data['lname']; endif; ?>" required>
+  <input type="text" id="lname" class="form-control validate" name="lname" onblur="check()"  placeholder="Last name" value="<?php if(!empty($data['lname'])): echo $data['lname']; endif; ?>" >
+  <span class="text-danger" id="error3"></span>
+
   <div class="error">
     <?php if(!empty($data['lnameError'])): echo $data['lnameError']; endif; ?>
 </div> 
@@ -289,7 +338,8 @@ aria-hidden="true">
 <div class="md-form mb-5">
   <i class="fas fa-envelope prefix grey-text"></i>
   <!-- <input type="email" id="orangeForm-email" class="form-control validate"> -->
-  <input type="text" id="orangeForm-email" class="form-control validate" name="email" placeholder="Your email" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>" required>
+  <input type="email" id="Remail" class="form-control validate" name="email" onblur="check()" placeholder="Your email" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
+  <span class="text-danger" id="error4"></span>
   <div class="error">
     <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
 </div>
@@ -299,7 +349,9 @@ aria-hidden="true">
 <div class="md-form mb-4">
   <i class="fas fa-lock prefix grey-text"></i>
   <!-- <input type="password" id="orangeForm-pass" class="form-control validate"> -->
-  <input id="orangeForm-pass" type="password" class="form-control validate" name="password" placeholder="Your password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" required>
+  <input id="Rpassword" type="password" class="form-control validate" name="password" onblur="check()"  placeholder="Your password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>" >
+  <span class="text-danger" id="error5"></span>
+
   <div class="error">
     <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
 </div>
@@ -308,7 +360,8 @@ aria-hidden="true">
 
 </div>
 <div class="modal-footer d-flex justify-content-center">
-    <button class="btn btn-deep-orange">Sign up</button>
+    <button class="btn btn-deep-orange" id="submit"  >Sign up</button>
+    <input type="hidden" value="1" name="is_deleted" >
 </form>
 </div>
 </div>
@@ -396,13 +449,23 @@ aria-hidden="true" data-backdrop="true">
 </div>
 </div>
 
+<script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const password = document.querySelector("#password");
 
+    togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
 
-
-
-
-
-
-
-
-
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    </script>
+    <?php linkJS('assets/js/style.js'); ?>

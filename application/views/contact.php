@@ -13,12 +13,14 @@
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Contact Us</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0"><a href="<?php route(''); ?>">Home</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Contact</p>
             </div>
         </div>
     </div>
+       
+
     
     <!-- Page Header End -->
     <!-- Contact Start -->
@@ -30,7 +32,7 @@
             <div class="col-lg-7 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form action="<?php route('accountController/contact') ?>" method="POST" name="sentMessage"  novalidate="novalidate">
+                    <form action="<?php route('accountController/contactform') ?>" method="POST" name="sentMessage"  novalidate="novalidate">
                         <div class="control-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
                             required="required" data-validation-required-message="Please enter your name" />

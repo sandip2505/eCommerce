@@ -63,11 +63,7 @@
               <div class="error">
                 <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
               </div>
-              <div class="form-group mb-3">
-                <label for ="gender"> Gender </label>
-                <input type="radio" name="gender" <?php  if(isset($gender) && $gender=="MALE") echo "checked";?> value="MALE"  >MALE</input>
-                <input type="radio" name="gender" <?php  if(isset($gender) && $gender=="FEMALE") echo "checked";?> value="FEMALE" >FEMALE</input>
-              </div>
+             
              
               <div class="form-group">
                 <!-- <button type="submit" name="submit" class="form-control btn btn-primary submit px-3">Sign Up</button> -->

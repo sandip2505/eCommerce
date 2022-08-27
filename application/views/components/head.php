@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-    <title>EShopper - Bootstrap Shop Template</title>
+    <title>Shop</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -13,9 +13,18 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Libraries Stylesheet -->
     <?php linkCSS("assets/lib/owlcarousel/assets/owl.carousel.min.css"); ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <?php linkCSS("assets/css/style.css"); ?>
+    <?php linkCSS("assets/css/style12.css"); ?>
+    <style type="text/css">
+        
+        .error{
+            color: red;
+        }
+    </style>
