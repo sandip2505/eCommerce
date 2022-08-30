@@ -22,7 +22,7 @@ class CartController extends Controller {
 	public function detail(){
 		$name = $_POST['name'];
 		$price = (int)$_POST['price'];
-		$quantity = (int)$_POST['qty'];
+		$quantity = (int)$_POST['qty'];	
 		$Productdata = array($name,$price,$quantity);
 		$_SESSION['cart_item'][$name] = $Productdata;
 		$this->view("detail");
@@ -49,8 +49,41 @@ class CartController extends Controller {
 		$coupondataValue = $this->input('valueToCoupon');
 		$CouponData  = $this->cartModal->AddCoupon($coupondataValue);
 		$data['CouponData'] = $CouponData;
-		var_dump($data);exit;
+		// var_dump($data);exit;
 		$this->view("shop",$data);
 
 	}
+	public function CreateReview(){
+
+		    $userData = [
+
+       'rate'                  => $this->input('rate'),
+       'product_id'            => $this->input('product_id'),
+       'review'                => $this->input('review'),
+       'name'                  => $this->input('name'),
+       'email'                 => $this->input('email'),
+
+   ];
+   // var_dump($userData);exit;
+
+
+   if(empty($userData['rateError']) && empty($userData['product_idError']) && empty($userData['reviewError']) && empty($userData['nameError']) && empty($userData['emailError'])){
+
+    $data = [$userData['rate'], $userData['product_id'], $userData['review'], $userData['name'], $userData['email']];
+
+   // var_dump($data);exit;
+
+    if($this->cartModal->CreateReview($data)){
+        $this->setFlash("CreateReview", "Your account has been created successfully");
+        $this->redirect("../eCommerceShop/accountController/shop");
+
+    }
+
+} else {
+    $this->view('CreateReview', $userData);
+}
+
+}
+
+
 }

@@ -118,7 +118,7 @@
                     <button class="btn btn-primary">Apply Coupon</button>
                 </div>
             </div>
-                    <span>hello</span>
+                    <span class="text-danger"></span>
         </form>
                 <form method="POST" action="<?php route('orderController/checkout')?>">
         <div class="card border-secondary mb-5">

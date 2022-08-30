@@ -327,29 +327,31 @@
         <div class="col">
             <div class="owl-carousel vendor-carousel">
                 <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew2.jpeg" alt="">
+                    <img src="public/assets/img/apple-logo-transparent.png" alt="">
+                </div>
+                <!-- <div class="vendor-item border p-4">
+                    <img src="public/assets/img/adidas-logo-png-9288.png" alt="">
+                </div> -->
+                <div class="vendor-item border p-4">
+                    <img src="public/assets/img/puma-logo-png-21169.png" alt="">
                 </div>
                 <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew1.jpeg" alt="">
+                    <img src="public/assets/img/Facebook-Logo-Square-768x768.png" alt="">
                 </div>
                 <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew2.jpeg" alt="">
+                    <img src="public/assets/img/Google-logo-png-plants.png" alt="">
                 </div>
                 <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew1.jpeg" alt="">
+                    <img src="public/assets/img/logo-twitter-png-5863.png" alt="">
                 </div>
+                <!-- <div class="vendor-item border p-4">
+                    <img src="public/assets/img/nike-logo-png-21183.png" alt="">
+                </div> -->
+               
                 <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew2.jpeg" alt="">
+                    <img src="public/assets/img/facebook-logo.png" alt="">
                 </div>
-                <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew1.jpeg" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew2.jpeg" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="public/assets/img/codecrew1.jpeg" alt="">
-                </div>
+                
             </div>
         </div>
     </div>

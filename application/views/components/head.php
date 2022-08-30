@@ -22,6 +22,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <?php linkCSS("assets/css/style.css"); ?>
     <?php linkCSS("assets/css/style12.css"); ?>
+    <?php linkCSS("assets/css/rating.css"); ?>
     <style type="text/css">
         
         .error{

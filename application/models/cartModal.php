@@ -33,6 +33,24 @@ class cartModal extends database {
     }
 
 }
+ public function CreateReview($data)
+    {
+
+        if ($this->Query("INSERT INTO product_review (rate,product_id,review,name,email) VALUES (?,?,?,?,?)", $data)) {
+            return true;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 /*public function searchProduct($searchdata){
    if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
        $searchdata = $this->fetchAll();

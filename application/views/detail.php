@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <?php include "components/head.php"; ?>
 </head>
 
@@ -32,10 +33,10 @@
 foreach ($data['Productdata'] as $item) {
     // var_dump($item);exit;
  ?>
-  <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
+ <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
  <!-- <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3> -->
 
-<div class="container-fluid py-4">
+ <div class="container-fluid py-4">
     <div class="row px-xl-5">
         <div class="col-lg-5 pb-4">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
@@ -170,12 +171,21 @@ foreach ($data['Productdata'] as $item) {
         </div>
     </div>
 </div>
+<?php
+$gt=[]; 
+foreach ($data['reviewdata'] as $value) {
+
+    $gt[]= $value ->review;;
+
+}
+?>
+
 <div class="row px-xl-5">
     <div class="col">
         <div class="nav nav-tabs justify-content-center border-secondary mb-4">
             <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
             <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a>
-            <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+            <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (<?php echo count($gt);?>)</a>
         </div>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="tab-pane-1">
@@ -228,57 +238,93 @@ foreach ($data['Productdata'] as $item) {
             <div class="tab-pane fade" id="tab-pane-3">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
-                        <div class="media mb-4">
-                            <img src="../../public\assets/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                            <div class="media-body">
-                                <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
-                                <div class="text-primary mb-2">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                            </div>
+                        <h4 class="mb-4">1 review for "<?php echo $item ->name;?>"</h4>
+                        <div><br>
+                            <?php
+                            $gt=[]; 
+                            foreach ($data['reviewdata'] as $item) {
+
+                                // $name=array($item);
+
+                                ?>
+                                <img src="../../public\assets/img/user.png" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                <div class="media-body">
+                                    <h6><?php echo $item ->name;?><small> - <i><?php echo $item ->created_at;?></i></small></h6>
+
+                                   <!--  <div class="rate">
+                                        <input type="radio" id="star5" name="rate" value="5>"/>
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rate" value="4"/>
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rate" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rate" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rate" value="1" />
+                                        <label for="star1" title="text">1 star</label> 
+                                    </div><br><br> -->
+                                    <p><?php echo $item ->review;?></p>
+                                    <p><?php echo $item ->rate;?></p> 
+                                </div><br>
+                                <?php
+                            }
+                            ?>
+
+
+
+
+
                         </div>
+                        <br>
                     </div>
-                    <div class="col-md-6">
-                        <h4 class="mb-4">Leave a review</h4>
+                    <div class="col-md-6" style="margin-top: 100px;">
+                        <h4 class="mb-4">Leave a review</span></h4>
                         <small>Your email address will not be published. Required fields are marked *</small>
-                        <div class="d-flex my-3">
-                            <p class="mb-0 mr-2">Your Rating * :</p>
-                            <div class="text-primary">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
+                        <form method="POST" action="<?php route('cartController/CreateReview')?>">
+                            <div class="d-flex my-3">
+                                <p class="mb-0 mr-2">Your Rating * :</p>
+                            <!-- <div class="text-primary">
+                              <span class="far fa-star checked"></span>    
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                              <i class="far fa-star"></i>
+                          </div> -->
+                          <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
                         </div>
-                        <form>
-                            <div class="form-group">
-                                <label for="message">Your Review *</label>
-                                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Your Name *</label>
-                                <input type="text" class="form-control" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Your Email *</label>
-                                <input type="email" class="form-control" id="email">
-                            </div>
-                            <div class="form-group mb-0">
-                                <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
-                            </div>
-                        </form>
                     </div>
-                </div>
+                    <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
+                    <div class="form-group">
+                        <label for="message">Your Review *</label>
+                        <textarea id="message" name="review" cols="30" rows="5" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" name="name" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" name="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group mb-0">
+                        <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 </div>
 <!-- Shop Detail End -->
@@ -289,41 +335,41 @@ foreach ($data['Productdata'] as $item) {
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
     </div>
-    <div class="row px-xl-5">
+    <div class="container-fluid py-5">
         <div class="col">
             <div class="owl-carousel related-carousel">
                 <?php
-                foreach ($data['detaildata'] as $item) {
+                foreach ($data['ProductData'] as $item) {
                     // var_dump($data);exit;
                     ?>
                     <form method="POST" action="<?php route('cartController/cartAdd')?>">
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img  class="img-fluid w-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-                            <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
-                            <div class="d-flex justify-content-center">
-                                 <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
-                                <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                        <div class="card product-item border-0">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
+                                <img  class="img-fluid w-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                                </a>
                             </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                             <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
+                             <div class="d-flex justify-content-center">
+                                 <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                                 <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                             </div>
+                         </div>
+                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <button type="submit" name="add">
-                            <a  class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </button>
+                            <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
                         </div>
                     </div>
-                    </form>
+                </form>
 
-                    <?php
-                }
-                ?>
-            </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
+</div>
 </div>
 <!-- Products End -->
 

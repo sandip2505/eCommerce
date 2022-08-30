@@ -130,7 +130,7 @@ public function createOrder($orderdata)
 public function getOrder()
 {
 
-    if ($this->Query("SELECT * FROM user_address where ")) {
+    if ($this->Query("SELECT * FROM user_address ")) {
         $orderdata = $this->fetchAll();
         return $orderdata;
     }
@@ -152,6 +152,16 @@ public function getdetaildata(){
 
 }
 }
+   public function getReviewData($id){
+
+        if($this->Query("SELECT * FROM product_review where product_id = ?",[$id] )){
+            $data = $this->fetchAll();
+              // var_dump($Cartdata);exit;
+
+            return $data;
+
+        }
+    }
 
 
 

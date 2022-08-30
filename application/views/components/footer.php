@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="row border-top border-light mx-xl-5 py-4">
+        <!-- <div class="row border-top border-light mx-xl-5 py-4">
             <div class="col-md-6 px-xl-0">
                 <p class="mb-md-0 text-center text-md-left text-dark">
                     &copy; <a class="text-dark font-weight-semi-bold" href="https://codecrewinfotech.com/">Your Site Name</a>. All Rights Reserved. Designed
@@ -64,7 +64,7 @@
             <div class="col-md-6 px-xl-0 text-center text-md-right">
                 <img class="img-fluid" src="public/assets/img/payments.png" alt="">
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- Footer End -->
 
