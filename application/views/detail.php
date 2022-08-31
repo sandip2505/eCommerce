@@ -22,20 +22,9 @@
         </div>
     </div>
 </div>
-<!-- Page Header End -->
-
-
-<!-- Shop Detail Start -->
-<!-- <img class="w-100 h-100" src="../public\assets/img/product-1.jpg" alt="Image"> -->
 <?php
-
-
 foreach ($data['Productdata'] as $item) {
-    // var_dump($item);exit;
    ?>
-   <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
-   <!-- <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3> -->
-
    <div class="container-fluid py-4">
     <div class="row px-xl-5">
         <div class="col-lg-5 pb-4">
@@ -65,30 +54,29 @@ foreach ($data['Productdata'] as $item) {
         </div>
         <form method="POST" action="<?php route('cartController/cartAdd')?>">
             <div class="col-lg-7 pb-4">
-
              <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
              <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
              <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
              <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
              <div class="d-flex mb-3">
                  <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
-               <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-               <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
-               <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
-               <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
-               <div class="d-flex mb-3">
-                <div class="text-primary mr-2">
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star"></small>
-                    <small class="fas fa-star-half-alt"></small>
-                    <small class="far fa-star"></small>
+                 <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                 <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
+                 <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
+                 <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
+                 <div class="d-flex mb-3">
+                    <div class="text-primary mr-2">
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star-half-alt"></small>
+                        <small class="far fa-star"></small>
+                    </div>
+                    <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <small class="pt-1">(50 Reviews)</small>
             </div>
             <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
             <h3 class="font-weight-semi-bold mb-4"><?php echo $item ->price;?></h3>
-
             <div class="d-flex mb-3">
                 <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
 
@@ -141,42 +129,32 @@ foreach ($data['Productdata'] as $item) {
 
             </div>
             <div class="d-flex align-items-center mb-4 pt-2">
-                <!-- <div class="input-group quantity mr-3" style="width: 130px;">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-minus" >
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                    <input type="text" class="form-control bg-secondary text-center" value="1">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary btn-plus">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                </div> -->
-                <!-- <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
                 <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
                 <!-- <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
             </div>
         </form>
-        <div class="d-flex pt-2">
-            <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
-            <div class="d-inline-flex">
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a class="text-dark px-2" href="">
-                    <i class="fab fa-pinterest"></i>
-                </a>
-            </div>
-        </div>
     </div>
+</div>
+
+
+<div class="d-flex pt-2">
+    <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
+    <div class="d-inline-flex">
+        <a class="text-dark px-2" href="">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="text-dark px-2" href="">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a class="text-dark px-2" href="">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a class="text-dark px-2" href="">
+            <i class="fab fa-pinterest"></i>
+        </a>
+    </div>
+</div>
+</div>
 </div>
 <?php
 $gt=[]; 
@@ -284,20 +262,18 @@ foreach ($data['reviewdata'] as $value) {
                         </div>
                         <br>
                     </div>
-                    <div class="col-md-6" style="margin-top: 100px;">
-                        <h4 class="mb-4">Leave a review</span></h4>
-                        <small>Your email address will not be published. Required fields are marked *</small>
-                        <form method="POST" action="<?php route('cartController/CreateReview')?>">
-                            <div class="d-flex my-3">
-                                <p class="mb-0 mr-2">Your Rating * :</p>
-                            <!-- <div class="text-primary">
-                              <span class="far fa-star checked"></span>    
-                              <i class="far fa-star"></i>
-                              <i class="far fa-star"></i>
-                              <i class="far fa-star"></i>
-                              <i class="far fa-star"></i>
-                          </div> -->
-                          <div class="rate">
+                </div>
+            </div>
+
+
+            <div class="col-md-6" style="margin-top: 100px;">
+                <h4 class="mb-4">Leave a review</span></h4>
+                <small>Your email address will not be published. Required fields are marked *</small>
+                <form method="POST" action="<?php route('cartController/CreateReview')?>">
+                    <div class="d-flex my-3">
+                        <p class="mb-0 mr-2">Your Rating * :</p>
+                        
+                        <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5" />
                             <label for="star5" title="text">5 stars</label>
                             <input type="radio" id="star4" name="rate" value="4" />
@@ -310,6 +286,7 @@ foreach ($data['reviewdata'] as $value) {
                             <label for="star1" title="text">1 star</label>
                         </div>
                     </div>
+
                     <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
                     <div class="form-group">
                         <label for="message">Your Review *</label>
@@ -326,72 +303,68 @@ foreach ($data['reviewdata'] as $value) {
                     <div class="form-group mb-0">
                         <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
                     </div>
+                    
                 </form>
             </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
-<!-- Shop Detail End -->
-<!-- Products Start -->
-<div class="container-fluid py-5">
-    <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
-    </div>
-    <div class="container-fluid py-5">
-        <div class="thumbnail">
-            <div class="owl-carousel related-carousel">
-                <?php
-                foreach ($data['ProductData'] as $item) {
-                    ?>
-                    <form method="POST" action="<?php route('cartController/cartAdd')?>">
-                        <div class="card product-item border-0">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
-                                    <img  class="img-fluid img-thumbnail" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                                </a>
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-<<<<<<< HEAD
-                               <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-                               <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
-                               <div class="d-flex justify-content-center">
-                                   <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
-                                   <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
-                               </div>
-                           </div>
-                           <div class="card-footer d-flex justify-content-between bg-light border">
-=======
-                             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-                             <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
-                             <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
-                             <div class="d-flex justify-content-center">
-                                 <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
-                                 <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
-                             </div>
-                         </div>
-                         <div class="card-footer d-flex justify-content-between bg-light border">
->>>>>>> 2a71b7a4b8840752befb0fb6622470fda3fe7197
-                            <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
-                        </div>
-                    </div>
-                </form>
 
-                <?php
-            }
-            ?>
+        <!-- Shop Detail End -->
+        <!-- Products Start -->
+        <div class="container-fluid py-5">
+            <div class="text-center mb-4">
+                <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
+            </div>
+            <div class="container-fluid py-5">
+                <div class="thumbnail">
+                    <div class="owl-carousel related-carousel">
+                        <?php
+                        foreach ($data['ProductData'] as $item) {
+                            ?>
+                            <form method="POST" action="<?php route('cartController/cartAdd')?>">
+                                <div class="card product-item border-0">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
+                                            <img  class="img-fluid img-thumbnail" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                                        </a>
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+
+                                       <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                                       <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
+                                       <div class="d-flex justify-content-center">
+                                           <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                                           <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                                       </div>
+                                   </div>
+                                   <div class="card-footer d-flex justify-content-between bg-light border">
+
+                                     <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                                     <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
+                                     <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
+                                     <div class="d-flex justify-content-center">
+                                         <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                                         <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                                     </div>
+                                 </div>
+                                 <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<!-- Products End -->
+    <!-- Products End -->
 
 
 
-<?php include "components/footer.php"; ?>
+    <?php include "components/footer.php"; ?>
 </body>
 
 </html>
