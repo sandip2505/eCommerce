@@ -185,7 +185,7 @@ public function getReviewData($id){
         return $data;
 
     }
-<<<<<<< HEAD
+
 }
 
 
@@ -231,6 +231,5 @@ public function getSetdata()
 //ALTER TABLE "appointments" DROP FOREIGN KEY "appointments_user_id_foreign";
 
 //ALTER TABLE "appointments" ADD CONSTRAINT "appointments_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "users" ("id")
-=======
-}
->>>>>>> c571e229b541ba6a55dee2b1413662db64b35fa2
+
+
