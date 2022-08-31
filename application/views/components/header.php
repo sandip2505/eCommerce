@@ -44,8 +44,10 @@
                 <!-- <input type="hidden" name="valueToSearch "> -->
                 <input type="text" name="valueToSearch" class="form-control"  placeholder="Search for products">
                 <div class="input-group-append">
-                    <span class="input-group-text bg-transparent text-primary" >
-                        <i class="fa fa-search"></i>
+                    <span class="input-group-text bg-transparent text-primary">
+
+                       <a href="<?php echo BASEURL; ?>/accountController/search"> <i class="fa fa-search"></i></a>
+                        
                     </span>
                 </div>
             </div>

@@ -53,7 +53,7 @@ public function search(){
  $searchdata = $this->accountModel->searchProduct($searchdataValue);
  $data['searchdata'] = $searchdata;
  // var_dump($searchdata);exit;
- $this->view("SearchProduct", $searchdata);
+ $this->view("SearchProduct", $data);
 }
 
 

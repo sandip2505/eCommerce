@@ -123,7 +123,7 @@ class accountModel extends database
 
     
     public function searchProduct($searchdata){
-     if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
+     if($this->Query("SELECT * FROM product JOIN images ON  product.id = images.product_id WHERE name LIKE '%$searchdata%' " )){
          $searchdata = $this->fetchAll();
          return $searchdata;
      }

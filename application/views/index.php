@@ -53,7 +53,7 @@
                     <div class="col-lg-4 col-md-6 pb-1">
                         <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                             <p class="text-right">1 Products</p>
-                            <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                            <a href="<?php route('accountController/CatProduct');?>/<?php echo $item['mainCat'][0]->id;?>" class="cat-img position-relative overflow-hidden mb-3">
                                 <img class="img-fluid" src="../eCommerceAdmin/public/assets/upload/<?php echo $item['mainCat'][0]->cat_img;?>" alt="">
                             </a>
                             <h5 class="font-weight-semi-bold m-0"><?php echo $item['mainCat'][0]->category_name;?></h5>
@@ -169,7 +169,7 @@
 
 <!-- Products Start end -->
 <!-- Products Start -->
-   <!--  <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">This catogiry Products</span></h2>
         </div>
@@ -221,7 +221,7 @@
         ?>
 
     </div>
-</div> -->
+</div>
 <!-- Products end -->
 
 <!-- Products Start -->
