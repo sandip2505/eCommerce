@@ -9,10 +9,6 @@ class orderController extends Controller{
   public function checkout(){
     $this->view("checkout");
  }
-//   public function index(){
-//    $orderdata = $this->accountModel->getOrder();
-//    $this->view("checkout", $orderdata);      
-// }
 public function create(){
   $orderdata = $this->accountModel->createOrder();
    $this->view("checkout", $orderdata);      
@@ -31,7 +27,8 @@ public function createOrder(){
       'post_code' =>$this->input('post_code'),
       'Country'   =>$this->input('Country'),
       'user_id'   =>$this->input('user_id'),
-     // 'Country' =>$this->input('Country'),
+      // 'P_id'   =>$this->input('P_id'),
+    
      'firtsnameError'=>'',
      'lastnameError'=>'',
      'emailError'=>'',
@@ -44,7 +41,12 @@ public function createOrder(){
      'CountryError'=>''
 
    ];
-   //var_dump($orderdata);exit;  
+
+   $orderData = [
+     'id'   =>$this->input('id'),
+   ];
+ $m=explode(',' ,$orderData['id']);
+   // var_dump($orderdata);exit;  
    $error=false;
    if(empty($orderdata['firtsname'])){
      $orderdata['firtsnameError'] = ' firtsname is required';
@@ -108,13 +110,13 @@ if($error==true){
    
 }
    $orderdata = [$orderdata['firtsname'],$orderdata['lastname'],$orderdata['email'],$orderdata['mobile'],$orderdata['address_1'],$orderdata['address_2'],$orderdata['state'],$orderdata['city'],$orderdata['post_code'],$orderdata['Country'],$orderdata['user_id']];
-   // print_r($orderdata);exit;
    if($this->accountModel->createOrder($orderdata)){
-      $this->redirect("orderController/checkout");
-     // echo "samdip";
-   //   TempData["Success"] = "Added Successfully!";
-   //   return RedirectToAction("actionname", "orderController");
-   }
-}
+    $order=[$m];
+  $this->accountModel->Order($order);
 
+      $this->redirect("orderController/checkout");
+   }
+
+}
+  
 }

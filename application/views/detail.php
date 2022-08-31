@@ -65,11 +65,18 @@ foreach ($data['Productdata'] as $item) {
         </div>
         <form method="POST" action="<?php route('cartController/cartAdd')?>">
             <div class="col-lg-7 pb-4">
+
              <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
              <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
              <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
              <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
              <div class="d-flex mb-3">
+                 <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
+               <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+               <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
+               <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
+               <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
+               <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
                     <small class="fas fa-star"></small>
@@ -328,8 +335,6 @@ foreach ($data['reviewdata'] as $value) {
 </div>
 </div>
 <!-- Shop Detail End -->
-
-
 <!-- Products Start -->
 <div class="container-fluid py-5">
     <div class="text-center mb-4">
@@ -340,7 +345,6 @@ foreach ($data['reviewdata'] as $value) {
             <div class="owl-carousel related-carousel">
                 <?php
                 foreach ($data['ProductData'] as $item) {
-                    // var_dump($data);exit;
                     ?>
                     <form method="POST" action="<?php route('cartController/cartAdd')?>">
                         <div class="card product-item border-0">
@@ -350,6 +354,7 @@ foreach ($data['reviewdata'] as $value) {
                                 </a>
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+<<<<<<< HEAD
                                <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
                                <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
                                <div class="d-flex justify-content-center">
@@ -358,6 +363,17 @@ foreach ($data['reviewdata'] as $value) {
                                </div>
                            </div>
                            <div class="card-footer d-flex justify-content-between bg-light border">
+=======
+                             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                             <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
+                             <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
+                             <div class="d-flex justify-content-center">
+                                 <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                                 <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                             </div>
+                         </div>
+                         <div class="card-footer d-flex justify-content-between bg-light border">
+>>>>>>> 2a71b7a4b8840752befb0fb6622470fda3fe7197
                             <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                             <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
                         </div>

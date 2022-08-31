@@ -39,7 +39,7 @@
            <form >
         </form>
     <div class="col-lg-6 col-6 text-left">
-        <form action="<?php echo BASEURL; ?>/accountController/index" method="POST">
+        <form action="<?php echo BASEURL; ?>/accountController/search" method="POST">
             <div class="input-group">
                 <!-- <input type="hidden" name="valueToSearch "> -->
                 <input type="text" name="valueToSearch" class="form-control"  placeholder="Search for products">
@@ -101,12 +101,12 @@
                         if(isset($item['mainCat'])){ ?>
                             <div class="nav-item dropdown">
                                 <?php if(isset($item['childCat'])){ ?>
-                                    <a href="#" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                                    <a href="<?php route('accountController/CatProduct');?>/<?php echo $item['mainCat'][0]->id;?>" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
                                     <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
                                         <?php
                                         foreach ($item['childCat'] as $childItem) {
                                           ?>
-                                          <a href="" class="dropdown-item"><?php echo $childItem->category_name;?></a>
+                                          <a href="<?php route('accountController/CatProduct');?>/<?php echo $childItem->id;?>" class="dropdown-item"><?php echo $childItem->category_name;?></a>
                                           <?php 
                                       } 
                                       ?>
@@ -142,6 +142,7 @@
                     <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/accountController/shop") {echo "active"; } else{echo "noactive";}?>">Shop</a>
                     <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/contact") {echo "active"; } else{echo "noactive";}?>">Contact</a>
                     <a href="<?php route('CartController/cartview'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/CartController/cartview") {echo "active"; } else{echo "noactive";}?>">Cart</a>
+                    <a href="" class="nav-item nav-link ">About Us</a>
                 </div>
                 <div class="navbar-nav ml-auto py-0">
 
