@@ -24,8 +24,8 @@
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                          <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
                          <!-- <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
-                         <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                         <input type="text" name="" value="<?php echo $item->image;?>">
+                         <img  class="img-fluid w-100" src="../../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                         <!-- <input type="text" name="" value="<?php echo $item->image;?>"> -->
                         
                         </a>
                      </div>
