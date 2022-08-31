@@ -177,8 +177,6 @@ else if($result['status'] === "ok"){
 
 }
 
-
-
 }
 
 public function contactform(){

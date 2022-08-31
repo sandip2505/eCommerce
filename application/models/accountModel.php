@@ -185,9 +185,9 @@ public function getReviewData($id){
         return $data;
 
     }
+
+
 }
-
-
 public function getSetdata()
 {
     $this->Query("SELECT * FROM settings WHERE is_deleted = 0  ");
@@ -198,8 +198,8 @@ public function getSetdata()
 
 
 
-}
 
+}
 
 
 
@@ -230,3 +230,4 @@ public function getSetdata()
 //ALTER TABLE "appointments" DROP FOREIGN KEY "appointments_user_id_foreign";
 
 //ALTER TABLE "appointments" ADD CONSTRAINT "appointments_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "users" ("id")
+
