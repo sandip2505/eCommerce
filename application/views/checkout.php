@@ -294,7 +294,6 @@
                           <!-- <?php foreach($it as $m){
                                     // var_dump($m);
                             
-                           
                             ?> -->    
                         <input type="hidden" name="id" value="<?php echo $n ?>">
                         <input type="hidden" name="Quantity" value="<?php echo $q ?>">
