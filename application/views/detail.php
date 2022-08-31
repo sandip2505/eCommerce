@@ -7,12 +7,12 @@
 </head>
 
 <body>
-   <?php include "components/header.php"; ?>
-   <!-- <img class="img-fluid" src="../public\assets/img/carousel-1.jpg" alt="Image"> -->
+ <?php include "components/header.php"; ?>
+ <!-- <img class="img-fluid" src="../public\assets/img/carousel-1.jpg" alt="Image"> -->
 
 
-   <!-- Page Header Start -->
-   <div class="container-fluid bg-secondary mb-5">
+ <!-- Page Header Start -->
+ <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
         <div class="d-inline-flex">
@@ -32,11 +32,11 @@
 
 foreach ($data['Productdata'] as $item) {
     // var_dump($item);exit;
- ?>
- <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
- <!-- <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3> -->
+   ?>
+   <!-- <img  class="w-100 h-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
+   <!-- <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3> -->
 
- <div class="container-fluid py-4">
+   <div class="container-fluid py-4">
     <div class="row px-xl-5">
         <div class="col-lg-5 pb-4">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
@@ -65,11 +65,11 @@ foreach ($data['Productdata'] as $item) {
         </div>
         <form method="POST" action="<?php route('cartController/cartAdd')?>">
             <div class="col-lg-7 pb-4">
-               <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-               <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
-               <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
-               <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
-               <div class="d-flex mb-3">
+             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+             <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
+             <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
+             <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
+             <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
                     <small class="fas fa-star"></small>
@@ -336,7 +336,7 @@ foreach ($data['reviewdata'] as $value) {
         <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
     </div>
     <div class="container-fluid py-5">
-        <div class="col">
+        <div class="thumbnail">
             <div class="owl-carousel related-carousel">
                 <?php
                 foreach ($data['ProductData'] as $item) {
@@ -346,18 +346,18 @@ foreach ($data['reviewdata'] as $value) {
                         <div class="card product-item border-0">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
-                                <img  class="img-fluid w-100" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                                    <img  class="img-fluid img-thumbnail" src="/../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
                                 </a>
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                             <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-                             <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
-                             <div class="d-flex justify-content-center">
-                                 <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
-                                 <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
-                             </div>
-                         </div>
-                         <div class="card-footer d-flex justify-content-between bg-light border">
+                               <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                               <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
+                               <div class="d-flex justify-content-center">
+                                   <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                                   <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                               </div>
+                           </div>
+                           <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                             <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
                         </div>

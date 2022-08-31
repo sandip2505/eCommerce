@@ -27,8 +27,8 @@ class cartModal extends database {
        
      if($this->Query("SELECT coupon_value FROM coupon_master where coupon_code = ? ", [$coupondataValue] )){
             $CouponData = $this->fetchAll();
+             // var_dump($CouponData);exit;
             return $CouponData;
-            // var_dump($CouponData);exit;
 
     }
 

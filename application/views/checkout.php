@@ -196,7 +196,7 @@
                         <h5 class="font-weight-medium mb-3">Products</h5>
                         <?php
                         $t = 0;
-                        $s = 10;
+                        $s = 50;
                         $gt = [];
                         $g = [];
                         foreach ($_SESSION['cart_item']  as $item) {
@@ -221,7 +221,7 @@
                                 $t = $p * $q;
                                 $gt[] = $t;
                                 $g[] = $s + $t;
-
+                               $m = $_SESSION['at'] +  $s ;
                                 ?>
                             </div>
 
@@ -234,17 +234,17 @@
                         <hr class="mt-0">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium"><?php echo array_sum($gt) ?></h6>
+                            <h6 class="font-weight-medium"><?php echo $_SESSION['at'];?></h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">20</h6>
+                            <h6 class="font-weight-medium">50</h6>
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold"><?php echo array_sum($g) ?></h5>
+                            <h5 class="font-weight-bold"><?php echo $m; ?></h5>
                         </div>
                     </div>
                 </div>

@@ -67,43 +67,43 @@
                    <?php
                    $sno = 1;
                    $t = 0;
-                   $s = 10;
+                   $s = 0;
                    $gt = [];
                    $g = [];
                    if(count($_SESSION['cart_item'])){
 
-                   foreach ($_SESSION['cart_item']  as $item) {
-                      $p = 0;
-                      $q = 0;
-                      echo "<form action='cartUpdate' method='POST'>";
-                      echo "<tr>";
-                      echo "<td>".$sno++."</td>";
-                      foreach($item as $key => $value){
-                        if($key == 0){
-                            echo "<td>".$value."</td>";
-                            echo "<input type='hidden' name='pro$key' value='".$value."'>";
-                        }else if($key == 1){
-                            echo "<td>".$value."</td>";
-                            echo "<input type='hidden' name='pro$key' value='".$value."'>";
-                            $p = $value;
-                        }else if($key == 2){
-                            echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
-                            $q = $value;
+                       foreach ($_SESSION['cart_item']  as $item) {
+                          $p = 0;
+                          $q = 0;
+                          echo "<form action='cartUpdate' method='POST'>";
+                          echo "<tr>";
+                          echo "<td>".$sno++."</td>";
+                          foreach($item as $key => $value){
+                            if($key == 0){
+                                echo "<td>".$value."</td>";
+                                echo "<input type='hidden' name='pro$key' value='".$value."'>";
+                            }else if($key == 1){
+                                echo "<td>".$value."</td>";
+                                echo "<input type='hidden' name='pro$key' value='".$value."'>";
+                                $p = $value;
+                            }else if($key == 2){
+                                echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
+                                $q = $value;
+                            }
                         }
-                    }
-                    $t = $p * $q ;
-                    $gt[] = $t;
-                    $g[] = $s+$t;
-                    echo "<td>".$t."</td>";
-                    echo "<td><input type='submit' name='event' value='Update' class='btn btn-warning'></td>";
+                        $t = $p * $q ;
+                        $gt[] = $t;
+                        $g[] = $s+$t;
+                        echo "<td>".$t."</td>";
+                        echo "<td><input type='submit' name='event' value='Update' class='btn btn-warning'></td>";
 
                 // echo "<td><input type='submit' name='event' value='Delete' class='btn btn-danger'></td>";
-                    echo "<td class='align-middle'>
-                    <button type='submit' name='event' value='Delete'><i class='fa fa-times'></i></button>
-                    </td>";
+                        echo "<td class='align-middle'>
+                        <button type='submit' name='event' value='Delete'><i class='fa fa-times'></i></button>
+                        </td>";
 
-                    echo "</form>";
-                   }
+                        echo "</form>";
+                    }
                 }
 
                 ?>
@@ -111,37 +111,57 @@
         </table>
     </div>
     <div class="col-lg-4">
-        <form class="mb-5" action="<?php route('cartController/couponApply')?>">
+        <form class="mb-5" method="POST" action="<?php route('cartController/couponApply')?>">
             <div class="input-group">
-                <input type="text" name="valueToCoupon" class="form-control p-4" placeholder="Coupon Code">
+                <input type="text" name="valueToCoupon" class="form-control p-4" placeholder="Coupon Code" value="<?php echo isset($_POST['valueToCoupon'])?$_POST['valueToCoupon']:'' ?>">
                 <div class="input-group-append">
                     <button class="btn btn-primary">Apply Coupon</button>
+                    <?php 
+                    if(isset($data['CouponData'])){
+                        foreach ($data['CouponData']  as $item) { 
+                            $s=$item->coupon_value;
+                            ?>
+                            <?php
+                        }
+
+                    }
+                    ?>
+                    <?php
+
+                    $Gt =  array_sum($gt);
+                    $at = $Gt-$s;
+                    $_SESSION["at"] = $at;
+                // var_dump($at);exit;
+
+                    ?>
+
+
                 </div>
             </div>
-                    <span class="text-danger"></span>
+            <span class="text-danger"></span>
         </form>
-                <form method="POST" action="<?php route('orderController/checkout')?>">
-        <div class="card border-secondary mb-5">
-            <div class="card-header bg-secondary border-0">
-                <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
-            </div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between mb-3 pt-1">
-                    <h6 class="font-weight-medium">Subtotal</h6>
-                    <h6 class="font-weight-medium"><?php  echo array_sum($gt)?></h6>
-                    <!-- <h6 class="font-weight-medium">150</h6> -->
+        <form method="POST" action="<?php route('orderController/checkout')?>">
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
                 </div>
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-weight-medium">Shipping</h6>
-                    <h6 class="font-weight-medium">20</h6>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3 pt-1">
+                        <h6 class="font-weight-medium">Subtotal</h6>
+                        <h6 class="font-weight-medium"><?php  echo $Gt ?></h6>
+                        <!-- <h6 class="font-weight-medium">150</h6> -->
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Discount</h6>
+                        <h6 class="font-weight-medium"><?php  echo $s ?></h6>
+                    </div>
                 </div>
-            </div>
-            <div class="card-footer border-secondary bg-transparent">
-                <div class="d-flex justify-content-between mt-2">
-                    <h5 class="font-weight-bold">Total</h5>
-                    <h5 class="font-weight-bold"><?php  echo array_sum($g)?></h5>
-                </div>
-                <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
+                <div class="card-footer border-secondary bg-transparent">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5 class="font-weight-bold">Total</h5>
+                        <h5 class="font-weight-bold"><?php  echo ($at)?></h5>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
                 </form>
             </div>
         </div>

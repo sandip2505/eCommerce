@@ -49,8 +49,8 @@ class CartController extends Controller {
 		$coupondataValue = $this->input('valueToCoupon');
 		$CouponData  = $this->cartModal->AddCoupon($coupondataValue);
 		$data['CouponData'] = $CouponData;
-		// var_dump($data);exit;
-		$this->view("shop",$data);
+		 // var_dump($data);exit;
+		$this->view("cart",$data);
 
 	}
 	public function CreateReview(){
