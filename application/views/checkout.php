@@ -192,45 +192,60 @@
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Order Total</h4>
                     </div>
+
                     <div class="card-body">
                         <h5 class="font-weight-medium mb-3">Products</h5>
                         <?php
                         $t = 0;
                         $s = 10;
                         $gt = [];
+                         $it = [];
                         $g = [];
                         foreach ($_SESSION['cart_item']  as $item) {
+                          // echo "<pre>";   var_dump($_SESSION['cart_item']);exit;
                             $p = 0;
                             $q = 0;
                         ?>
                             <div class="d-flex justify-content-between">
                                 <?php
-                                foreach ($item as $key => $value) {
+                              foreach ($item as $key => $value) {
                                     if ($key == 0) {
-
                                         echo "<p>$value </p>";
-                                    } else if ($key == 1) {
-
+                                        $n=$value;
+                                    } 
+                                
+                             else if ($key == 1) {
                                         echo "<p>$value </p>";
-                                        $p = $value;
-                                    } else if ($key == 2) {
+                                       $p = $value;
+                                
+                             }else if ($key == 2) {
+                                    // echo "<p>$value </p>";
+                                         $q = $value;
 
-                                        $q = $value;
-                                    }
-                                }
+                                     }else if ($key == 3) {
+
+                                      // echo "<p> $value </p>";
+                                         $i = $value;
+                             var_dump($i);
+                            }
+                        }
+                        $it[]=$i;
+              
                                 $t = $p * $q;
                                 $gt[] = $t;
                                 $g[] = $s + $t;
 
+
                                 ?>
                             </div>
 
-
                         <?php
-                        }
+                         } 
                         ?>
-
-
+                        <?php
+ $n = implode(',',$it);
+                            // var_dump($n);exit;
+                            ?>
                         <hr class="mt-0">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
@@ -275,10 +290,21 @@
                         </div>
                     </div>
                     <div>
+                           <!-- <input type="hidden" name="u_id" value="<?php echo $_SESSION['userId'] ;?>"> -->
+                          <!-- <?php foreach($it as $m){
+                                    // var_dump($m);
+                            
+                           
+                            ?> -->    
+                        <input type="hidden" name="id" value="<?php echo $n ?>">
+                        <input type="hidden" name="Quantity" value="<?php echo $q ?>">
+                        <input type="hidden" name="total_price" value="<?php echo array_sum($g) ?>">
                         <input class="form-control" type="hidden" name="user_id" value="<?php echo $_SESSION['userId']; ?>">
-                    </div>
+                        </div>
+                     <!--     <?php } ?> -->
+                       
                     <div class="card-footer border-secondary bg-transparent">
-                        <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="submit" value="submit" >
+                        <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="submit" value="submit">
                             Place Order
                         </button>
                     </div>

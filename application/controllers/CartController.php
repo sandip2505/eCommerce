@@ -15,7 +15,9 @@ class CartController extends Controller {
 		$name = $_POST['name'];
 		$price = ($_POST['price']) ? (int) $_POST['price'] : 0;
 		$quantity = ($_POST['qty']) ? (int) $_POST['qty'] : 1;
-		$Productdata = array($name,$price,$quantity);
+		$id = $_POST['product_id'];
+		$Productdata = array($name,$price,$quantity,$id);
+		 // var_dump($Productdata);exit;
 		$_SESSION['cart_item'][$name] = $Productdata;
 		$this->view("cart");
 	}

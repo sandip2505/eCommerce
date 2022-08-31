@@ -127,10 +127,23 @@ public function createOrder($orderdata)
         return true;
     }
 }
+public function Order($order)
+{
+        // var_dump($order);
+       // $user_Id =$conn->insertid;
+     
+        foreach($order as $oreder_id){
+        // var_dump($oreder_id);exit;
+    if ($this->Query("INSERT INTO orders (product_id) VALUES (?) ",$oreder_id)) {
+        return true;
+    }
+
+}
+}
 public function getOrder()
 {
 
-    if ($this->Query("SELECT * FROM user_address ")) {
+    if ($this->Query("SELECT * FROM user_address")) {
         $orderdata = $this->fetchAll();
         return $orderdata;
     }
@@ -162,39 +175,4 @@ public function getdetaildata(){
 
         }
     }
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // public function storeImage($id){
-
-    //         if($=NULL){
-    //             if($this->Query("INSERT INTO user_address ('user_id') VALUES ($id)")){     
-    //             }
-    //         }
-
-    //     return true;
-    // }
-//ALTER TABLE "appointments" DROP FOREIGN KEY "appointments_user_id_foreign";
-
-//ALTER TABLE "appointments" ADD CONSTRAINT "appointments_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "users" ("id")

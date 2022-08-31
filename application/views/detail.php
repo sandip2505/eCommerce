@@ -65,6 +65,7 @@ foreach ($data['Productdata'] as $item) {
         </div>
         <form method="POST" action="<?php route('cartController/cartAdd')?>">
             <div class="col-lg-7 pb-4">
+                 <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
                <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
                <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
                <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
@@ -338,7 +339,6 @@ foreach ($data['reviewdata'] as $value) {
             <div class="owl-carousel related-carousel">
                 <?php
                 foreach ($data['ProductData'] as $item) {
-                    // var_dump($data);exit;
                     ?>
                     <form method="POST" action="<?php route('cartController/cartAdd')?>">
                         <div class="card product-item border-0">
@@ -349,6 +349,7 @@ foreach ($data['reviewdata'] as $value) {
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                              <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
+                             <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
                              <h6 class="text-truncate mb-3"><?php echo $item ->name; ?></h6>
                              <div class="d-flex justify-content-center">
                                  <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
