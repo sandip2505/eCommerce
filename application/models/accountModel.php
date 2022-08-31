@@ -105,21 +105,32 @@ class accountModel extends database
     public function getProductImages($id){
         if ($this->Query("SELECT * FROM product RIGHT JOIN images ON   images.product_id =   product.id where product_id=$id GROUP BY images.product_id ")) {
             $Productdata = $this->fetchAll();
-
             return $Productdata;
         }
     }
 
-   
-public function searchProduct($searchdata){
-   if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
-       $searchdata = $this->fetchAll();
-       return $searchdata;
-   }
-}
 
-public function createOrder($orderdata)
-{
+     public function getCatProductData($id)
+    {
+
+        if ($this->Query("SELECT * FROM category JOIN product ON category.id = product.cat_id JOIN images ON  images.product_id = product.id where cat_id=$id ")) {
+            $CatProductData = $this->fetchAll();
+           // echo "<pre>";
+           //  var_dump($CatProductData);exit;
+            return $CatProductData;
+        }
+    }
+
+    
+    public function searchProduct($searchdata){
+     if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
+         $searchdata = $this->fetchAll();
+         return $searchdata;
+     }
+ }
+
+ public function createOrder($orderdata)
+ {
        // print_r($orderdata);exit;
        // $user_Id =$conn->insertid; 
     if ($this->Query("INSERT INTO user_address (firstname,lastname,email,mobile,address_1,address_2,state,city, post_code,Country,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)", $orderdata)) {
@@ -135,16 +146,16 @@ public function getOrder()
         return $orderdata;
     }
 }
- 
 
 
 
-       
+
+
 
 public function getdetaildata(){
 
-       
-   if ($this->Query("SELECT * FROM  product  LEFT JOIN images ON images.product_id = product.id  GROUP BY product.id")) {
+ 
+ if ($this->Query("SELECT * FROM  product  LEFT JOIN images ON images.product_id = product.id  GROUP BY product.id")) {
 
     $detaildata = $this->fetchAll();
 
@@ -152,16 +163,24 @@ public function getdetaildata(){
 
 }
 }
-   public function getReviewData($id){
+public function getReviewData($id){
 
-        if($this->Query("SELECT * FROM product_review where product_id = ?",[$id] )){
-            $data = $this->fetchAll();
+    if($this->Query("SELECT * FROM product_review where product_id = ?",[$id] )){
+        $data = $this->fetchAll();
               // var_dump($Cartdata);exit;
 
-            return $data;
+        return $data;
 
-        }
     }
+}
+
+
+public function getSetdata()
+{
+    $this->Query("SELECT * FROM settings WHERE is_deleted = 0  ");
+    $Settingsdata = $this->fetchAll();
+    return $Settingsdata;
+}
 
 
 
