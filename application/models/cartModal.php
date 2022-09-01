@@ -24,22 +24,22 @@ class cartModal extends database {
         }
     }
     public function AddCoupon($coupondataValue){
-       
-     if($this->Query("SELECT coupon_value FROM coupon_master where coupon_code = ? ", [$coupondataValue] )){
-            $CouponData = $this->fetchAll();
-             // var_dump($CouponData);exit;
-            return $CouponData;
+     
+       if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue]  )){
+        $CouponData = $this->fetchAll();
+        // var_dump($CouponData);exit;
+        return $CouponData;
 
     }
 
 }
- public function CreateReview($data)
-    {
+public function CreateReview($data)
+{
 
-        if ($this->Query("INSERT INTO product_review (rate,product_id,review,name,email) VALUES (?,?,?,?,?)", $data)) {
-            return true;
-        }
+    if ($this->Query("INSERT INTO product_review (rate,product_id,review,name,email) VALUES (?,?,?,?,?)", $data)) {
+        return true;
     }
+}
 
 
 

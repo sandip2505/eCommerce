@@ -41,6 +41,7 @@
     </div>
     <!-- Featured End -->
 
+
     <!-- Categories Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
@@ -50,6 +51,8 @@
             foreach ($catData as $item) {
                 if(isset($item['mainCat'])){  ?>
 
+
+
                     <div class="col-lg-4 col-md-6 pb-1">
                         <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                             <p class="text-right">1 Products</p>
@@ -57,18 +60,15 @@
                                 <img class="img-fluid" src="../eCommerceAdmin/public/assets/upload/<?php echo $item['mainCat'][0]->cat_img;?>" alt="">
                             </a>
                             <h5 class="font-weight-semi-bold m-0"><?php echo $item['mainCat'][0]->category_name;?></h5>
-
                         </div>
                     </div>
                     <?php 
                 }
             }
             ?>
-            
 
         </div>
     </div>
-
 
     <!-- Categories End -->
 
@@ -101,24 +101,24 @@
     <!-- Offer End -->
 
 
-
+    <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
-            <?php
+            <   ?php
             foreach ($data['Productdata'] as $item) {
                 // var_dump($data);exit;
                 ?>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1"> 
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                         <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
-                             <img  class="img-fluid w-100" src="../../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                         </a>
-                     </div>
-                     <form method="POST" action="<?php route('cartController/cartAdd')?>">
+                           <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
+                               <img  class="img-fluid w-100" src="../../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                           </a>
+                       </div>
+                       <form method="POST" action="<?php route('cartController/cartAdd')?>">
                         <!-- <a href="cartController/detail"> <img class="img-fluid w-100" src="public/assets/img/1748062776.jpg" alt=""> </a> -->
                         <input type='hidden' name='code' value="<?php echo $item ->code;?>" />
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
@@ -130,11 +130,11 @@
                             <!-- <h6 class="text-truncate mb-3"><?php echo $item  ->description; ?></h6> -->
                             <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
                             <div class="d-flex justify-content-center">
-                               <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
+                             <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
 
-                               <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
-                           </div>
-                           <div class="d-flex justify-content-center">
+                             <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
+                         </div>
+                         <div class="d-flex justify-content-center">
                             <div class="text-primary  mr-2">
                                 <small class="fas fa-star"></small>
                                 <small class="fas fa-star"></small>
@@ -154,75 +154,17 @@
 
                             <!-- <button type="submit" name="add" class="btn btn-sm text-dark p-0"><a class="fas fa-shopping-cart text-primary mr-1"></a>Add to cart</button> -->
                         </div>
-                    </div>
-                </form>
-            </div>
-            <?php 
-        }   
-        ?>
-    </div>
-</div>
-</div>  
-
-</div>
-
-
-<!-- Products Start end -->
-<!-- Products Start -->
-   <!--  <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">This catogiry Products</span></h2>
-        </div>
-        <div class="row px-xl-5 pb-3">
-            <?php
-            foreach ($data['CatProductData'] as $item) {
-                ?>
-                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                         <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
-                         <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                         <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                         <input type="text" name="" value="<?php echo $item->image;?>">
-                        
-                        </a>
-                     </div>
-                     <form method="POST" action="<?php route('cartController/cartAdd')?>">
-                        <input type='hidden' name='code' value="<?php echo $item ->code;?>" />
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-                            <h4 class="text-truncate mb-3"><?php echo $item ->name;?></h4>
-                            <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
-                            <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
-                            <div class="d-flex justify-content-center">
-                               <input type='hidden'  name='price' value="<?php echo $item ->price;?>" />
-                               <h6><?php echo $item ->price;?></h6><h6 class="text-muted ml-2"><del><?php echo $item ->rrp;?></del></h6>
-                           </div>
-                           <div class="d-flex justify-content-center">
-                            <div class="text-primary  mr-2">
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star-half-alt"></small>
-                                <small class="far fa-star"></small>
-                            </div>
-                            <small class="pt-1">(50 Reviews)</small>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-center bg-light border">
-                        <button class="btn btn-sm text-dark p-0" data-toggle='modal'><a class="fas fa-eye text-primary mr-1"
-                            href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">View Detail</a></button>
-                        </div>
                     </form>
                 </div>
-            </div>
+            </div>  
             <?php 
         }   
         ?>
 
     </div>
-</div> -->
-<!-- Products end -->
+</div>
+
+<!-- Products Start end -->
 
 <!-- Products Start -->
 <div class="container-fluid pt-5">
@@ -400,7 +342,7 @@
                 <!-- <div class="vendor-item border p-4">
                     <img src="public/assets/img/nike-logo-png-21183.png" alt="">
                 </div> -->
-                
+
                 <div class="vendor-item border p-4">
                     <img src="public/assets/img/facebook-logo.png" alt="">
                 </div>

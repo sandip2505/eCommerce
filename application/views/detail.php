@@ -68,7 +68,7 @@ foreach ($data['Productdata'] as $item) {
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
                         <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small> 
                         <small class="fas fa-star-half-alt"></small>
                         <small class="far fa-star"></small>
                     </div>
@@ -272,7 +272,7 @@ foreach ($data['reviewdata'] as $value) {
                 <form method="POST" action="<?php route('cartController/CreateReview')?>">
                     <div class="d-flex my-3">
                         <p class="mb-0 mr-2">Your Rating * :</p>
-                        
+
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5" />
                             <label for="star5" title="text">5 stars</label>
@@ -303,7 +303,7 @@ foreach ($data['reviewdata'] as $value) {
                     <div class="form-group mb-0">
                         <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
                     </div>
-                    
+
                 </form>
             </div>
         </div>
