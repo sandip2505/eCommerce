@@ -37,7 +37,7 @@ public function checkCoupon($Coupondata)
 {
 
     if ($this->Query("SELECT coupon_code FROM coupon_master WHERE coupon_code = ? ", $Coupondata)) {
-        $CouponData = $this->fetchAll();
+        // $CouponData = $this->fetchAll();
      // var_dump($Coupondata);exit;
         if ($this->rowCount() > 0) {
             return true;
@@ -48,23 +48,20 @@ public function checkCoupon($Coupondata)
 
 public function checkCouponDate($Coupondate)
 {
-    // var_dump($Coupondate);exit;
     if ($this->Query("SELECT end_date FROM coupon_master WHERE end_date < ? ", $Coupondate)) {
-       $Coupondate = $this->fetchAll();
-      // var_dump($Coupondate);exit;
-       if ($Coupondate) {
-       return false;
-   }
+        if ($this->rowCount() < 0) {
+            return true ;
+        }
+    }
+}
 
-}
-}
 
 
 public function CreateReview($data)
 {
 
     if ($this->Query("INSERT INTO product_review (rate,product_id,review,name,email) VALUES (?,?,?,?,?)", $data)) {
-        return true;
+        return false;
     }
 }
 
