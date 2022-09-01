@@ -7,10 +7,10 @@
 </head>
 
 <body>
-   <?php include "components/header.php"; ?>
+ <?php include "components/header.php"; ?>
 
-   <!-- Page Header Start -->
-   <div class="container-fluid bg-secondary mb-5">
+ <!-- Page Header Start -->
+ <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
         <div class="d-inline-flex">
@@ -49,62 +49,63 @@
             <table class="table table-bordered text-center mb-0">
                 <thead class="bg-secondary text-dark">
                     <tr>
-                       <td>Sno</td>
-                       <td>Name</td>
-                       <td>Price</td>
-                       <td>Quantity</td>
-                       <td>Total</td>
-                       <td>Update</td>
-                       <td>Delete</td>
-                   </tr>
-               </thead>
-               <tbody class="align-middle">
+                     <td>Sno</td>
+                     <td>Name</td>
+                     <td>Price</td>
+                     <td>Quantity</td>
+                     <td>Total</td>
+                     <td>Update</td>
+                     <td>Delete</td>
+                 </tr>
+             </thead>
+             <tbody class="align-middle">
 
-                   <?php
-                   $sno = 1;
-                   $t = 0;
-                   $s = 0;
-                   $gt = [];
-                   $g = [];
-                   if(count($_SESSION['cart_item'])){
+                 <?php
+                 $sno = 1;
+                 $t = 0;
+                 $s = 0;
+                 $gt = [];
+                 $g = [];
+                 if(count($_SESSION['cart_item'])){
 
-                       foreach ($_SESSION['cart_item']  as $item) {
-                          $p = 0;
-                          $q = 0;
-                          echo "<form action='cartUpdate' method='POST'>";
-                          echo "<tr>";
-                          echo "<td>".$sno++."</td>";
-                          foreach($item as $key => $value){
-                            if($key == 0){
-                                echo "<td>".$value."</td>";
-                                echo "<input type='hidden' name='pro$key' value='".$value."'>";
-                            }else if($key == 1){
-                                echo "<td>".$value."</td>";
-                                echo "<input type='hidden' name='pro$key' value='".$value."'>";
-                                $p = $value;
-                            }else if($key == 2){
-                                echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
-                                $q = $value;
-                            }
+                     foreach ($_SESSION['cart_item']  as $item) {
+                      $p = 0;
+                      $q = 0;
+                      echo "<form action='cartUpdate' method='POST'>";
+                      echo "<tr>";
+                      echo "<td>".$sno++."</td>";
+                      foreach($item as $key => $value){
+                        if($key == 0){
+                            echo "<td>".$value."</td>";
+                            echo "<input type='hidden' name='pro$key' value='".$value."'>";
+                        }else if($key == 1){
+                            echo "<td>".$value."</td>";
+                            echo "<input type='hidden' name='pro$key' value='".$value."'>";
+                            $p = $value;
+                        }else if($key == 2){
+                            echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
+                            $q = $value;
                         }
-                        $t = $p * $q ;
-                        $gt[] = $t;
-                        $g[] = $s+$t;
-                        echo "<td>".$t."</td>";
-                        echo "<td><input type='submit' name='event' value='Update' class='btn btn-warning'></td>";
+                    }
+                    $t = $p * $q ;
+                    $gt[] = $t;
+                    $g[] = $s+$t;
+                    echo "<td>".$t."</td>";
+                    echo "<td><input type='submit' name='event' value='Update' class='btn btn-warning'></td>";
 
                 // echo "<td><input type='submit' name='event' value='Delete' class='btn btn-danger'></td>";
-                        echo "<td class='align-middle'>
-                        <button type='submit' name='event' value='Delete'><i class='fa fa-times'></i></button>
-                        </td>";
+                    echo "<td class='align-middle'>
+                    <button type='submit' name='event' value='Delete'><i class='fa fa-times'></i></button>
+                    </td>";
 
-                        echo "</form>";
-                    }
+                    echo "</form>";
                 }
+                
 
                 ?>
             </tbody>
         </table>
+
     </div>
     <div class="col-lg-4">
         <form class="mb-5" method="POST" action="<?php route('cartController/couponApply')?>">
@@ -161,13 +162,18 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>
-</div>
+
+                 <?php }else{
+        ?>
+        <h1> the cart is empty</h1>
+        <?php
+    }
+    ?>
 <!-- Cart End -->
-
-
+</div>
 <?php include "components/footer.php"; ?>
+</div>
+</div>
 </body>
 
 </html>
