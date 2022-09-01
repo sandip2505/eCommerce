@@ -44,8 +44,10 @@
                 <!-- <input type="hidden" name="valueToSearch "> -->
                 <input type="text" name="valueToSearch" class="form-control"  placeholder="Search for products">
                 <div class="input-group-append">
-                    <span class="input-group-text bg-transparent text-primary" >
-                        <i class="fa fa-search"></i>
+                    <span class="input-group-text bg-transparent text-primary">
+
+                       <a href="<?php echo BASEURL; ?>/accountController/search"> <i class="fa fa-search"></i></a>
+                        
                     </span>
                 </div>
             </div>
@@ -142,7 +144,7 @@
                     <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/accountController/shop") {echo "active"; } else{echo "noactive";}?>">Shop</a>
                     <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/contact") {echo "active"; } else{echo "noactive";}?>">Contact</a>
                     <a href="<?php route('CartController/cartview'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/CartController/cartview") {echo "active"; } else{echo "noactive";}?>">Cart</a>
-                    <a href="" class="nav-item nav-link ">About Us</a>
+                    <a href="<?php route('welcome/about'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/about") {echo "active"; } else{echo "noactive";}?> ">About Us</a>
                 </div>
                 <div class="navbar-nav ml-auto py-0">
 

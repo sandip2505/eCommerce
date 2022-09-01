@@ -28,10 +28,10 @@
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="<?php route(''); ?>"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/shop'); ?>"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/detail'); ?>"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/cart'); ?>"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/checkout'); ?>"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark mb-2" href="<?php route('accountController/shop'); ?>"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-dark mb-2" href="<?php route('accountController/detail'); ?>"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-dark mb-2" href="<?php route('accountController/cart'); ?>"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="<?php route('orderController/checkout'); ?>"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
                             <a class="text-dark" href="<?php route('welcome/contact'); ?>"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
@@ -39,9 +39,9 @@
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="<?php route(''); ?>"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/shop'); ?>"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/detail'); ?>"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                            <a class="text-dark mb-2" href="<?php route('welcome/cart'); ?>"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="<?php route('accountController/shop'); ?>"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-dark mb-2" href="<?php route('accountController/detail'); ?>"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                            <a class="text-dark mb-2" href="<?php route('accountController/cart'); ?>"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
                             <a class="text-dark mb-2" href="<?php route('orderController/checkout'); ?>"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
                             <a class="text-dark" href="<?php route('welcome/contact'); ?>"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>

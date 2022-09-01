@@ -53,13 +53,28 @@ class CartController extends Controller {
 
 			'coupon_code'        => $this->input('valueToCoupon'),
 		];
+
+
+
+		$Coupondata=[$CouponData['coupon_code']];
+		
+
 		$error=false;
 
 		if (empty($CouponData["coupon_code"])) {
 
 			$CouponData['couponError']= "**Coupon is required";
 			$error=true;
+		} else {
+			if(!$this->cartModal->checkCoupon($Coupondata)){
+				$CouponData['couponError'] = " the coupon is invalid ";
+				$error=true;
 
+			}
+			 // else{
+			// 	$CouponData['couponError'] = " the coupon is invalid ";
+			// 	$error=true;
+			// }
 		}
 		if($error==true){
 			$this->view('cart', $CouponData);

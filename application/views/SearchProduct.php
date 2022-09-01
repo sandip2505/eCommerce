@@ -12,19 +12,20 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">This catogiry Products</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Search Products</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             <?php
             foreach ($data['searchdata'] as $item) {
+                // var_dump($data);exit;
                 ?>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                          <a href="<?php route('accountController/detail')?>/<?php echo $item ->id;?>">
-                         <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                         <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
-                         <input type="text" name="" value="<?php echo $item->image;?>">
+                         <!-- <img  class="img-fluid w-100" src="../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt=""> -->
+                         <img  class="img-fluid w-100" src="../../eCommerceAdmin/public/assets/upload/<?php echo $item->image;?>"  alt="">
+                         <!-- <input type="text" name="" value="<?php echo $item->image;?>"> -->
                         
                         </a>
                      </div>

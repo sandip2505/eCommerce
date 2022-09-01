@@ -226,7 +226,7 @@
 
                                       // echo "<p> $value </p>";
                                        $i = $value;
-                                       var_dump($i);
+                                       // var_dump($i);
                                    }
                                }
                                $it[]=$i;

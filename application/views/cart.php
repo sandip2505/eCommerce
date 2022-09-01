@@ -1,8 +1,4 @@
-<?php
-// if (isset($_SESSION['name'])): 
-// endif;
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
