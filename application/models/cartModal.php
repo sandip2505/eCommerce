@@ -25,7 +25,7 @@ class cartModal extends database {
     }
     public function AddCoupon($coupondataValue){
 
-     if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue]  )){
+       if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue]  )){
         $CouponData = $this->fetchAll();
         // var_dump($CouponData);exit;
         return $CouponData;
@@ -37,18 +37,28 @@ public function checkCoupon($Coupondata)
 {
 
     if ($this->Query("SELECT coupon_code FROM coupon_master WHERE coupon_code = ? ", $Coupondata)) {
+        $CouponData = $this->fetchAll();
      // var_dump($Coupondata);exit;
-
-
         if ($this->rowCount() > 0) {
             return true;
         }
-        // else{
-        //     return true;
-        // }
 
-     }
- }
+    }
+}
+
+public function checkCouponDate($Coupondate)
+{
+    // var_dump($Coupondate);exit;
+    if ($this->Query("SELECT end_date FROM coupon_master WHERE end_date < ? ", $Coupondate)) {
+       $Coupondate = $this->fetchAll();
+      // var_dump($Coupondate);exit;
+       if ($Coupondate) {
+       return false;
+   }
+
+}
+}
+
 
 public function CreateReview($data)
 {
