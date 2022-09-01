@@ -61,7 +61,6 @@ foreach ($data['Productdata'] as $item) {
              <div class="d-flex mb-3">
                  <input type='hidden'  name='id' value="<?php echo $item ->id;?>" />
                  <input type='hidden'  name='name' value="<?php echo $item ->name;?>" />
-                 <h3 class="font-weight-semi-bold"><?php echo $item ->name;?></h3>
                  <input type="hidden" name="qty" placeholder="Quantity" value="1" required class="form-control">
                  <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
                  <div class="d-flex mb-3">

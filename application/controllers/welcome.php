@@ -29,6 +29,9 @@ class welcome extends Controller{
     public function header(){
       $this->view("header");
    }
+    public function about(){
+      $this->view("AboutUs");
+   }
    
 
 }
