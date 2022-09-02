@@ -50,15 +50,15 @@
                 <thead class="bg-secondary text-dark">
                     <tr>
                       <th>Sno</th>
-                     <th>Name</th>
-                     <th>Price</th>
-                     <th>Quantity</th>
-                     <th>Total</th>
-                     <th>Update</th>
-                     <th>Delete</th>    
-                 </tr>
-             </thead>
-             <tbody class="align-middle">
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th>Update</th>
+                      <th>Delete</th>    
+                  </tr>
+              </thead>
+              <tbody class="align-middle">
 
                  <?php
                  $sno = 1;
@@ -123,7 +123,8 @@
           <?php 
           if(isset($data['CouponData'])){
             foreach ($data['CouponData']  as $item) { 
-                $s=$item->coupon_value;
+                // var_dump($item);exit;
+                $s =$item->coupon_value;
                 ?>
                 <?php
             }
@@ -158,17 +159,17 @@
             <div class="card-footer border-secondary bg-transparent">
                 <div class="d-flex justify-content-between mt-2">
                     <h5 class="font-weight-bold">Total</h5>
-                    <h5 class="font-weight-bold"><?php  echo ($at)?></h5>
+                    <h5 class="font-weight-bold"><?php  echo $at ?></h5>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
             </form>
         </div>
-<?php }else{
-    ?>
-    <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
-    <?php
-} 
-?> 
+    <?php }else{
+        ?>
+        <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
+        <?php
+    } 
+    ?> 
 </div>
 </div>
 <?php include "components/footer.php"; ?>
