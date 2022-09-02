@@ -103,7 +103,7 @@ class accountModel extends database
 
 
     public function getProductImages($id){
-        if ($this->Query("SELECT * FROM product RIGHT JOIN images ON   images.product_id =   product.id where product_id=$id GROUP BY images.product_id ")) {
+        if ($this->Query("SELECT * FROM product RIGHT JOIN images ON  images.product_id = product.id where product_id=$id GROUP BY images.product_id ")) {
             $Productdata = $this->fetchAll();
             return $Productdata;
         }
