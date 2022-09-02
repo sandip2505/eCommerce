@@ -35,9 +35,9 @@ class cartModal extends database {
     }
 
 }
-public function getcoupon(){
+public function getcoupon($coupondataValue){
 
-    if($this->Query("SELECT * FROM coupon_master where coupon_status = 1 "   )){
+    if($this->Query("SELECT * FROM coupon_master where coupon_status = 1 AND coupon_code=? ",[$coupondataValue])){
         $Coupondata = $this->fetchAll();
             // var_dump($Coupondata);exit;
 

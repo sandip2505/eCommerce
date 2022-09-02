@@ -49,10 +49,16 @@ class CartController extends Controller {
 	}
 
 	public function couponApply(){
-		$data= $this->cartModal->getcoupon();
+		$coupondataValue  = $this->input('valueToCoupon');
+		if(isset($coupondataValue));
+		$data  = $this->cartModal->getcoupon($coupondataValue);
+		// $data= $this->cartModal->getcoupon();
 		foreach ($data as $item) { 
 			$cart_min_value =	$item->cart_min_value;
+
 		}
+	
+
 		$t = 0;
 		$s = 0;
 		$gt = [];
@@ -95,13 +101,13 @@ class CartController extends Controller {
 
 			}else {
 				if(!$this->cartModal->checkCouponDate($Coupondata,$Coupondate)){
-					$CouponData['couponError'] = "<b>The coupon is Expired</b> ";
+					$CouponData['couponError'] = "<b>**The coupon is Expired</b> ";
 					$error=true;
 
 				}
 				else {
 					if(!$this->cartModal->checkCouponValue($Coupondata,$Gt)){
-						$CouponData['couponError'] = "<b>The Minumum Value For This Coupon is '".$cart_min_value."'</b> ";
+						$CouponData['couponError'] = "<b>**The Minumum Value For This Coupon is '".$cart_min_value."'</b> ";
 						$error=true;
 
 					}

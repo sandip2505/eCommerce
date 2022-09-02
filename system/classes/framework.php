@@ -37,10 +37,6 @@ public function input($inputName){
 
       return trim(strip_tags($_POST[$inputName]));
 
-   } else if($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'get'){
-
-      return trim(strip_tags($_GET[$inputName]));
-
    }
 
 }

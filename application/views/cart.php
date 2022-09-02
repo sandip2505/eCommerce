@@ -65,7 +65,7 @@
                $s = 0;
                $gt = [];
                $g = [];
-               if(count($_SESSION['cart_item'])){
+               if(isset($_SESSION['cart_item'])){
 
                    foreach ($_SESSION['cart_item']  as $item) {
                       $p = 0;
