@@ -106,6 +106,8 @@
             </tbody>
         </table>
     </div>
+</div>
+</div>
     <div class="col-lg-4">
         <form class="mb-5" method="POST" action="<?php route('cartController/couponApply')?>">
             <div class="input-group">
@@ -160,17 +162,18 @@
                     <h5 class="font-weight-bold">Total</h5>
                     <h5 class="font-weight-bold"><?php  echo ($at)?></h5>
                 </div>
+            </div>
                 <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
             </form>
         </div>
-<?php }else{
+<?php } else{
     ?>
     <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     <?php
 } 
 ?> 
-</div>
-</div>
+
+
 <?php include "components/footer.php"; ?>
 </body>
 </html>
