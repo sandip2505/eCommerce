@@ -224,7 +224,7 @@
 
                                    }else if ($key == 3) {
 
-                                      // echo "<p> $value </p>";
+                                    //   echo "<p> $value </p>";
                                        $i = $value;
                                        // var_dump($i);
                                    }
@@ -235,8 +235,6 @@
                                $gt[] = $t;
                                $g[] = $s + $t;
                                $m = $_SESSION['at'] +  $s ;
-
-
                                ?>
                            </div>
 
@@ -291,17 +289,13 @@
                     </div>
                 </div>
                 <div>
-                 <!-- <input type="hidden" name="u_id" value="<?php echo $_SESSION['userId'] ;?>"> -->
-                          <!-- <?php foreach($it as $m){
-                                    // var_dump($m);
-                            
-                          ?> -->    
+                 
                           <input type="hidden" name="id" value="<?php echo $n ?>">
                           <input type="hidden" name="Quantity" value="<?php echo $q ?>">
                           <input type="hidden" name="total_price" value="<?php echo array_sum($g) ?>">
                           <input class="form-control" type="hidden" name="user_id" value="<?php echo $_SESSION['userId']; ?>">
                       </div>
-                      <!--     <?php } ?> -->
+                     
                       
                       <div class="card-footer border-secondary bg-transparent">
                         <button type="submit" id="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" name="submit" value="submit">

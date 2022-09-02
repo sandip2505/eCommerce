@@ -44,8 +44,10 @@ public function createOrder(){
 
    $orderData = [
      'id'   =>$this->input('id'),
+     'userId'   =>$this->input('user_id'),
    ];
  $m=explode(',' ,$orderData['id']);
+ //$orderDatavalue=>('user_id'),
    // var_dump($orderdata);exit;  
    $error=false;
    if(empty($orderdata['firtsname'])){
@@ -112,6 +114,8 @@ if($error==true){
    $orderdata = [$orderdata['firtsname'],$orderdata['lastname'],$orderdata['email'],$orderdata['mobile'],$orderdata['address_1'],$orderdata['address_2'],$orderdata['state'],$orderdata['city'],$orderdata['post_code'],$orderdata['Country'],$orderdata['user_id']];
    if($this->accountModel->createOrder($orderdata)){
     $order=[$m];
+    $orderdatavalue =[$orderData['user_id']];
+   // $orderdatavalue(userdata)
   $this->accountModel->Order($order);
 
       $this->redirect("orderController/checkout");
