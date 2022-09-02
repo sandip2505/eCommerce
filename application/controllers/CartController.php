@@ -85,23 +85,23 @@ class CartController extends Controller {
 
 		if (empty($CouponData["coupon_code"])) {
 
-			$CouponData['couponError']= "**Coupon is required";
+			$CouponData['couponError']= "<b>**Coupon is required</b>";
 			$error=true;
 		}
 		else {
 			if(!$this->cartModal->checkCoupon($Coupondata)){
-				$CouponData['couponError'] = "**The Coupon is invalid ";
+				$CouponData['couponError'] = "<b>**The Coupon was invalid</b>";
 				$error=true;
 
 			}else {
 				if(!$this->cartModal->checkCouponDate($Coupondata,$Coupondate)){
-					$CouponData['couponError'] = "The coupon is Expired ";
+					$CouponData['couponError'] = "<b>The coupon is Expired</b> ";
 					$error=true;
 
 				}
 				else {
 					if(!$this->cartModal->checkCouponValue($Coupondata,$Gt)){
-						$CouponData['couponError'] = "The cart value is '".$cart_min_value."'  ";
+						$CouponData['couponError'] = "<b>The Minumum Value For This Coupon is '".$cart_min_value."'</b> ";
 						$error=true;
 
 					}

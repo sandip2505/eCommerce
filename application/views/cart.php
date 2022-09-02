@@ -133,6 +133,7 @@
         ?>
     </form>
     <form method="POST" action="<?php route('orderController/checkout')?>">
+     
         <div class="card border-secondary mb-5">
             <div class="card-header bg-secondary border-0">
                 <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
@@ -154,7 +155,9 @@
                     <h5 class="font-weight-bold"><?php  echo $at ?></h5>
                 </div>
             </div>
+
             <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
+
         </form>
     </div>
 

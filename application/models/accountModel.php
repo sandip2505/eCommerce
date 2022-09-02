@@ -140,12 +140,9 @@ class accountModel extends database
 }
 public function Order($order)
 {
-        // var_dump($order);
-    //    $user_Id =$conn->insertid;
-
-    foreach($order as $oreder_id){
         // var_dump($oreder_id);exit;
-        if ($this->Query("INSERT INTO orders (product_id,customer_id) VALUES (?,?) ",$oreder_id)) {
+    foreach($order as $oreder_id){
+        if ($this->Query("INSERT INTO orders (product_id) VALUES (?) ",$oreder_id)) {
             return true;
         }
 

@@ -36,25 +36,25 @@
                 <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-danger font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
             </a>
         </div>
-           <form >
+        <form >
         </form>
-    <div class="col-lg-6 col-6 text-left">
-        <form action="<?php echo BASEURL; ?>/accountController/search" method="POST">
-            <div class="input-group">
-                <!-- <input type="hidden" name="valueToSearch "> -->
-                <input type="text" name="valueToSearch" class="form-control"  placeholder="Search for products">
-                <div class="input-group-append">
-                    <span class="input-group-text bg-transparent text-primary">
+        <div class="col-lg-6 col-6 text-left">
+            <form action="<?php echo BASEURL; ?>/accountController/search" method="POST">
+                <div class="input-group">
+                    <!-- <input type="hidden" name="valueToSearch "> -->
+                    <input type="text" name="valueToSearch" class="form-control"  placeholder="Search for products">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary">
 
-                       <a href="<?php echo BASEURL; ?>/accountController/search"> <i class="fa fa-search"></i></a>
-                        
-                    </span>
-                </div>
-            </div>
-        </form>
-    </div>
+                         <a href="<?php echo BASEURL; ?>/accountController/search"> <i class="fa fa-search"></i></a>
 
-    <div class="col-lg-3 col-6 text-right">
+                     </span>
+                 </div>
+             </div>
+         </form>
+     </div>
+
+     <div class="col-lg-3 col-6 text-right">
         <a href="" class="btn border">
             <i class="fas fa-heart text-primary"></i>
             <span class="badge">0</span>
@@ -63,12 +63,12 @@
         $sno = 0; 
         if(isset($_SESSION['cart_item'])){
 
-         foreach ($_SESSION['cart_item']  as $item) {
+           foreach ($_SESSION['cart_item']  as $item) {
 
-           $sno++;
-       }
-   }
-   ?>
+             $sno++;
+         }
+     }
+     ?>
   <!--      </tbody>
    </table>
    <a href="<?php route('CartController/cartview'); ?>" class="btn border">
@@ -87,71 +87,81 @@
 </div>
 <!-- Topbar End -->
 <!-- Navbar Start -->
+<?php
+$url= $_SERVER['REQUEST_URI']; 
+?>
 <div class="container-fluid mb-5">
     <div class="row border-top px-xl-5">
-        <div class="col-lg-3 d-none d-lg-block">
-            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                <h6 class="m-0">Categories</h6>
-                <i class="fa fa-angle-down text-dark"></i>
-            </a>
+     <div class="col-lg-3 d-none d-lg-block">
+        <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+            <h6 class="m-0">Categories</h6>
+            <i class="fa fa-angle-down text-dark"></i>
+        </a>
+        <?php 
+        if($_SERVER['REQUEST_URI'] == '/eCommerceShop/'){
+            ?>
             <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
-                <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                    <?php
-                    $mainObj = new Controller();
-                    $catData = $mainObj->getCategoryList();
-                    foreach ($catData as $item) {
-                        if(isset($item['mainCat'])){ ?>
-                            <div class="nav-item dropdown">
-                                <?php if(isset($item['childCat'])){ ?>
-                                    <a href="<?php route('accountController/CatProduct');?>/<?php echo $item['mainCat'][0]->id;?>" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
-                                    <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                        <?php
-                                        foreach ($item['childCat'] as $childItem) {
-                                          ?>
-                                          <a href="<?php route('accountController/CatProduct');?>/<?php echo $childItem->id;?>" class="dropdown-item"><?php echo $childItem->category_name;?></a>
-                                          <?php 
-                                      } 
+            <?php }else{ ?>
+               
+               <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+               <?php } ?>
+               <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                <?php
+                $mainObj = new Controller();
+                $catData = $mainObj->getCategoryList();
+                foreach ($catData as $item) {
+                    if(isset($item['mainCat'])){ ?>
+                        <div class="nav-item dropdown">
+                            <?php if(isset($item['childCat'])){ ?>
+                                <a href="<?php route('accountController/CatProduct');?>/<?php echo $item['mainCat'][0]->id;?>" class="nav-link" data-toggle="dropdown" ><?php echo $item['mainCat'][0]->category_name;?><i class="fa fa-angle-down float-right mt-1"></i></a>
+                                <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                    <?php
+                                    foreach ($item['childCat'] as $childItem) {
                                       ?>
-                                  </div>
-                              <?php }else{ ?>
-                                <a href="#" class="dropdown-item"  ><?php echo $item['mainCat'][0]->category_name;?></a>
-                            <?php } ?>
-                        </div>
-                    <?php }
-                    
-                } 
+                                      <a href="<?php route('accountController/CatProduct');?>/<?php echo $childItem->id;?>" class="dropdown-item"><?php echo $childItem->category_name;?></a>
+                                      <?php 
+                                  } 
+                                  ?>
+                              </div>
+                          <?php }else{ ?>
+                            <a href="#" class="dropdown-item"  ><?php echo $item['mainCat'][0]->category_name;?></a>
+                        <?php } ?>
+                    </div>
+                <?php }
 
-                ?>
+            } 
 
+            ?>
+
+        </div>
+    </nav>
+</div>
+<?php
+$url= $_SERVER['REQUEST_URI']; 
+?>
+<div class="col-lg-9">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+        <a href="" class="text-decoration-none d-block d-lg-none">
+            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+
+                <a href="<?php route(''); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/") {echo "active"; } else{echo "noactive";}?>">Home</a>
+                <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/accountController/shop") {echo "active"; } else{echo "noactive";}?>">Shop</a>
+                <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/contact") {echo "active"; } else{echo "noactive";}?>">Contact</a>
+                <a href="<?php route('CartController/cartview'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/CartController/cartview") {echo "active"; } else{echo "noactive";}?>">Cart</a>
+                <a href="<?php route('welcome/about'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/about") {echo "active"; } else{echo "noactive";}?> ">About Us</a>
             </div>
-        </nav>
-    </div>
-    <?php
-    $url= $_SERVER['REQUEST_URI']; 
-    ?>
-    <div class="col-lg-9">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-            <a href="" class="text-decoration-none d-block d-lg-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-
-                    <a href="<?php route(''); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/") {echo "active"; } else{echo "noactive";}?>">Home</a>
-                    <a href="<?php route('accountController/shop'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/accountController/shop") {echo "active"; } else{echo "noactive";}?>">Shop</a>
-                    <a href="<?php route('welcome/contact'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/contact") {echo "active"; } else{echo "noactive";}?>">Contact</a>
-                    <a href="<?php route('CartController/cartview'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/CartController/cartview") {echo "active"; } else{echo "noactive";}?>">Cart</a>
-                    <a href="<?php route('welcome/about'); ?>" class="nav-item nav-link <?php if ($url=="/eCommerceShop/welcome/about") {echo "active"; } else{echo "noactive";}?> ">About Us</a>
-                </div>
-                <div class="navbar-nav ml-auto py-0">
+            <div class="navbar-nav ml-auto py-0">
 
 
-                    <div class="collapse navbar-collapse" id="navbarColor01">
-                        <ul class="navbar-nav mr-auto">
-                         <?php   if (!isset($_SESSION['userId'])):?> 
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav mr-auto">
+                       <?php   if (!isset($_SESSION['userId'])):?> 
                           <li class="nav-item">
                             <a class="btn big-register" data-toggle="modal" data-target="#modalRegisterForm" href="javascript:void(0);">Register</a>
                         </li>
@@ -168,17 +178,17 @@
                 <?php if(isset($_SESSION['userId'])):?> 
 
 
-                 <?php
-                 include 'profile.php';
-                 ?>
+                   <?php
+                   include 'profile.php';
+                   ?>
 
-             <?php endif; ?>
-         </div>
+               <?php endif; ?>
+           </div>
 
 
 
-     </div>
- </div>
+       </div>
+   </div>
 
 </nav>
 
