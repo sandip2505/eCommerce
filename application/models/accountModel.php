@@ -141,11 +141,11 @@ class accountModel extends database
 public function Order($order)
 {
         // var_dump($order);
-       // $user_Id =$conn->insertid;
+    //    $user_Id =$conn->insertid;
 
     foreach($order as $oreder_id){
         // var_dump($oreder_id);exit;
-        if ($this->Query("INSERT INTO orders (product_id) VALUES (?) ",$oreder_id)) {
+        if ($this->Query("INSERT INTO orders (product_id,customer_id) VALUES (?,?) ",$oreder_id)) {
             return true;
         }
 
@@ -159,12 +159,6 @@ public function getOrder()
         return $orderdata;
     }
 }
-
-
-
-
-
-
 public function getdetaildata(){
 
 
@@ -186,7 +180,6 @@ public function getReviewData($id){
 
     }
 
-
 }
 public function getSetdata()
 {
@@ -194,40 +187,4 @@ public function getSetdata()
     $Settingsdata = $this->fetchAll();
     return $Settingsdata;
 }
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // public function storeImage($id){
-
-    //         if($=NULL){
-    //             if($this->Query("INSERT INTO user_address ('user_id') VALUES ($id)")){     
-    //             }
-    //         }
-
-    //     return true;
-    // }
-//ALTER TABLE "appointments" DROP FOREIGN KEY "appointments_user_id_foreign";
-
-//ALTER TABLE "appointments" ADD CONSTRAINT "appointments_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "users" ("id")
-

@@ -239,10 +239,15 @@
     <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     <?php
 } 
+<<<<<<< HEAD
 ?> 
 <<<<<<< HEAD
 =======
 </div>
+=======
+
+?>
+>>>>>>> 15d269031699e8b464ab935ad7f008be541678a4
 </div>
 >>>>>>> 2fef4892278496f7bda5750cfd33431abe50a59b
 <?php include "components/footer.php"; ?>
