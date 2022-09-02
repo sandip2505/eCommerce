@@ -37,8 +37,7 @@ public function checkCoupon($Coupondata)
 {
 
     if ($this->Query("SELECT coupon_code FROM coupon_master WHERE coupon_code = ? ", $Coupondata)) {
-        // $CouponData = $this->fetchAll();
-     // var_dump($Coupondata);exit;
+
         if ($this->rowCount() > 0) {
             return true;
         }
@@ -46,13 +45,18 @@ public function checkCoupon($Coupondata)
     }
 }
 
-public function checkCouponDate($Coupondate)
+public function checkCouponDate($Coupondata,$Coupondate)
 {
-    if ($this->Query("SELECT end_date FROM coupon_master WHERE end_date < ? ", $Coupondate)) {
-        if ($this->rowCount() < 0) {
-            return true ;
-        }
+    // var_dump($Coupondate);exit;
+    if ($this->Query("SELECT end_date FROM coupon_master WHERE coupon_code = ?  AND end_date < '".$Coupondate."'" ,$Coupondata)) {
+      //    $CouponData = $this->fetchAll();
+      // var_dump($CouponData);exit;
+       if ($this->rowCount()>0){
+        return true;
+
     }
+
+}
 }
 
 

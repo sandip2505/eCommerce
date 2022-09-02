@@ -49,13 +49,13 @@
             <table class="table table-bordered text-center mb-0">
                 <thead class="bg-secondary text-dark">
                     <tr>
-                     <td>Sno</td>
-                     <td>Name</td>
-                     <td>Price</td>
-                     <td>Quantity</td>
-                     <td>Total</td>
-                     <td>Update</td>
-                     <td>Delete</td>
+                      <th>Sno</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Quantity</th>
+                     <th>Total</th>
+                     <th>Update</th>
+                     <th>Delete</th>    
                  </tr>
              </thead>
              <tbody class="align-middle">
