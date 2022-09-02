@@ -3,7 +3,7 @@
 class cartModal extends database {
 
 
-public function getCartData(){
+    public function getCartData(){
 
         if($this->Query("SELECT * FROM product"   )){
             $Cartdata = $this->fetchAll();
@@ -14,7 +14,7 @@ public function getCartData(){
         }
     }
 
-public function getProductData(){
+    public function getProductData(){
 
         if($this->Query("SELECT * FROM product where is_deleted=0" )){
             $Productdata = $this->fetchAll();
@@ -25,12 +25,23 @@ public function getProductData(){
         }
     }
 
-public function AddCoupon($coupondataValue){
+    public function AddCoupon($coupondataValue){
 
-       if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue])){
+     if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue])){
         $CouponData = $this->fetchAll();
          // var_dump($CouponData);exit;
         return $CouponData;
+
+    }
+
+}
+public function getcoupon(){
+
+    if($this->Query("SELECT * FROM coupon_master where coupon_status = 1 "   )){
+        $Coupondata = $this->fetchAll();
+            // var_dump($Coupondata);exit;
+
+        return $Coupondata;
 
     }
 
@@ -51,7 +62,7 @@ public function checkCoupon($Coupondata)
 public function checkCouponDate($Coupondata,$Coupondate)
 {   
     if ($this->Query("SELECT end_date FROM coupon_master WHERE coupon_code = ?  AND end_date > '".$Coupondate."'" ,$Coupondata)) {
-       if ($this->rowCount()>0){
+     if ($this->rowCount()>0){
         return true;
 
     }

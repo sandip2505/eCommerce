@@ -15,7 +15,7 @@ class CartController extends Controller {
 		$name = $_POST['name'];
 		$price = ($_POST['price']) ? (int) $_POST['price'] : 0;
 		$quantity = ($_POST['qty']) ? (int) $_POST['qty'] : 1;
-		$id = $_POST['product_id'];
+	    $id = $_POST['product_id'];
 		$Productdata = array($name,$price,$quantity,$id);
 		 // var_dump($Productdata);exit;
 		$_SESSION['cart_item'][$name] = $Productdata;
@@ -49,6 +49,10 @@ class CartController extends Controller {
 	}
 
 	public function couponApply(){
+		$data= $this->cartModal->getcoupon();
+		foreach ($data as $item) { 
+			$cart_min_value =	$item->cart_min_value;
+		}
 		$t = 0;
 		$s = 0;
 		$gt = [];
@@ -59,9 +63,7 @@ class CartController extends Controller {
 				foreach($item as $key => $value){
 					if($key == 1){
 						$p = $value;
-						// var_dump($p);exit;
 					}else if($key == 2){
-						// echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
 						$q = $value;
 					}
 				}
@@ -108,8 +110,6 @@ class CartController extends Controller {
 			}
 		}
 
-
-
 		if($error==true){
 			$this->view('cart', $CouponData);
 			return false;
@@ -117,16 +117,9 @@ class CartController extends Controller {
 		$coupondataValue = $this->input('valueToCoupon');
 		$CouponData  = $this->cartModal->AddCoupon($coupondataValue);
 		$CouponData['CouponData'] = $CouponData;
-		foreach ($CouponData['CouponData']  as $item) { 
-
-
-			
-			$cart_min_value=$item->cart_min_value;
-			// return $cart_min_value ;	
-			$this->view("cart",$CouponData);;
-
-		}
+		$this->view("cart",$CouponData);;
 	}
+
 	public function CreateReview(){
 
 		$userData = [
