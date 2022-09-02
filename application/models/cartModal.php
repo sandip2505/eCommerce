@@ -3,7 +3,7 @@
 class cartModal extends database {
 
 
-    public function getCartData(){
+public function getCartData(){
 
         if($this->Query("SELECT * FROM product"   )){
             $Cartdata = $this->fetchAll();
@@ -13,7 +13,8 @@ class cartModal extends database {
 
         }
     }
-    public function getProductData(){
+
+public function getProductData(){
 
         if($this->Query("SELECT * FROM product where is_deleted=0" )){
             $Productdata = $this->fetchAll();
@@ -23,16 +24,18 @@ class cartModal extends database {
 
         }
     }
-    public function AddCoupon($coupondataValue){
 
-       if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue]  )){
+public function AddCoupon($coupondataValue){
+
+       if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue])){
         $CouponData = $this->fetchAll();
-        // var_dump($CouponData);exit;
+         // var_dump($CouponData);exit;
         return $CouponData;
 
     }
 
 }
+
 public function checkCoupon($Coupondata)
 {
 
@@ -46,11 +49,8 @@ public function checkCoupon($Coupondata)
 }
 
 public function checkCouponDate($Coupondata,$Coupondate)
-{
-    // var_dump($Coupondate);exit;
-    if ($this->Query("SELECT end_date FROM coupon_master WHERE coupon_code = ?  AND end_date < '".$Coupondate."'" ,$Coupondata)) {
-      //    $CouponData = $this->fetchAll();
-      // var_dump($CouponData);exit;
+{   
+    if ($this->Query("SELECT end_date FROM coupon_master WHERE coupon_code = ?  AND end_date > '".$Coupondate."'" ,$Coupondata)) {
        if ($this->rowCount()>0){
         return true;
 
@@ -59,7 +59,15 @@ public function checkCouponDate($Coupondata,$Coupondate)
 }
 }
 
+public function checkCouponValue($Coupondata,$Gt)
+{
+    if ($this->Query("SELECT * FROM coupon_master WHERE coupon_code = ?  AND cart_min_value >'".$Gt."'" ,$Coupondata)) {
+      if ($this->rowCount()>0){
+        return true;
+    }
 
+}
+}
 
 public function CreateReview($data)
 {
@@ -68,17 +76,6 @@ public function CreateReview($data)
         return false;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 /*public function searchProduct($searchdata){
    if($this->Query("SELECT * FROM product WHERE name LIKE '%$searchdata%' " )){
        $searchdata = $this->fetchAll();

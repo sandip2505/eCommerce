@@ -47,14 +47,36 @@ class CartController extends Controller {
 		}
 
 	}
+
 	public function couponApply(){
+		$t = 0;
+		$s = 0;
+		$gt = [];
+		if(count($_SESSION['cart_item'])){
+
+			foreach ($_SESSION['cart_item']  as $item) {
+
+				foreach($item as $key => $value){
+					if($key == 1){
+						$p = $value;
+						// var_dump($p);exit;
+					}else if($key == 2){
+						// echo "<td><input type='text' name='pro$key' value='".$value."' class=''></td>";
+						$q = $value;
+					}
+				}
+				$t = $p * $q ;
+				$gt[] = $t;
+			}
+			$Gt =  array_sum($gt);
+		}
+
 		date_default_timezone_set("Asia/Kolkata"); 
 		$CouponData = [
 
 			'coupon_code'        => $this->input('valueToCoupon'),
 			'date'     => date('Y-m-d')
 		];
-
 		$Coupondata=[$CouponData['coupon_code']];
 		$Coupondate=date('Y-m-d');
 		$error=false;
@@ -64,7 +86,6 @@ class CartController extends Controller {
 			$CouponData['couponError']= "**Coupon is required";
 			$error=true;
 		}
-		
 		else {
 			if(!$this->cartModal->checkCoupon($Coupondata)){
 				$CouponData['couponError'] = "**The Coupon is invalid ";
@@ -76,6 +97,14 @@ class CartController extends Controller {
 					$error=true;
 
 				}
+				else {
+					if(!$this->cartModal->checkCouponValue($Coupondata,$Gt)){
+						$CouponData['couponError'] = "The cart value is '".$cart_min_value."'  ";
+						$error=true;
+
+					}
+				}
+
 			}
 		}
 
@@ -88,9 +117,15 @@ class CartController extends Controller {
 		$coupondataValue = $this->input('valueToCoupon');
 		$CouponData  = $this->cartModal->AddCoupon($coupondataValue);
 		$CouponData['CouponData'] = $CouponData;
-		$this->view("cart",$CouponData);
-		 // var_dump($data);exit;
+		foreach ($CouponData['CouponData']  as $item) { 
 
+
+			
+			$cart_min_value=$item->cart_min_value;
+			// return $cart_min_value ;	
+			$this->view("cart",$CouponData);;
+
+		}
 	}
 	public function CreateReview(){
 
@@ -103,14 +138,14 @@ class CartController extends Controller {
 			'email'                 => $this->input('email'),
 
 		];
-   // var_dump($userData);exit;
+		// var_dump($userData);exit;
 
 
 		if(empty($userData['rateError']) && empty($userData['product_idError']) && empty($userData['reviewError']) && empty($userData['nameError']) && empty($userData['emailError'])){
 
 			$data = [$userData['rate'], $userData['product_id'], $userData['review'], $userData['name'], $userData['email']];
 
-   // var_dump($data);exit;
+			// var_dump($data);exit;
 
 			if($this->cartModal->CreateReview($data)){
 				$this->setFlash("CreateReview", "Your account has been created successfully");
@@ -126,3 +161,4 @@ class CartController extends Controller {
 
 
 }
+?>
