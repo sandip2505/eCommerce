@@ -7,10 +7,10 @@
 </head>
 
 <body>
- <?php include "components/header.php"; ?>
+   <?php include "components/header.php"; ?>
 
- <!-- Page Header Start -->
- <div class="container-fluid bg-secondary mb-5">
+   <!-- Page Header Start -->
+   <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
         <div class="d-inline-flex">
@@ -59,16 +59,15 @@
                   </tr>
               </thead>
               <tbody class="align-middle">
+               <?php
+               $sno = 1;
+               $t = 0;
+               $s = 0;
+               $gt = [];
+               $g = [];
+               if(count($_SESSION['cart_item'])){
 
-                 <?php
-                 $sno = 1;
-                 $t = 0;
-                 $s = 0;
-                 $gt = [];
-                 $g = [];
-                 if(count($_SESSION['cart_item'])){
-
-                     foreach ($_SESSION['cart_item']  as $item) {
+                   foreach ($_SESSION['cart_item']  as $item) {
                       $p = 0;
                       $q = 0;
                       echo "<form action='cartUpdate' method='POST'>";
@@ -101,27 +100,21 @@
                     echo "</form>";
                 }
 
-
                 ?>
             </tbody>
         </table>
     </div>
-</div>
-</div>
     <div class="col-lg-4">
         <form class="mb-5" method="POST" action="<?php route('cartController/couponApply')?>">
             <div class="input-group">
                 <input type="text" name="valueToCoupon" class="form-control p-4" placeholder="Coupon Code" value="<?php echo isset($_POST['valueToCoupon'])?$_POST['valueToCoupon']:'' ?>">
                 <!--   <span class="couponError"></span> -->
                 <button class="btn btn-primary">Apply Coupon</button>
-
-
             </div>
             <div class="error text-danger ml-0">
               <?php if (!empty($data['couponError'])) : echo $data['couponError'];
               endif; ?>
           </div>   
-
           <?php 
           if(isset($data['CouponData'])){
             foreach ($data['CouponData']  as $item) { 
@@ -134,12 +127,9 @@
         }
         ?>
         <?php
-
         $Gt =  array_sum($gt);
         $at = $Gt-$s;
         $_SESSION["at"] = $at;
-                // var_dump($at);exit;
-
         ?>
     </form>
     <form method="POST" action="<?php route('orderController/checkout')?>">
@@ -164,23 +154,18 @@
                     <h5 class="font-weight-bold"><?php  echo $at ?></h5>
                 </div>
             </div>
-                <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
+        </form>
+    </div>
 
-    
-</div>
-</div>
-
-<?php } else{
+<?php }else{
     ?>
     <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     <?php
 } 
 ?> 
-
-
->>>>>>> 56829382293279638a6614e782f10a5510d8f709
+</div>
+</div>
 <?php include "components/footer.php"; ?>
 </body>
 </html>
