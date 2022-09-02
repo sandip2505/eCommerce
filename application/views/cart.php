@@ -163,9 +163,11 @@
     <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     <?php
 } 
-
 ?>
 </div>
 <?php include "components/footer.php"; ?>
 </body>
 </html>
+
+
+
