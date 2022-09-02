@@ -61,7 +61,7 @@ public function checkCouponDate($Coupondata,$Coupondate)
 
 public function checkCouponValue($Coupondata,$Gt)
 {
-    if ($this->Query("SELECT * FROM coupon_master WHERE coupon_code = ?  AND cart_min_value >'".$Gt."'" ,$Coupondata)) {
+    if ($this->Query("SELECT * FROM coupon_master WHERE coupon_code = ?  AND cart_min_value <'".$Gt."'" ,$Coupondata)) {
       if ($this->rowCount()>0){
         return true;
     }
