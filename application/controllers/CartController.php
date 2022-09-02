@@ -56,7 +56,7 @@ class CartController extends Controller {
 		];
 
 		$Coupondata=[$CouponData['coupon_code']];
-		$Coupondate=[$CouponData['date']];
+		$Coupondate=date('Y-m-d');
 		$error=false;
 
 		if (empty($CouponData["coupon_code"])) {
@@ -64,21 +64,21 @@ class CartController extends Controller {
 			$CouponData['couponError']= "**Coupon is required";
 			$error=true;
 		}
+		
 		else {
-			if(!$this->cartModal->checkCouponDate($Coupondate)){
-				$CouponData['couponError'] = "The coupon is Expired ";
+			if(!$this->cartModal->checkCoupon($Coupondata)){
+				$CouponData['couponError'] = "**The Coupon is invalid ";
 				$error=true;
 
-			}
-			// else {
-			// 	if(!$this->cartModal->checkCoupon($Coupondata)){
-			// 		$CouponData['couponError'] = "**The Coupon is invalid ";
-			// 		$error=true;
+			}else {
+				if(!$this->cartModal->checkCouponDate($Coupondata,$Coupondate)){
+					$CouponData['couponError'] = "The coupon is Expired ";
+					$error=true;
 
-
-			// 	}
+				}
 			}
-		
+		}
+
 
 
 		if($error==true){
