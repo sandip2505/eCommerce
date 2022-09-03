@@ -28,11 +28,20 @@ class accountController extends Controller {
    // $data['Productdata'] = $Productdata;
    $CatProductData  = $this->accountModel->getCatProductData($id);
    $data['CatProductData'] = $CatProductData;
+   $CatParentProductData  = $this->accountModel->getCatParentProductData($id);
+   $data['CatParentProductData'] = $CatParentProductData;
     // var_dump($CatProductData);
    $this->view("CategoeyProduct",$data);
-
-
-
+}
+public function CatParentProduct($id){
+   // $Productdata  = $this->accountModel->getProductData();
+   // $data['Productdata'] = $Productdata;
+   $CatProductData  = $this->accountModel->getCatProductData($id);
+   $data['CatProductData'] = $CatProductData;
+   $CatParentProductData  = $this->accountModel->getCatParentProductData($id);
+   $data['CatParentProductData'] = $CatParentProductData;
+    // var_dump($CatProductData);
+   $this->view("ParentCatData",$data);
 }
 public function shop(){
     $Productdata  = $this->accountModel->getProductData();
