@@ -12,7 +12,7 @@
     <!-- Featured Start -->
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #dee3f5;">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
             <div class="d-inline-flex">
                 <p class="m-0"><a href="<?php route(''); ?>">Home</a></p>
@@ -29,7 +29,7 @@
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
 
-            </div>
+            </div>  
             <!-- Shop Sidebar End -->
             <!-- Shop Product Start -->
             <div class="container-fluid pt-5">
@@ -100,3 +100,4 @@
     </body>
 
     </html>
+  

@@ -11,7 +11,7 @@
 
  <!-- Page Header Start -->
  <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #dee3f5;">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">About Us</h1>
         <div class="d-inline-flex">
             <p class="m-0"><a href="<?php route(''); ?>">Home</a></p>
@@ -68,8 +68,13 @@
 <div class="row text-center">
   <!-- Team item-->
   <div class="col-xl-3 col-sm-6 mb-5">
+<<<<<<< HEAD
     <div class="bg-white rounded shadow-sm py-5 px-4"><img src="../public\assets/img/harsh.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
       <h5 class="mb-0">Harsh Badgujar</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+=======
+    <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-4.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+      <h5 class="mb-0">SANDIP GANAVA</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+>>>>>>> 270e6df69930490477582d098431241f5e33e107
       <ul class="social mb-0 list-inline mt-3">
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
@@ -111,7 +116,7 @@
 <!-- Team item-->
 <div class="col-xl-3 col-sm-6 mb-5">
     <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-      <h5 class="mb-0">Sandip Ganava</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+      <h5 class="mb-0">Harsh Badgujar</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
       <ul class="social mb-0 list-inline mt-3">
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>

@@ -8,19 +8,8 @@
             <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum dolore amet erat.</p>
             <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
             <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>sandipganava2357@gmail.com</p>
-            <?php
-            $mainObj = new Controller();
-            $catData = $mainObj->getSettingdata();
-            foreach ($catData as $item) {
-                if(isset($item['setdata'])){
-                    // echo "<pre>";
-                    // var_dump($item->name);exit;
-                    // echo $item['setdata'][0]->name;
-                }
-            }
-
-                 ?>
-                   <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i><?php echo $item['setdata'][0]->name; ?></p>
+            
+                   <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>7984455302</p>
                </div>
                <div class="col-lg-8 col-md-12">
                 <div class="row">
