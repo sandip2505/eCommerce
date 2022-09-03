@@ -7,10 +7,10 @@
 </head>
 
 <body>
-   <?php include "components/header.php"; ?>
+ <?php include "components/header.php"; ?>
 
-   <!-- Page Header Start -->
-   <div class="container-fluid bg-secondary mb-5">
+ <!-- Page Header Start -->
+ <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
         <div class="d-inline-flex">
@@ -59,15 +59,15 @@
                   </tr>
               </thead>
               <tbody class="align-middle">
-               <?php
-               $sno = 1;
-               $t = 0;
-               $s = 0;
-               $gt = [];
-               $g = [];
-               if(isset($_SESSION['cart_item'])){
+                 <?php
+                 $sno = 1;
+                 $t = 0;
+                 $s = 0;
+                 $gt = [];
+                 $g = [];
+                 if($_SESSION['cart_item']){
 
-                   foreach ($_SESSION['cart_item']  as $item) {
+                     foreach ($_SESSION['cart_item']  as $item) {
                       $p = 0;
                       $q = 0;
                       echo "<form action='cartUpdate' method='POST'>";
@@ -133,7 +133,7 @@
         ?>
     </form>
     <form method="POST" action="<?php route('orderController/checkout')?>">
-     
+       
         <div class="card border-secondary mb-5">
             <div class="card-header bg-secondary border-0">
                 <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
@@ -161,7 +161,8 @@
         </form>
     </div>
 
-<?php }else{
+<?php }
+else{
     ?>
     <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     <?php
