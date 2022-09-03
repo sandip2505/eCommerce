@@ -27,14 +27,24 @@ class cartModal extends database {
 
     public function AddCoupon($coupondataValue){
 
-     if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1 ", [$coupondataValue])){
-        $CouponData = $this->fetchAll();
-         // var_dump($CouponData);exit;
-        return $CouponData;
+        if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1  ", [$coupondataValue])){
+            $CouponData = $this->fetchAll();
+            // var_dump($CouponData);exit;
+            return $CouponData;
+
+        }
 
     }
+//     public function AddCoupon($coupondataValue){
 
-}
+//      if($this->Query("SELECT * FROM coupon_master where coupon_code = ? AND coupon_status = 1  ", [$coupondataValue])){
+//         $CouponData = $this->fetchAll();
+//          // var_dump($CouponData);exit;
+//         return $CouponData;
+
+//     }
+
+// }
 public function getcoupon($coupondataValue){
 
     if($this->Query("SELECT * FROM coupon_master where coupon_status = 1 AND coupon_code=? ",[$coupondataValue])){
