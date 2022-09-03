@@ -10,8 +10,8 @@
  <?php include "components/header.php"; ?>
 
  <!-- Page Header Start -->
- <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+ <div class="container-fluid mb-5" style="background-color: ;">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #dee3f5;">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
         <div class="d-inline-flex">
             <p class="m-0"><a href="<?php route(''); ?>">Home</a></p>
@@ -46,26 +46,28 @@
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
         <div class="col-lg-8 table-responsive mb-5">
-            <table class="table table-bordered text-center mb-0">
-                <thead class="bg-secondary text-dark">
-                    <tr>
-                      <th>Sno</th>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Total</th>
-                      <th>Update</th>
-                      <th>Delete</th>    
-                  </tr>
-              </thead>
-              <tbody class="align-middle">
-                 <?php
-                 $sno = 1;
-                 $t = 0;
-                 $s = 0;
-                 $gt = [];
-                 $g = [];
-                 if($_SESSION['cart_item']){
+            <?php
+            if($_SESSION['cart_item']){ 
+                ?>
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                          <th>Sno</th>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Total</th>
+                          <th>Update</th>
+                          <th>Delete</th>    
+                      </tr>
+                  </thead>
+                  <tbody class="align-middle">
+                     <?php
+                     $sno = 1;
+                     $t = 0;
+                     $s = 0;
+                     $gt = [];
+                     $g = [];
 
                      foreach ($_SESSION['cart_item']  as $item) {
                       $p = 0;
@@ -98,12 +100,16 @@
                     </td>";
 
                     echo "</form>";
-                }
 
-                ?>
-            </tbody>
-        </table>
-    </div>
+
+                    ?>
+                <?php }
+            }
+            ?>
+        </tbody>
+    </table>
+</div> 
+<?php if($_SESSION['cart_item']){ ?>
     <div class="col-lg-4">
         <form class="mb-5" method="POST" action="<?php route('cartController/couponApply')?>">
             <div class="input-group">
@@ -133,7 +139,7 @@
         ?>
     </form>
     <form method="POST" action="<?php route('orderController/checkout')?>">
-       
+
         <div class="card border-secondary mb-5">
             <div class="card-header bg-secondary border-0">
                 <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
@@ -159,15 +165,17 @@
             <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
 
         </form>
+    <?php }
+    else{
+        ?>
+        <div style="width: 100%; text-align: center;">
+        <h1 class="text-danger"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     </div>
-
-<?php }
-else{
+        <?php
+    } 
     ?>
-    <h1 class="text-danger text-center ml-3"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
-    <?php
-} 
-?>
+</div>
+</div>
 </div>
 <?php include "components/footer.php"; ?>
 </body>
