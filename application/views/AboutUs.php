@@ -41,8 +41,8 @@
   <div class="container py-5">
     <div class="row align-items-center mb-5">
       <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+        <h2 class="font-weight-light">We are providing – Custom software development, QA & Consultancy Services to help you match this technological world and trends and withstand the market.</h2>
+        <p class="font-italic text-muted mb-4">We want to be one of the preferred digital solutions providers for every startup and visionary entrepreneurs</p><a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
     </div>
     <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
 </div>
@@ -68,8 +68,11 @@
 <div class="row text-center">
   <!-- Team item-->
   <div class="col-xl-3 col-sm-6 mb-5">
-    <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-4.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-      <h5 class="mb-0">SANDIP GANAVA</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+
+    <div class="bg-white rounded shadow-sm py-5 px-4"><img src="../public\assets/img/harsh.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+      <h5 class="mb-0">Harsh Badgujar</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+
+
       <ul class="social mb-0 list-inline mt-3">
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
@@ -111,7 +114,7 @@
 <!-- Team item-->
 <div class="col-xl-3 col-sm-6 mb-5">
     <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-      <h5 class="mb-0">Harsh Badgujar</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+      <h5 class="mb-0">sandip ganava</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
       <ul class="social mb-0 list-inline mt-3">
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
         <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>

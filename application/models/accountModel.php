@@ -115,9 +115,17 @@ class accountModel extends database
 
         if ($this->Query("SELECT * FROM category INNER JOIN product ON category.id = product.cat_id JOIN images ON  images.product_id = product.id where cat_id=$id")) {
             $CatProductData = $this->fetchAll();
-            // echo "<pre>";
-            // var_dump($CatProductData);exit;
+           
             return $CatProductData;
+        }
+    }
+    public function getCatParentProductData($id)
+    {
+
+        if ($this->Query("SELECT * FROM category INNER JOIN product ON category.id = product.cat_id JOIN images ON  images.product_id = product.id where parent_id=$id")) {
+            $CatParentProductData = $this->fetchAll();
+           
+            return $CatParentProductData;
         }
     }
 

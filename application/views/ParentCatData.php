@@ -16,7 +16,7 @@
         </div>
         <div class="row px-xl-5 pb-3">
             <?php
-            foreach ($data['CatProductData'] as $item) {
+            foreach ($data['CatParentProductData'] as $item) {
                 ?>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
