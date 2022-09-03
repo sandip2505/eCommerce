@@ -7,10 +7,10 @@
 </head>
 
 <body>
- <?php include "components/header.php"; ?>
+   <?php include "components/header.php"; ?>
 
- <!-- Page Header Start -->
- <div class="container-fluid mb-5" style="background-color: ;">
+   <!-- Page Header Start -->
+   <div class="container-fluid mb-5" style="background-color: ;">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px; background-color: #dee3f5;">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
         <div class="d-inline-flex">
@@ -62,14 +62,15 @@
                       </tr>
                   </thead>
                   <tbody class="align-middle">
-                     <?php
-                     $sno = 1;
-                     $t = 0;
-                     $s = 0;
-                     $gt = [];
-                     $g = [];
+                   <?php
+                   $sno = 1;
+                   $t = 0;
+                   $s = 0;
+                   $v = 0;
+                   $gt = [];
+                   $g = [];
 
-                     foreach ($_SESSION['cart_item']  as $item) {
+                   foreach ($_SESSION['cart_item']  as $item) {
                       $p = 0;
                       $q = 0;
                       echo "<form action='cartUpdate' method='POST'>";
@@ -126,54 +127,71 @@
             foreach ($data['CouponData']  as $item) { 
                 // var_dump($item);exit;
                 $s =$item->coupon_value;
+                $v=$item->coupon_type;
                 ?>
                 <?php
             }
 
         }
+        // var_dump($v);exit;
         ?>
         <?php
-        $Gt =  array_sum($gt);
-        $at = $Gt-$s;
-        $_SESSION["at"] = $at;
-        ?>
-    </form>
-    <form method="POST" action="<?php route('orderController/checkout')?>">
+        if($v=='Fixamount'){
+            $Gt =  array_sum($gt);
+            $at = $Gt-$s;
+            $_SESSION["at"] = $at;
+        }
+        else{
+         $Gt =  array_sum($gt);
+         $mt = $Gt*$s/100;
+         $at=$Gt-$mt;
+         $_SESSION["at"] = $at;
+     }
+     ?>
+ </form>
+ <form method="POST" action="<?php route('orderController/checkout')?>">
 
-        <div class="card border-secondary mb-5">
-            <div class="card-header bg-secondary border-0">
-                <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+    <div class="card border-secondary mb-5">
+        <div class="card-header bg-secondary border-0">
+            <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between mb-3 pt-1">
+                <h6 class="font-weight-medium">Subtotal</h6>
+                <h6 class="font-weight-medium"><?php  echo $Gt ?></h6>
+                <!-- <h6 class="font-weight-medium">150</h6> -->
             </div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between mb-3 pt-1">
-                    <h6 class="font-weight-medium">Subtotal</h6>
-                    <h6 class="font-weight-medium"><?php  echo $Gt ?></h6>
-                    <!-- <h6 class="font-weight-medium">150</h6> -->
-                </div>
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-weight-medium">Discount</h6>
+            <div class="d-flex justify-content-between">
+                <h6 class="font-weight-medium">Discount</h6>
+                <?php if($v=='percentage'){?>
+                    <h6 class="font-weight-medium"><?php  echo $s ?>%</h6>
+                    <?php
+                }else{
+                    ?>
                     <h6 class="font-weight-medium"><?php  echo $s ?></h6>
-                </div>
-            </div>
-            <div class="card-footer border-secondary bg-transparent">
-                <div class="d-flex justify-content-between mt-2">
-                    <h5 class="font-weight-bold">Total</h5>
-                    <h5 class="font-weight-bold"><?php  echo $at ?></h5>
-                </div>
-            </div>
+                <?php }
+            ?>
+        </div>
+    </div>
+    <div class="card-footer border-secondary bg-transparent">
+        <div class="d-flex justify-content-between mt-2">
+            <h5 class="font-weight-bold">Total</h5>
+            <h5 class="font-weight-bold"><?php  echo $at ?></h5>
+        </div>
+    </div>
 
-            <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
+    <button type="submit" class="btn btn-block btn-primary my-3 py-3"><a href=""></a>Proceed To Checkout</button>
 
-        </form>
-    <?php }
-    else{
-        ?>
-        <div style="width: 100%; text-align: center;">
+</form>
+<?php }
+else{
+    ?>
+    <div style="width: 100%; text-align: center;">
         <h1 class="text-danger"> Your cart is empty !<i class="fas fa-shopping-cart"></i></h1>
     </div>
-        <?php
-    } 
-    ?>
+    <?php
+} 
+?>
 </div>
 </div>
 </div>
