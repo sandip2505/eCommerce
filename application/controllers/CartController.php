@@ -57,7 +57,7 @@ class CartController extends Controller {
 			$cart_min_value =	$item->cart_min_value;
 
 		}
-	
+		
 
 		$t = 0;
 		$s = 0;
@@ -73,9 +73,9 @@ class CartController extends Controller {
 						$q = $value;
 					}
 				}
-				$t = $p * $q ;
-				$gt[] = $t;
 			}
+			$t = $p * $q ;
+			$gt[] = $t;
 			$Gt =  array_sum($gt);
 		}
 
