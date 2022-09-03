@@ -114,7 +114,7 @@ if($error==true){
    $orderdata = [$orderdata['firtsname'],$orderdata['lastname'],$orderdata['email'],$orderdata['mobile'],$orderdata['address_1'],$orderdata['address_2'],$orderdata['state'],$orderdata['city'],$orderdata['post_code'],$orderdata['Country'],$orderdata['user_id']];
    if($this->accountModel->createOrder($orderdata)){
     $order=[$m];
-    $orderdatavalue =[$orderData['user_id']];
+    // $orderdatavalue =[$orderData['user_id']];
    // $orderdatavalue(userdata)
   $this->accountModel->Order($order);
 
