@@ -10,6 +10,8 @@ class accountController extends Controller {
         $this->helper("link");
         $this->accountModel = $this->model('accountModel');
         
+
+        
     }
 
     public function index(){
@@ -24,8 +26,7 @@ class accountController extends Controller {
      $this->view("index",$data);
  }
  public function CatProduct($id){
-   // $Productdata  = $this->accountModel->getProductData();
-   // $data['Productdata'] = $Productdata;
+  
    $CatProductData  = $this->accountModel->getCatProductData($id);
    $data['CatProductData'] = $CatProductData;
    $CatParentProductData  = $this->accountModel->getCatParentProductData($id);

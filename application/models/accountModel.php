@@ -186,9 +186,9 @@ public function getReviewData($id){
     }
 
 }
-public function getSetdata()
+public function getSetdata($key)
 {
-    $this->Query("SELECT * FROM settings WHERE is_deleted = 0  ");
+    $this->Query("SELECT * FROM settings WHERE is_deleted = 0 AND admin_key = '$key' ");
     $Settingsdata = $this->fetchAll();
     return $Settingsdata;
 }

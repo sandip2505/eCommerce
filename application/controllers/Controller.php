@@ -18,20 +18,16 @@ class Controller extends framework {
                 }
             }
         }
-        // echo "<pre>";
-        // var_dump($menu);exit;
-
+        
         return $menu;
     }
-    public function getSettingdata(){
+    public function getSettingdata($key){
        $menu = array();
-       $Settingsdata = $this->accountModel->getSetdata();
-       foreach ($Settingsdata as $key => $value) {
-        $menu[$value->id]['setdata'][] = $value;
-       
-    }
+       $Settingsdata = $this->accountModel->getSetdata($key);
+       // echo "<pre>";
+       // var_dump($Settingsdata[0]->name);exit;
 
-    return $menu;
+    return $Settingsdata[0]->name;
 
 }
 }

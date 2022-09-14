@@ -8,7 +8,7 @@
 
 <body>
  <?php include "components/header.php"; ?>
- <!-- <img class="img-fluid" src="../public\assets/img/carousel-1.jpg" alt="Image"> -->
+ 
 
 
  <!-- Page Header Start -->
@@ -130,7 +130,7 @@ foreach ($data['Productdata'] as $item) {
             </div>
             <div class="d-flex align-items-center mb-4 pt-2">
                 <button type="submit" name="add" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Add to cart</button>
-                <!-- <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> -->
+                
             </div>
         </form>
     </div>
@@ -176,8 +176,7 @@ foreach ($data['reviewdata'] as $value) {
             <div class="tab-pane fade show active" id="tab-pane-1">
                 <h4 class="mb-3">Product Description</h4>
                 <?php echo $item ->description;?>
-                <!-- <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                    <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p> -->
+                
                 </div>
                 <?php
             }
@@ -229,7 +228,7 @@ foreach ($data['reviewdata'] as $value) {
                             $gt=[]; 
                             foreach ($data['reviewdata'] as $item) {
 
-                                // $name=array($item);
+                                
 
                                 ?>
                                 <img src="../../public\assets/img/user.png" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
@@ -237,7 +236,7 @@ foreach ($data['reviewdata'] as $value) {
                                     <h6><?php echo $item ->name;?><small> - <i><?php echo $item ->created_at;?></i></small></h6>
 
                                    <!--  <div class="rate">
-                                        <input type="radio" id="star5" name="rate" value="5>"/>
+                                        <input type="radio" id="star5" name="rate" value="5"/>
                                         <label for="star5" title="text">5 stars</label>
                                         <input type="radio" id="star4" name="rate" value="4"/>
                                         <label for="star4" title="text">4 stars</label>
@@ -249,7 +248,7 @@ foreach ($data['reviewdata'] as $value) {
                                         <label for="star1" title="text">1 star</label> 
                                     </div><br><br> -->
                                     <p><?php echo $item ->review;?></p>
-                                    <p><?php echo $item ->rate;?></p> 
+                                    <!-- <p><?php echo $item ->rate;?></p>  -->
                                 </div><br>
                                 <?php
                             }
@@ -270,7 +269,7 @@ foreach ($data['reviewdata'] as $value) {
                 <h4 class="mb-4">Leave a review</span></h4>
                 <small>Your email address will not be published. Required fields are marked *</small>
                 <form method="POST" action="<?php route('cartController/CreateReview')?>">
-                    <div class="d-flex my-3">
+                    <!-- <div class="d-flex my-3">
                         <p class="mb-0 mr-2">Your Rating * :</p>
 
                         <div class="rate">
@@ -285,7 +284,7 @@ foreach ($data['reviewdata'] as $value) {
                             <input type="radio" id="star1" name="rate" value="1" />
                             <label for="star1" title="text">1 star</label>
                         </div>
-                    </div>
+                    </div> -->
 
                     <input type="hidden" name="product_id" value="<?php echo $item->product_id;?>">
                     <div class="form-group">
@@ -306,7 +305,7 @@ foreach ($data['reviewdata'] as $value) {
 
                 </form>
             </div>
-        </div>
+        
 
         <!-- Shop Detail End -->
         <!-- Products Start -->
@@ -358,17 +357,15 @@ foreach ($data['reviewdata'] as $value) {
                         </form>
 
                         <?php
-                    }
+                    }  
+
                     ?>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Products End -->
-
-
+    <!-- Produ cts End -->
 
     <?php include "components/footer.php"; ?>
 </body>
-
 </html>
